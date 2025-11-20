@@ -5,7 +5,19 @@ public class InputRebindingUI : MonoBehaviour {
 
     [SerializeField] private GameObject rebindingOverlay;
 
-    [Header("UI Elements")]
+    [Header("Buttons")]
+    [SerializeField] private Button moveUpButton;
+    [SerializeField] private Button moveDownButton;
+    [SerializeField] private Button moveLeftButton;
+    [SerializeField] private Button moveRightButton;
+    [SerializeField] private Button jumpButton;
+    [SerializeField] private Button fireButton;
+    [SerializeField] private Button launchMagnetButton;
+    [SerializeField] private Button attractButton;
+    [SerializeField] private Button repelButton;
+    [SerializeField] private Button chargeButton;
+
+    [Header("Buttons Texts")]
     [SerializeField] private Text moveUpButtonText;
     [SerializeField] private Text moveDownButtonText;
     [SerializeField] private Text moveLeftButtonText;
@@ -16,21 +28,17 @@ public class InputRebindingUI : MonoBehaviour {
     [SerializeField] private Text attractButtonText;
     [SerializeField] private Text repelButtonText;
     [SerializeField] private Text chargeButtonText;
-    [SerializeField] private Toggle holdToAttractToggle;
 
     private void Start() {
         InputRebinding.Instance.OnInputRebindingCompleted += InputRebinding_OnInputRebindingCompleted;
         InputRebinding.Instance.OnInputRebindingStarted += InputRebinding_OnInputRebindingStarted;
-        InputRebinding.Instance.OnHoldToAttractChanged += InputRebinding_OnHoldToAttractChanged;
         //rebindingOverlay.SetActive(false);
         UpdateBindingTexts();
-        UpdateHoldToAttract();
     }
 
     private void OnDestroy() {
         InputRebinding.Instance.OnInputRebindingCompleted -= InputRebinding_OnInputRebindingCompleted;
         InputRebinding.Instance.OnInputRebindingStarted -= InputRebinding_OnInputRebindingStarted;
-        InputRebinding.Instance.OnHoldToAttractChanged -= InputRebinding_OnHoldToAttractChanged;
     }
 
     private void InputRebinding_OnInputRebindingStarted(object sender, System.EventArgs e) {
@@ -40,10 +48,6 @@ public class InputRebindingUI : MonoBehaviour {
     private void InputRebinding_OnInputRebindingCompleted(object sender, System.EventArgs e) {
         UpdateBindingTexts();
         //rebindingOverlay.SetActive(false);
-    }
-
-    private void InputRebinding_OnHoldToAttractChanged(object sender, System.EventArgs e) {
-        UpdateHoldToAttract();
     }
 
     public void RebindMoveUp() {
@@ -86,12 +90,6 @@ public class InputRebindingUI : MonoBehaviour {
         InputRebinding.Instance.RebindBinding(InputRebinding.Binding.CHARGE);
     }
 
-    public void ResetBindings() => InputRebinding.Instance.ResetAllBindings();
-
-    public void ToggleHoldToAttract() {
-        InputRebinding.Instance.SetHoldToAttract(!InputRebinding.Instance.GetHoldToAttract());
-    }
-
     public void UpdateBindingTexts() {
         moveUpButtonText.text = InputRebinding.Instance.GetBinding(InputRebinding.Binding.MOVE_UP);
         moveDownButtonText.text = InputRebinding.Instance.GetBinding(InputRebinding.Binding.MOVE_DOWN);
@@ -103,9 +101,5 @@ public class InputRebindingUI : MonoBehaviour {
         attractButtonText.text = InputRebinding.Instance.GetBinding(InputRebinding.Binding.ATTRACT);
         repelButtonText.text = InputRebinding.Instance.GetBinding(InputRebinding.Binding.REPEL);
         chargeButtonText.text = InputRebinding.Instance.GetBinding(InputRebinding.Binding.CHARGE);
-    }
-
-    public void UpdateHoldToAttract() {
-        holdToAttractToggle.SetIsOnWithoutNotify(InputRebinding.Instance.GetHoldToAttract());
     }
 }
