@@ -4976,7 +4976,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &57835653
 Transform:
   m_ObjectHideFlags: 0
@@ -4986,12 +4986,12 @@ Transform:
   m_GameObject: {fileID: 57835652}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.11, y: 0.05, z: 0}
+  m_LocalPosition: {x: -0.11000061, y: 0.05000019, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 466929624}
-  m_Father: {fileID: 496885151}
+  m_Father: {fileID: 208121241}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &57835654
 MonoBehaviour:
@@ -5027,6 +5027,15 @@ MonoBehaviour:
   baseSparks: {fileID: 0}
   magnetSparks: {fileID: 0}
   isMasterArray: 0
+  canGenerateTetheredArcs: 0
+  childMaxExtraPoints: 6
+  childArcAmplitudeRange: {x: 0.2, y: 0.6}
+  enableMovement: 0
+  childAnchorStepTimeRange: {x: 0.03, y: 0.08}
+  childExtraPerpJitter: 0.4
+  childExtraParallelJitter: 0.3
+  childExtraNoiseFrequency: 3
+  childExtraNoiseSpeed: 2
   masterArray: []
   isChildToMasterArray: 0
   masterArraySource: {fileID: 0}
@@ -5039,6 +5048,9 @@ MonoBehaviour:
   sparksDurationRange: {x: 0.05, y: 0.15}
   sparksDensity: 0.3
   maxConcurrentSparks: 5
+  alphaMaxDistance: 120
+  sparkCutoffFraction: 1
+  arcAlpha: 1
   onlyShowWhenStopped: 1
   magnetMoving: 0
   magnetIsStopped: 0
@@ -5075,7 +5087,7 @@ MonoBehaviour:
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-  m_SpriteShape: {fileID: 11400000, guid: f24cddf7c09a6442abbce710a6fd7397, type: 2}
+  m_SpriteShape: {fileID: 11400000, guid: 4479303a25d3adc4788e3fa8e6cc5e74, type: 2}
   m_FillPixelPerUnit: 256
   m_StretchTiling: 1
   m_SplineDetail: 16
@@ -10293,6 +10305,60 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!1 &208121240
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 208121241}
+  - component: {fileID: 208121242}
+  m_Layer: 3
+  m_Name: MagnetEffect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &208121241
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208121240}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1300200886}
+  - {fileID: 1752557312}
+  - {fileID: 57835653}
+  - {fileID: 659327438}
+  - {fileID: 2016547755}
+  - {fileID: 681691433}
+  - {fileID: 376390992}
+  m_Father: {fileID: 496885151}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &208121242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208121240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 648c4f7ad95801c46adac250eb127825, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  electricBaseMaterial: {fileID: 2100000, guid: dd7487d6df9b07741ace7fd25f63d07c, type: 2}
+  nonChildArcAlpha: 1
+  childArcAlpha: 1
 --- !u!1 &235559236
 GameObject:
   m_ObjectHideFlags: 0
@@ -10910,6 +10976,219 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &376390991
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 376390992}
+  - component: {fileID: 376390995}
+  - component: {fileID: 376390994}
+  - component: {fileID: 376390993}
+  m_Layer: 0
+  m_Name: MasterArray__Arc_Highlights (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &376390992
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376390991}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.11000061, y: 0.05000019, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 593722806}
+  m_Father: {fileID: 208121241}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &376390993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376390991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 235cc861e97a20d47ba2b4f4388498bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseTransform: {fileID: 0}
+  magnetCloneName: MagnetProjectile(Clone)
+  magnetLayerName: Magnet
+  dropInterval: 3
+  recallResetDistance: 1
+  moveThreshold: 0.15
+  stoppedMinTime: 0.08
+  arcAmplitude: 0.52
+  arcFrequency: 1.48
+  arcOctaves: 2
+  arcRoughness: 0.7278081
+  arcSpeed: 1.85
+  noiseSeed: 0
+  steppedArc: 1
+  steppedHoldRange: {x: 0.05, y: 0.15}
+  cornerChance: 0.35
+  cornerReseedInterval: 0.12
+  smoothTangentScale: 0.6
+  cornerTangentScale: 0
+  baseSparks: {fileID: 0}
+  magnetSparks: {fileID: 0}
+  isMasterArray: 1
+  canGenerateTetheredArcs: 1
+  childMaxExtraPoints: 6
+  childArcAmplitudeRange: {x: 0.2, y: 0.6}
+  enableMovement: 0
+  childAnchorStepTimeRange: {x: 0.03, y: 0.08}
+  childExtraPerpJitter: 0.4
+  childExtraParallelJitter: 0.3
+  childExtraNoiseFrequency: 3
+  childExtraNoiseSpeed: 2
+  masterArray: []
+  isChildToMasterArray: 0
+  masterArraySource: {fileID: 0}
+  childCopyFractionRange: {x: 0.4, y: 1}
+  sharpChild: 0
+  childLifetimeRange: {x: 0.05, y: 0.15}
+  childDelayRange: {x: 0, y: 0.05}
+  sparks: {fileID: 0}
+  sparksIntervalRange: {x: 0.05, y: 0.2}
+  sparksDurationRange: {x: 0.05, y: 0.15}
+  sparksDensity: 0.3
+  maxConcurrentSparks: 5
+  alphaMaxDistance: 120
+  sparkCutoffFraction: 1
+  arcAlpha: 1
+  onlyShowWhenStopped: 1
+  magnetMoving: 0
+  magnetIsStopped: 0
+  splineLength: 0
+  desiredInteriorPoints: 0
+--- !u!114 &376390994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376390991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90539df1cd5704abcb25fec9f3f5f84b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Spline:
+    m_IsOpenEnded: 1
+    m_ControlPoints:
+    - position: {x: 5.926, y: -6.9620004, z: 0}
+      leftTangent: {x: 0, y: 0, z: 0}
+      rightTangent: {x: -0.8000002, y: 1.5999999, z: 0}
+      mode: 1
+      height: 1
+      spriteIndex: 0
+      corner: 1
+      m_CornerMode: 1
+    - position: {x: 8.188042, y: 4.903905, z: 0}
+      leftTangent: {x: -0.5656891, y: -1.6970558, z: 0}
+      rightTangent: {x: 0.37712097, y: 1.1313705, z: 0}
+      mode: 1
+      height: 1
+      spriteIndex: 0
+      corner: 1
+      m_CornerMode: 1
+  m_SpriteShape: {fileID: 11400000, guid: 4479303a25d3adc4788e3fa8e6cc5e74, type: 2}
+  m_FillPixelPerUnit: 256
+  m_StretchTiling: 1
+  m_SplineDetail: 16
+  m_AdaptiveUV: 1
+  m_StretchUV: 0
+  m_WorldSpaceUV: 0
+  m_CornerAngleThreshold: 30
+  m_ColliderDetail: 16
+  m_ColliderOffset: 0
+  m_UpdateCollider: 1
+  m_EnableTangents: 0
+  m_GeometryCached: 0
+  m_UTess2D: 1
+  m_UpdateShadow: 0
+  m_ShadowDetail: 16
+  m_ShadowOffset: 0.5
+  m_BoundsScale: 2
+  m_Creator: {fileID: 0}
+  m_Modifiers: []
+  m_ColliderSegment: []
+  m_ShadowSegment: []
+--- !u!1971053207 &376390995
+SpriteShapeRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376390991}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 0
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: dd7487d6df9b07741ace7fd25f63d07c, type: 2}
+  - {fileID: 2100000, guid: dd7487d6df9b07741ace7fd25f63d07c, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 1519511713
+  m_SortingLayer: -1
+  m_SortingOrder: 0
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_MaskInteraction: 0
+  m_ShapeTexture: {fileID: 2800000, guid: b281b91a70a624a0da1c43adc1c30c7b, type: 3}
+  m_Sprites:
+  - {fileID: 21300000, guid: 0ae2b74b1edd14bb18dd7b65ae916a54, type: 3}
+  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
+  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
+  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
+  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
+  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
+  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
+  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
+  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
+  m_LocalAABB:
+    m_Center: {x: 7.0106006, y: -1.0465546, z: 0}
+    m_Extent: {x: 1.4911647, y: 6.267507, z: 0}
+  m_SpriteSortPoint: 0
 --- !u!1 &389864931
 GameObject:
   m_ObjectHideFlags: 0
@@ -20700,90 +20979,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!1 &475411786
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 475411787}
-  - component: {fileID: 475411788}
-  m_Layer: 0
-  m_Name: MasterArray_Electrical_Arc_Highlights
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &475411787
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 475411786}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.11, y: 0.05, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1666664111}
-  m_Father: {fileID: 496885151}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &475411788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 475411786}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 235cc861e97a20d47ba2b4f4388498bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseTransform: {fileID: 0}
-  magnetCloneName: MagnetProjectile(Clone)
-  magnetLayerName: Magnet
-  dropInterval: 3
-  recallResetDistance: 1
-  moveThreshold: 0.15
-  stoppedMinTime: 0.08
-  arcAmplitude: 3.17
-  arcFrequency: 1.06
-  arcOctaves: 4
-  arcRoughness: 0.5035101
-  arcSpeed: 2.24
-  noiseSeed: 2
-  steppedArc: 1
-  steppedHoldRange: {x: 0.05, y: 0.15}
-  cornerChance: 0.35
-  cornerReseedInterval: 0.12
-  smoothTangentScale: 0.6
-  cornerTangentScale: 0
-  baseSparks: {fileID: 0}
-  magnetSparks: {fileID: 0}
-  isMasterArray: 1
-  masterArray: []
-  isChildToMasterArray: 0
-  masterArraySource: {fileID: 0}
-  childCopyFractionRange: {x: 0.4, y: 1}
-  sharpChild: 0
-  childLifetimeRange: {x: 0.05, y: 0.15}
-  childDelayRange: {x: 0, y: 0.05}
-  sparks: {fileID: 0}
-  sparksIntervalRange: {x: 0.05, y: 0.2}
-  sparksDurationRange: {x: 0.05, y: 0.15}
-  sparksDensity: 0.3
-  maxConcurrentSparks: 5
-  onlyShowWhenStopped: 1
-  magnetMoving: 0
-  magnetIsStopped: 0
-  splineLength: 0
-  desiredInteriorPoints: 0
 --- !u!4 &495379514 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1448269637526337376, guid: c194fb5bcb4d746479e68141f3dcc935, type: 3}
@@ -21049,6 +21244,226 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8809830902116780432, guid: 088bdfad9b040fc48a3b78164e9cca25, type: 3}
   m_PrefabInstance: {fileID: 1168908898}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &593722805
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 593722806}
+  - component: {fileID: 593722809}
+  - component: {fileID: 593722808}
+  - component: {fileID: 593722807}
+  m_Layer: 0
+  m_Name: Sub_Electirical_Arc_Highlight (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &593722806
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 593722805}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.02999878, y: 0.03999996, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 376390992}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &593722807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 593722805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 235cc861e97a20d47ba2b4f4388498bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseTransform: {fileID: 0}
+  magnetCloneName: MagnetProjectile(Clone)
+  magnetLayerName: Magnet
+  dropInterval: 10
+  recallResetDistance: 1
+  moveThreshold: 0.15
+  stoppedMinTime: 0.08
+  arcAmplitude: 1.5
+  arcFrequency: 1
+  arcOctaves: 4
+  arcRoughness: 0.5
+  arcSpeed: 2
+  noiseSeed: 0
+  steppedArc: 0
+  steppedHoldRange: {x: 0.05, y: 0.15}
+  cornerChance: 0.35
+  cornerReseedInterval: 0.12
+  smoothTangentScale: 0.6
+  cornerTangentScale: 0
+  baseSparks: {fileID: 0}
+  magnetSparks: {fileID: 0}
+  isMasterArray: 0
+  canGenerateTetheredArcs: 1
+  childMaxExtraPoints: 6
+  childArcAmplitudeRange: {x: 3, y: 5}
+  enableMovement: 0
+  childAnchorStepTimeRange: {x: 0.03, y: 0.08}
+  childExtraPerpJitter: 0.4
+  childExtraParallelJitter: 0.3
+  childExtraNoiseFrequency: 3
+  childExtraNoiseSpeed: 2
+  masterArray: []
+  isChildToMasterArray: 1
+  masterArraySource: {fileID: 376390993}
+  childCopyFractionRange: {x: 0.2, y: 0.5}
+  sharpChild: 1
+  childLifetimeRange: {x: 1, y: 2}
+  childDelayRange: {x: 0.2, y: 2}
+  sparks: {fileID: 0}
+  sparksIntervalRange: {x: 0.05, y: 0.2}
+  sparksDurationRange: {x: 0.05, y: 0.15}
+  sparksDensity: 0.3
+  maxConcurrentSparks: 5
+  alphaMaxDistance: 120
+  sparkCutoffFraction: 1
+  arcAlpha: 1
+  onlyShowWhenStopped: 1
+  magnetMoving: 0
+  magnetIsStopped: 0
+  splineLength: 0
+  desiredInteriorPoints: 0
+--- !u!114 &593722808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 593722805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90539df1cd5704abcb25fec9f3f5f84b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Spline:
+    m_IsOpenEnded: 1
+    m_ControlPoints:
+    - position: {x: 0.16318703, y: 1.1258694, z: 0}
+      leftTangent: {x: 0.48787117, y: 1.2601265, z: 0}
+      rightTangent: {x: -0.34852982, y: -0.90021896, z: 0}
+      mode: 1
+      height: 1
+      spriteIndex: 0
+      corner: 1
+      m_CornerMode: 1
+    - position: {x: -0.27830505, y: -0.37950647, z: 0}
+      leftTangent: {x: 0.10251236, y: 0.91999865, z: 0}
+      rightTangent: {x: -0.08632851, y: -0.7747531, z: 0}
+      mode: 1
+      height: 1
+      spriteIndex: 0
+      corner: 1
+      m_CornerMode: 1
+    - position: {x: -0.42884254, y: -1.555977, z: 0}
+      leftTangent: {x: 0.03071022, y: 0.78335416, z: 0}
+      rightTangent: {x: -0.036115646, y: -0.9212283, z: 0}
+      mode: 1
+      height: 1
+      spriteIndex: 0
+      corner: 1
+      m_CornerMode: 1
+  m_SpriteShape: {fileID: 11400000, guid: 4479303a25d3adc4788e3fa8e6cc5e74, type: 2}
+  m_FillPixelPerUnit: 256
+  m_StretchTiling: 1
+  m_SplineDetail: 16
+  m_AdaptiveUV: 1
+  m_StretchUV: 0
+  m_WorldSpaceUV: 0
+  m_CornerAngleThreshold: 30
+  m_ColliderDetail: 16
+  m_ColliderOffset: 0
+  m_UpdateCollider: 1
+  m_EnableTangents: 0
+  m_GeometryCached: 0
+  m_UTess2D: 1
+  m_UpdateShadow: 0
+  m_ShadowDetail: 16
+  m_ShadowOffset: 0.5
+  m_BoundsScale: 2
+  m_Creator: {fileID: 0}
+  m_Modifiers: []
+  m_ColliderSegment: []
+  m_ShadowSegment: []
+--- !u!1971053207 &593722809
+SpriteShapeRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 593722805}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 0
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: dd7487d6df9b07741ace7fd25f63d07c, type: 2}
+  - {fileID: 2100000, guid: dd7487d6df9b07741ace7fd25f63d07c, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_MaskInteraction: 0
+  m_ShapeTexture: {fileID: 2800000, guid: b281b91a70a624a0da1c43adc1c30c7b, type: 3}
+  m_Sprites:
+  - {fileID: 21300000, guid: 0ae2b74b1edd14bb18dd7b65ae916a54, type: 3}
+  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
+  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
+  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
+  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
+  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
+  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
+  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
+  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
+  m_LocalAABB:
+    m_Center: {x: -0.10065472, y: -0.18345773, z: 0}
+    m_Extent: {x: 0.588904, y: 1.6320746, z: 0}
+  m_SpriteSortPoint: 0
 --- !u!1 &629255839
 GameObject:
   m_ObjectHideFlags: 0
@@ -21156,7 +21571,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &659327438
 Transform:
   m_ObjectHideFlags: 0
@@ -21166,12 +21581,12 @@ Transform:
   m_GameObject: {fileID: 659327437}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.11, y: 0.05, z: 0}
+  m_LocalPosition: {x: -0.11000061, y: 0.05000019, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 207130794}
-  m_Father: {fileID: 496885151}
+  m_Father: {fileID: 208121241}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &659327439
 MonoBehaviour:
@@ -21207,6 +21622,15 @@ MonoBehaviour:
   baseSparks: {fileID: 0}
   magnetSparks: {fileID: 0}
   isMasterArray: 0
+  canGenerateTetheredArcs: 0
+  childMaxExtraPoints: 6
+  childArcAmplitudeRange: {x: 0.2, y: 0.6}
+  enableMovement: 0
+  childAnchorStepTimeRange: {x: 0.03, y: 0.08}
+  childExtraPerpJitter: 0.4
+  childExtraParallelJitter: 0.3
+  childExtraNoiseFrequency: 3
+  childExtraNoiseSpeed: 2
   masterArray: []
   isChildToMasterArray: 0
   masterArraySource: {fileID: 0}
@@ -21219,6 +21643,9 @@ MonoBehaviour:
   sparksDurationRange: {x: 0.05, y: 0.15}
   sparksDensity: 0.3
   maxConcurrentSparks: 5
+  alphaMaxDistance: 120
+  sparkCutoffFraction: 1
+  arcAlpha: 1
   onlyShowWhenStopped: 1
   magnetMoving: 0
   magnetIsStopped: 0
@@ -21255,7 +21682,7 @@ MonoBehaviour:
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-  m_SpriteShape: {fileID: 11400000, guid: f24cddf7c09a6442abbce710a6fd7397, type: 2}
+  m_SpriteShape: {fileID: 11400000, guid: 4479303a25d3adc4788e3fa8e6cc5e74, type: 2}
   m_FillPixelPerUnit: 256
   m_StretchTiling: 1
   m_SplineDetail: 16
@@ -21284,6 +21711,219 @@ SpriteShapeRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 659327437}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 0
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: dd7487d6df9b07741ace7fd25f63d07c, type: 2}
+  - {fileID: 2100000, guid: dd7487d6df9b07741ace7fd25f63d07c, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 1519511713
+  m_SortingLayer: -1
+  m_SortingOrder: 0
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_MaskInteraction: 0
+  m_ShapeTexture: {fileID: 2800000, guid: b281b91a70a624a0da1c43adc1c30c7b, type: 3}
+  m_Sprites:
+  - {fileID: 21300000, guid: 0ae2b74b1edd14bb18dd7b65ae916a54, type: 3}
+  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
+  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
+  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
+  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
+  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
+  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
+  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
+  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
+  m_LocalAABB:
+    m_Center: {x: 7.0106006, y: -1.0465546, z: 0}
+    m_Extent: {x: 1.4911647, y: 6.267507, z: 0}
+  m_SpriteSortPoint: 0
+--- !u!1 &681691432
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 681691433}
+  - component: {fileID: 681691436}
+  - component: {fileID: 681691435}
+  - component: {fileID: 681691434}
+  m_Layer: 0
+  m_Name: MasterArray__Arc_Highlights (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &681691433
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681691432}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.11000061, y: 0.05000019, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1147939600}
+  m_Father: {fileID: 208121241}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &681691434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681691432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 235cc861e97a20d47ba2b4f4388498bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseTransform: {fileID: 0}
+  magnetCloneName: MagnetProjectile(Clone)
+  magnetLayerName: Magnet
+  dropInterval: 3
+  recallResetDistance: 1
+  moveThreshold: 0.15
+  stoppedMinTime: 0.08
+  arcAmplitude: 2.88
+  arcFrequency: 0.55
+  arcOctaves: 6
+  arcRoughness: 0.723488
+  arcSpeed: 3.01
+  noiseSeed: 0
+  steppedArc: 1
+  steppedHoldRange: {x: 0.05, y: 0.15}
+  cornerChance: 0.35
+  cornerReseedInterval: 0.12
+  smoothTangentScale: 0.6
+  cornerTangentScale: 0
+  baseSparks: {fileID: 0}
+  magnetSparks: {fileID: 0}
+  isMasterArray: 1
+  canGenerateTetheredArcs: 1
+  childMaxExtraPoints: 6
+  childArcAmplitudeRange: {x: 0.2, y: 0.6}
+  enableMovement: 0
+  childAnchorStepTimeRange: {x: 0.03, y: 0.08}
+  childExtraPerpJitter: 0.4
+  childExtraParallelJitter: 0.3
+  childExtraNoiseFrequency: 3
+  childExtraNoiseSpeed: 2
+  masterArray: []
+  isChildToMasterArray: 0
+  masterArraySource: {fileID: 0}
+  childCopyFractionRange: {x: 0.4, y: 1}
+  sharpChild: 0
+  childLifetimeRange: {x: 0.05, y: 0.15}
+  childDelayRange: {x: 0, y: 0.05}
+  sparks: {fileID: 0}
+  sparksIntervalRange: {x: 0.05, y: 0.2}
+  sparksDurationRange: {x: 0.05, y: 0.15}
+  sparksDensity: 0.3
+  maxConcurrentSparks: 5
+  alphaMaxDistance: 120
+  sparkCutoffFraction: 1
+  arcAlpha: 1
+  onlyShowWhenStopped: 1
+  magnetMoving: 0
+  magnetIsStopped: 0
+  splineLength: 0
+  desiredInteriorPoints: 0
+--- !u!114 &681691435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681691432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90539df1cd5704abcb25fec9f3f5f84b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Spline:
+    m_IsOpenEnded: 1
+    m_ControlPoints:
+    - position: {x: 5.926, y: -6.9620004, z: 0}
+      leftTangent: {x: 0, y: 0, z: 0}
+      rightTangent: {x: -0.8000002, y: 1.5999999, z: 0}
+      mode: 1
+      height: 1
+      spriteIndex: 0
+      corner: 1
+      m_CornerMode: 1
+    - position: {x: 8.188042, y: 4.903905, z: 0}
+      leftTangent: {x: -0.5656891, y: -1.6970558, z: 0}
+      rightTangent: {x: 0.37712097, y: 1.1313705, z: 0}
+      mode: 1
+      height: 1
+      spriteIndex: 0
+      corner: 1
+      m_CornerMode: 1
+  m_SpriteShape: {fileID: 11400000, guid: 4479303a25d3adc4788e3fa8e6cc5e74, type: 2}
+  m_FillPixelPerUnit: 256
+  m_StretchTiling: 1
+  m_SplineDetail: 16
+  m_AdaptiveUV: 1
+  m_StretchUV: 0
+  m_WorldSpaceUV: 0
+  m_CornerAngleThreshold: 30
+  m_ColliderDetail: 16
+  m_ColliderOffset: 0
+  m_UpdateCollider: 1
+  m_EnableTangents: 0
+  m_GeometryCached: 0
+  m_UTess2D: 1
+  m_UpdateShadow: 0
+  m_ShadowDetail: 16
+  m_ShadowOffset: 0.5
+  m_BoundsScale: 2
+  m_Creator: {fileID: 0}
+  m_Modifiers: []
+  m_ColliderSegment: []
+  m_ShadowSegment: []
+--- !u!1971053207 &681691436
+SpriteShapeRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681691432}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -26452,214 +27092,6 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
---- !u!1 &726996011
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 726996012}
-  - component: {fileID: 726996015}
-  - component: {fileID: 726996014}
-  - component: {fileID: 726996013}
-  m_Layer: 0
-  m_Name: Sub_Electirical_Arc_Highlight (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &726996012
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 726996011}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.029998168, y: 0.04000015, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1742915014}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &726996013
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 726996011}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 235cc861e97a20d47ba2b4f4388498bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseTransform: {fileID: 0}
-  magnetCloneName: MagnetProjectile(Clone)
-  magnetLayerName: Magnet
-  dropInterval: 10
-  recallResetDistance: 1
-  moveThreshold: 0.15
-  stoppedMinTime: 0.08
-  arcAmplitude: 1.5
-  arcFrequency: 1
-  arcOctaves: 4
-  arcRoughness: 0.5
-  arcSpeed: 2
-  noiseSeed: 0
-  steppedArc: 0
-  steppedHoldRange: {x: 0.05, y: 0.15}
-  cornerChance: 0.35
-  cornerReseedInterval: 0.12
-  smoothTangentScale: 0.6
-  cornerTangentScale: 0
-  baseSparks: {fileID: 0}
-  magnetSparks: {fileID: 0}
-  isMasterArray: 0
-  masterArray: []
-  isChildToMasterArray: 1
-  masterArraySource: {fileID: 1742915015}
-  childCopyFractionRange: {x: 0.2, y: 0.7}
-  sharpChild: 1
-  childLifetimeRange: {x: 0.1, y: 0.2}
-  childDelayRange: {x: 0.2, y: 2}
-  sparks: {fileID: 0}
-  sparksIntervalRange: {x: 0.05, y: 0.2}
-  sparksDurationRange: {x: 0.05, y: 0.15}
-  sparksDensity: 0.3
-  maxConcurrentSparks: 5
-  onlyShowWhenStopped: 0
-  magnetMoving: 0
-  magnetIsStopped: 0
-  splineLength: 0
-  desiredInteriorPoints: 0
---- !u!114 &726996014
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 726996011}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90539df1cd5704abcb25fec9f3f5f84b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Spline:
-    m_IsOpenEnded: 1
-    m_ControlPoints:
-    - position: {x: 0.16318703, y: 1.1258694, z: 0}
-      leftTangent: {x: 0.48787117, y: 1.2601265, z: 0}
-      rightTangent: {x: -0.34852982, y: -0.90021896, z: 0}
-      mode: 1
-      height: 1
-      spriteIndex: 0
-      corner: 1
-      m_CornerMode: 1
-    - position: {x: -0.27830505, y: -0.37950647, z: 0}
-      leftTangent: {x: 0.10251236, y: 0.91999865, z: 0}
-      rightTangent: {x: -0.08632851, y: -0.7747531, z: 0}
-      mode: 1
-      height: 1
-      spriteIndex: 0
-      corner: 1
-      m_CornerMode: 1
-    - position: {x: -0.42884254, y: -1.555977, z: 0}
-      leftTangent: {x: 0.03071022, y: 0.78335416, z: 0}
-      rightTangent: {x: -0.036115646, y: -0.9212283, z: 0}
-      mode: 1
-      height: 1
-      spriteIndex: 0
-      corner: 1
-      m_CornerMode: 1
-  m_SpriteShape: {fileID: 11400000, guid: f24cddf7c09a6442abbce710a6fd7397, type: 2}
-  m_FillPixelPerUnit: 256
-  m_StretchTiling: 1
-  m_SplineDetail: 16
-  m_AdaptiveUV: 1
-  m_StretchUV: 0
-  m_WorldSpaceUV: 0
-  m_CornerAngleThreshold: 30
-  m_ColliderDetail: 16
-  m_ColliderOffset: 0
-  m_UpdateCollider: 1
-  m_EnableTangents: 0
-  m_GeometryCached: 0
-  m_UTess2D: 1
-  m_UpdateShadow: 0
-  m_ShadowDetail: 16
-  m_ShadowOffset: 0.5
-  m_BoundsScale: 2
-  m_Creator: {fileID: 0}
-  m_Modifiers: []
-  m_ColliderSegment: []
-  m_ShadowSegment: []
---- !u!1971053207 &726996015
-SpriteShapeRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 726996011}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 0
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: dd7487d6df9b07741ace7fd25f63d07c, type: 2}
-  - {fileID: 2100000, guid: dd7487d6df9b07741ace7fd25f63d07c, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_MaskInteraction: 0
-  m_ShapeTexture: {fileID: 2800000, guid: b281b91a70a624a0da1c43adc1c30c7b, type: 3}
-  m_Sprites:
-  - {fileID: 21300000, guid: 0ae2b74b1edd14bb18dd7b65ae916a54, type: 3}
-  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
-  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
-  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
-  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
-  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
-  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
-  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
-  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
-  m_LocalAABB:
-    m_Center: {x: -0.10065472, y: -0.18345773, z: 0}
-    m_Extent: {x: 0.588904, y: 1.6320746, z: 0}
-  m_SpriteSortPoint: 0
 --- !u!1001 &738985587
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27045,6 +27477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc8c28319ca64ca418d99b77a20a3c0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  title: {fileID: 0}
   civilians: []
   logic: {fileID: 0}
   player: {fileID: 0}
@@ -32172,6 +32605,226 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6094276070987084092, guid: 80ada91b67b5d1c43b715a77187a2406, type: 3}
   m_PrefabInstance: {fileID: 1258516770420041113}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1147939599
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1147939600}
+  - component: {fileID: 1147939603}
+  - component: {fileID: 1147939602}
+  - component: {fileID: 1147939601}
+  m_Layer: 0
+  m_Name: Sub_Electirical_Arc_Highlight (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1147939600
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147939599}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.02999878, y: 0.03999996, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 681691433}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1147939601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147939599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 235cc861e97a20d47ba2b4f4388498bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseTransform: {fileID: 0}
+  magnetCloneName: MagnetProjectile(Clone)
+  magnetLayerName: Magnet
+  dropInterval: 10
+  recallResetDistance: 1
+  moveThreshold: 0.15
+  stoppedMinTime: 0.08
+  arcAmplitude: 1.5
+  arcFrequency: 1
+  arcOctaves: 4
+  arcRoughness: 0.5
+  arcSpeed: 2
+  noiseSeed: 0
+  steppedArc: 0
+  steppedHoldRange: {x: 0.05, y: 0.15}
+  cornerChance: 0.35
+  cornerReseedInterval: 0.12
+  smoothTangentScale: 0.6
+  cornerTangentScale: 0
+  baseSparks: {fileID: 0}
+  magnetSparks: {fileID: 0}
+  isMasterArray: 0
+  canGenerateTetheredArcs: 1
+  childMaxExtraPoints: 6
+  childArcAmplitudeRange: {x: 3, y: 5}
+  enableMovement: 0
+  childAnchorStepTimeRange: {x: 0.03, y: 0.08}
+  childExtraPerpJitter: 0.4
+  childExtraParallelJitter: 0.3
+  childExtraNoiseFrequency: 3
+  childExtraNoiseSpeed: 2
+  masterArray: []
+  isChildToMasterArray: 1
+  masterArraySource: {fileID: 681691434}
+  childCopyFractionRange: {x: 0.2, y: 0.5}
+  sharpChild: 1
+  childLifetimeRange: {x: 1, y: 2}
+  childDelayRange: {x: 0.2, y: 2}
+  sparks: {fileID: 0}
+  sparksIntervalRange: {x: 0.05, y: 0.2}
+  sparksDurationRange: {x: 0.05, y: 0.15}
+  sparksDensity: 0.3
+  maxConcurrentSparks: 5
+  alphaMaxDistance: 120
+  sparkCutoffFraction: 1
+  arcAlpha: 1
+  onlyShowWhenStopped: 1
+  magnetMoving: 0
+  magnetIsStopped: 0
+  splineLength: 0
+  desiredInteriorPoints: 0
+--- !u!114 &1147939602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147939599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90539df1cd5704abcb25fec9f3f5f84b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Spline:
+    m_IsOpenEnded: 1
+    m_ControlPoints:
+    - position: {x: 0.16318703, y: 1.1258694, z: 0}
+      leftTangent: {x: 0.48787117, y: 1.2601265, z: 0}
+      rightTangent: {x: -0.34852982, y: -0.90021896, z: 0}
+      mode: 1
+      height: 1
+      spriteIndex: 0
+      corner: 1
+      m_CornerMode: 1
+    - position: {x: -0.27830505, y: -0.37950647, z: 0}
+      leftTangent: {x: 0.10251236, y: 0.91999865, z: 0}
+      rightTangent: {x: -0.08632851, y: -0.7747531, z: 0}
+      mode: 1
+      height: 1
+      spriteIndex: 0
+      corner: 1
+      m_CornerMode: 1
+    - position: {x: -0.42884254, y: -1.555977, z: 0}
+      leftTangent: {x: 0.03071022, y: 0.78335416, z: 0}
+      rightTangent: {x: -0.036115646, y: -0.9212283, z: 0}
+      mode: 1
+      height: 1
+      spriteIndex: 0
+      corner: 1
+      m_CornerMode: 1
+  m_SpriteShape: {fileID: 11400000, guid: 4479303a25d3adc4788e3fa8e6cc5e74, type: 2}
+  m_FillPixelPerUnit: 256
+  m_StretchTiling: 1
+  m_SplineDetail: 16
+  m_AdaptiveUV: 1
+  m_StretchUV: 0
+  m_WorldSpaceUV: 0
+  m_CornerAngleThreshold: 30
+  m_ColliderDetail: 16
+  m_ColliderOffset: 0
+  m_UpdateCollider: 1
+  m_EnableTangents: 0
+  m_GeometryCached: 0
+  m_UTess2D: 1
+  m_UpdateShadow: 0
+  m_ShadowDetail: 16
+  m_ShadowOffset: 0.5
+  m_BoundsScale: 2
+  m_Creator: {fileID: 0}
+  m_Modifiers: []
+  m_ColliderSegment: []
+  m_ShadowSegment: []
+--- !u!1971053207 &1147939603
+SpriteShapeRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147939599}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 0
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: dd7487d6df9b07741ace7fd25f63d07c, type: 2}
+  - {fileID: 2100000, guid: dd7487d6df9b07741ace7fd25f63d07c, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_MaskInteraction: 0
+  m_ShapeTexture: {fileID: 2800000, guid: b281b91a70a624a0da1c43adc1c30c7b, type: 3}
+  m_Sprites:
+  - {fileID: 21300000, guid: 0ae2b74b1edd14bb18dd7b65ae916a54, type: 3}
+  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
+  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
+  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
+  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
+  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
+  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
+  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
+  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
+  m_LocalAABB:
+    m_Center: {x: -0.10065472, y: -0.18345773, z: 0}
+    m_Extent: {x: 0.588904, y: 1.6320746, z: 0}
+  m_SpriteSortPoint: 0
 --- !u!1 &1160214967
 GameObject:
   m_ObjectHideFlags: 0
@@ -32707,7 +33360,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1300200884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32739,7 +33392,7 @@ MonoBehaviour:
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-  m_SpriteShape: {fileID: 11400000, guid: f24cddf7c09a6442abbce710a6fd7397, type: 2}
+  m_SpriteShape: {fileID: 11400000, guid: 4479303a25d3adc4788e3fa8e6cc5e74, type: 2}
   m_FillPixelPerUnit: 256
   m_StretchTiling: 1
   m_SplineDetail: 16
@@ -32832,14 +33485,14 @@ Transform:
   m_GameObject: {fileID: 1300200883}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.11, y: 0.05, z: 0}
+  m_LocalPosition: {x: -0.11000061, y: 0.05000019, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1756273358}
   - {fileID: 31361480}
   - {fileID: 404924570}
-  m_Father: {fileID: 496885151}
+  m_Father: {fileID: 208121241}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1300200887
 MonoBehaviour:
@@ -32864,17 +33517,26 @@ MonoBehaviour:
   arcFrequency: 1
   arcOctaves: 4
   arcRoughness: 0.5
-  arcSpeed: 2
+  arcSpeed: 7.47
   noiseSeed: 0
   steppedArc: 1
   steppedHoldRange: {x: 0.05, y: 0.15}
-  cornerChance: 0.35
+  cornerChance: 0.712
   cornerReseedInterval: 0.12
   smoothTangentScale: 0.6
   cornerTangentScale: 0
   baseSparks: {fileID: 31361480}
   magnetSparks: {fileID: 404924570}
   isMasterArray: 0
+  canGenerateTetheredArcs: 0
+  childMaxExtraPoints: 6
+  childArcAmplitudeRange: {x: 0.2, y: 0.6}
+  enableMovement: 0
+  childAnchorStepTimeRange: {x: 0.03, y: 0.08}
+  childExtraPerpJitter: 0.4
+  childExtraParallelJitter: 0.3
+  childExtraNoiseFrequency: 3
+  childExtraNoiseSpeed: 2
   masterArray: []
   isChildToMasterArray: 0
   masterArraySource: {fileID: 0}
@@ -32887,6 +33549,9 @@ MonoBehaviour:
   sparksDurationRange: {x: 0.05, y: 0.15}
   sparksDensity: 0.3
   maxConcurrentSparks: 5
+  alphaMaxDistance: 120
+  sparkCutoffFraction: 1
+  arcAlpha: 1
   onlyShowWhenStopped: 0
   magnetMoving: 0
   magnetIsStopped: 0
@@ -33210,214 +33875,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &1393834698
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1393834699}
-  - component: {fileID: 1393834702}
-  - component: {fileID: 1393834701}
-  - component: {fileID: 1393834700}
-  m_Layer: 0
-  m_Name: Sub_Electirical_Arc_Highlight (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1393834699
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1393834698}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.029998168, y: 0.04000015, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1583351026}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1393834700
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1393834698}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 235cc861e97a20d47ba2b4f4388498bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseTransform: {fileID: 0}
-  magnetCloneName: MagnetProjectile(Clone)
-  magnetLayerName: Magnet
-  dropInterval: 10
-  recallResetDistance: 1
-  moveThreshold: 0.15
-  stoppedMinTime: 0.08
-  arcAmplitude: 1.5
-  arcFrequency: 1
-  arcOctaves: 4
-  arcRoughness: 0.5
-  arcSpeed: 2
-  noiseSeed: 0
-  steppedArc: 0
-  steppedHoldRange: {x: 0.05, y: 0.15}
-  cornerChance: 0.35
-  cornerReseedInterval: 0.12
-  smoothTangentScale: 0.6
-  cornerTangentScale: 0
-  baseSparks: {fileID: 0}
-  magnetSparks: {fileID: 0}
-  isMasterArray: 0
-  masterArray: []
-  isChildToMasterArray: 1
-  masterArraySource: {fileID: 1583351027}
-  childCopyFractionRange: {x: 0.2, y: 0.7}
-  sharpChild: 1
-  childLifetimeRange: {x: 0.1, y: 0.2}
-  childDelayRange: {x: 0.2, y: 2}
-  sparks: {fileID: 0}
-  sparksIntervalRange: {x: 0.05, y: 0.2}
-  sparksDurationRange: {x: 0.05, y: 0.15}
-  sparksDensity: 0.3
-  maxConcurrentSparks: 5
-  onlyShowWhenStopped: 0
-  magnetMoving: 0
-  magnetIsStopped: 0
-  splineLength: 0
-  desiredInteriorPoints: 0
---- !u!114 &1393834701
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1393834698}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90539df1cd5704abcb25fec9f3f5f84b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Spline:
-    m_IsOpenEnded: 1
-    m_ControlPoints:
-    - position: {x: 0.16318703, y: 1.1258694, z: 0}
-      leftTangent: {x: 0.48787117, y: 1.2601265, z: 0}
-      rightTangent: {x: -0.34852982, y: -0.90021896, z: 0}
-      mode: 1
-      height: 1
-      spriteIndex: 0
-      corner: 1
-      m_CornerMode: 1
-    - position: {x: -0.27830505, y: -0.37950647, z: 0}
-      leftTangent: {x: 0.10251236, y: 0.91999865, z: 0}
-      rightTangent: {x: -0.08632851, y: -0.7747531, z: 0}
-      mode: 1
-      height: 1
-      spriteIndex: 0
-      corner: 1
-      m_CornerMode: 1
-    - position: {x: -0.42884254, y: -1.555977, z: 0}
-      leftTangent: {x: 0.03071022, y: 0.78335416, z: 0}
-      rightTangent: {x: -0.036115646, y: -0.9212283, z: 0}
-      mode: 1
-      height: 1
-      spriteIndex: 0
-      corner: 1
-      m_CornerMode: 1
-  m_SpriteShape: {fileID: 11400000, guid: f24cddf7c09a6442abbce710a6fd7397, type: 2}
-  m_FillPixelPerUnit: 256
-  m_StretchTiling: 1
-  m_SplineDetail: 16
-  m_AdaptiveUV: 1
-  m_StretchUV: 0
-  m_WorldSpaceUV: 0
-  m_CornerAngleThreshold: 30
-  m_ColliderDetail: 16
-  m_ColliderOffset: 0
-  m_UpdateCollider: 1
-  m_EnableTangents: 0
-  m_GeometryCached: 0
-  m_UTess2D: 1
-  m_UpdateShadow: 0
-  m_ShadowDetail: 16
-  m_ShadowOffset: 0.5
-  m_BoundsScale: 2
-  m_Creator: {fileID: 0}
-  m_Modifiers: []
-  m_ColliderSegment: []
-  m_ShadowSegment: []
---- !u!1971053207 &1393834702
-SpriteShapeRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1393834698}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 0
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: dd7487d6df9b07741ace7fd25f63d07c, type: 2}
-  - {fileID: 2100000, guid: dd7487d6df9b07741ace7fd25f63d07c, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_MaskInteraction: 0
-  m_ShapeTexture: {fileID: 2800000, guid: b281b91a70a624a0da1c43adc1c30c7b, type: 3}
-  m_Sprites:
-  - {fileID: 21300000, guid: 0ae2b74b1edd14bb18dd7b65ae916a54, type: 3}
-  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
-  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
-  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
-  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
-  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
-  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
-  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
-  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
-  m_LocalAABB:
-    m_Center: {x: -0.10065472, y: -0.18345773, z: 0}
-    m_Extent: {x: 0.588904, y: 1.6320746, z: 0}
-  m_SpriteSortPoint: 0
 --- !u!1 &1394930736
 GameObject:
   m_ObjectHideFlags: 0
@@ -58032,90 +58489,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &1583351025
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1583351026}
-  - component: {fileID: 1583351027}
-  m_Layer: 0
-  m_Name: MasterArray_Electrical_Arc_Highlights (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1583351026
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1583351025}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.11, y: 0.05, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1393834699}
-  m_Father: {fileID: 496885151}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1583351027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1583351025}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 235cc861e97a20d47ba2b4f4388498bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseTransform: {fileID: 0}
-  magnetCloneName: MagnetProjectile(Clone)
-  magnetLayerName: Magnet
-  dropInterval: 3
-  recallResetDistance: 1
-  moveThreshold: 0.15
-  stoppedMinTime: 0.08
-  arcAmplitude: 3.17
-  arcFrequency: 1.06
-  arcOctaves: 4
-  arcRoughness: 0.5035101
-  arcSpeed: 2.24
-  noiseSeed: 2
-  steppedArc: 1
-  steppedHoldRange: {x: 0.05, y: 0.15}
-  cornerChance: 0.35
-  cornerReseedInterval: 0.12
-  smoothTangentScale: 0.6
-  cornerTangentScale: 0
-  baseSparks: {fileID: 0}
-  magnetSparks: {fileID: 0}
-  isMasterArray: 1
-  masterArray: []
-  isChildToMasterArray: 0
-  masterArraySource: {fileID: 0}
-  childCopyFractionRange: {x: 0.4, y: 1}
-  sharpChild: 0
-  childLifetimeRange: {x: 0.05, y: 0.15}
-  childDelayRange: {x: 0, y: 0.05}
-  sparks: {fileID: 0}
-  sparksIntervalRange: {x: 0.05, y: 0.2}
-  sparksDurationRange: {x: 0.05, y: 0.15}
-  sparksDensity: 0.3
-  maxConcurrentSparks: 5
-  onlyShowWhenStopped: 1
-  magnetMoving: 0
-  magnetIsStopped: 0
-  splineLength: 0
-  desiredInteriorPoints: 0
 --- !u!1 &1631670071 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4281581206875804581, guid: 80ada91b67b5d1c43b715a77187a2406, type: 3}
@@ -58149,11 +58522,11 @@ Transform:
   m_GameObject: {fileID: 1666664110}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.03, y: 0.04, z: 0}
+  m_LocalPosition: {x: 0.02999878, y: 0.03999996, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 475411787}
+  m_Father: {fileID: 2016547755}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1666664112
 MonoBehaviour:
@@ -58189,19 +58562,31 @@ MonoBehaviour:
   baseSparks: {fileID: 0}
   magnetSparks: {fileID: 0}
   isMasterArray: 0
+  canGenerateTetheredArcs: 1
+  childMaxExtraPoints: 6
+  childArcAmplitudeRange: {x: 3, y: 5}
+  enableMovement: 1
+  childAnchorStepTimeRange: {x: 0.2, y: 0.5}
+  childExtraPerpJitter: 0.4
+  childExtraParallelJitter: 0.3
+  childExtraNoiseFrequency: 3
+  childExtraNoiseSpeed: 2
   masterArray: []
   isChildToMasterArray: 1
-  masterArraySource: {fileID: 475411788}
-  childCopyFractionRange: {x: 0.2, y: 0.7}
+  masterArraySource: {fileID: 2016547756}
+  childCopyFractionRange: {x: 0.2, y: 0.5}
   sharpChild: 1
-  childLifetimeRange: {x: 0.1, y: 0.2}
+  childLifetimeRange: {x: 1, y: 2}
   childDelayRange: {x: 0.2, y: 2}
   sparks: {fileID: 0}
   sparksIntervalRange: {x: 0.05, y: 0.2}
   sparksDurationRange: {x: 0.05, y: 0.15}
   sparksDensity: 0.3
   maxConcurrentSparks: 5
-  onlyShowWhenStopped: 0
+  alphaMaxDistance: 120
+  sparkCutoffFraction: 1
+  arcAlpha: 1
+  onlyShowWhenStopped: 1
   magnetMoving: 0
   magnetIsStopped: 0
   splineLength: 0
@@ -58245,7 +58630,7 @@ MonoBehaviour:
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-  m_SpriteShape: {fileID: 11400000, guid: f24cddf7c09a6442abbce710a6fd7397, type: 2}
+  m_SpriteShape: {fileID: 11400000, guid: 4479303a25d3adc4788e3fa8e6cc5e74, type: 2}
   m_FillPixelPerUnit: 256
   m_StretchTiling: 1
   m_SplineDetail: 16
@@ -58614,90 +58999,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1746258738}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1742915013
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1742915014}
-  - component: {fileID: 1742915015}
-  m_Layer: 0
-  m_Name: MasterArray_Electrical_Arc_Highlights (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1742915014
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1742915013}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.11, y: 0.05, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 726996012}
-  m_Father: {fileID: 496885151}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1742915015
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1742915013}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 235cc861e97a20d47ba2b4f4388498bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseTransform: {fileID: 0}
-  magnetCloneName: MagnetProjectile(Clone)
-  magnetLayerName: Magnet
-  dropInterval: 3
-  recallResetDistance: 1
-  moveThreshold: 0.15
-  stoppedMinTime: 0.08
-  arcAmplitude: 3.17
-  arcFrequency: 1.06
-  arcOctaves: 4
-  arcRoughness: 0.5035101
-  arcSpeed: 2.24
-  noiseSeed: 2
-  steppedArc: 1
-  steppedHoldRange: {x: 0.05, y: 0.15}
-  cornerChance: 0.35
-  cornerReseedInterval: 0.12
-  smoothTangentScale: 0.6
-  cornerTangentScale: 0
-  baseSparks: {fileID: 0}
-  magnetSparks: {fileID: 0}
-  isMasterArray: 1
-  masterArray: []
-  isChildToMasterArray: 0
-  masterArraySource: {fileID: 0}
-  childCopyFractionRange: {x: 0.4, y: 1}
-  sharpChild: 0
-  childLifetimeRange: {x: 0.05, y: 0.15}
-  childDelayRange: {x: 0, y: 0.05}
-  sparks: {fileID: 0}
-  sparksIntervalRange: {x: 0.05, y: 0.2}
-  sparksDurationRange: {x: 0.05, y: 0.15}
-  sparksDensity: 0.3
-  maxConcurrentSparks: 5
-  onlyShowWhenStopped: 1
-  magnetMoving: 0
-  magnetIsStopped: 0
-  splineLength: 0
-  desiredInteriorPoints: 0
 --- !u!1 &1746258737
 GameObject:
   m_ObjectHideFlags: 0
@@ -58753,7 +59054,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1752557312
 Transform:
   m_ObjectHideFlags: 0
@@ -58763,12 +59064,12 @@ Transform:
   m_GameObject: {fileID: 1752557311}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.11, y: 0.05, z: 0}
+  m_LocalPosition: {x: -0.11000061, y: 0.05000019, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 909335864}
-  m_Father: {fileID: 496885151}
+  m_Father: {fileID: 208121241}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1752557313
 MonoBehaviour:
@@ -58804,6 +59105,15 @@ MonoBehaviour:
   baseSparks: {fileID: 0}
   magnetSparks: {fileID: 0}
   isMasterArray: 0
+  canGenerateTetheredArcs: 0
+  childMaxExtraPoints: 6
+  childArcAmplitudeRange: {x: 0.2, y: 0.6}
+  enableMovement: 0
+  childAnchorStepTimeRange: {x: 0.03, y: 0.08}
+  childExtraPerpJitter: 0.4
+  childExtraParallelJitter: 0.3
+  childExtraNoiseFrequency: 3
+  childExtraNoiseSpeed: 2
   masterArray: []
   isChildToMasterArray: 0
   masterArraySource: {fileID: 0}
@@ -58816,6 +59126,9 @@ MonoBehaviour:
   sparksDurationRange: {x: 0.05, y: 0.15}
   sparksDensity: 0.3
   maxConcurrentSparks: 5
+  alphaMaxDistance: 120
+  sparkCutoffFraction: 1
+  arcAlpha: 1
   onlyShowWhenStopped: 1
   magnetMoving: 0
   magnetIsStopped: 0
@@ -58852,7 +59165,7 @@ MonoBehaviour:
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-  m_SpriteShape: {fileID: 11400000, guid: f24cddf7c09a6442abbce710a6fd7397, type: 2}
+  m_SpriteShape: {fileID: 11400000, guid: 4479303a25d3adc4788e3fa8e6cc5e74, type: 2}
   m_FillPixelPerUnit: 256
   m_StretchTiling: 1
   m_SplineDetail: 16
@@ -64445,6 +64758,219 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &2016547754
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2016547755}
+  - component: {fileID: 2016547758}
+  - component: {fileID: 2016547757}
+  - component: {fileID: 2016547756}
+  m_Layer: 0
+  m_Name: MasterArray__Arc_Highlights (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2016547755
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016547754}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.11000061, y: 0.05000019, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1666664111}
+  m_Father: {fileID: 208121241}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2016547756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016547754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 235cc861e97a20d47ba2b4f4388498bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseTransform: {fileID: 0}
+  magnetCloneName: MagnetProjectile(Clone)
+  magnetLayerName: Magnet
+  dropInterval: 3
+  recallResetDistance: 1
+  moveThreshold: 0.15
+  stoppedMinTime: 0.08
+  arcAmplitude: 2.46
+  arcFrequency: 1.29
+  arcOctaves: 6
+  arcRoughness: 0.7267281
+  arcSpeed: 2.33
+  noiseSeed: 0
+  steppedArc: 1
+  steppedHoldRange: {x: 0.05, y: 0.15}
+  cornerChance: 0.35
+  cornerReseedInterval: 0.12
+  smoothTangentScale: 0.6
+  cornerTangentScale: 0
+  baseSparks: {fileID: 0}
+  magnetSparks: {fileID: 0}
+  isMasterArray: 1
+  canGenerateTetheredArcs: 1
+  childMaxExtraPoints: 6
+  childArcAmplitudeRange: {x: 0.2, y: 0.6}
+  enableMovement: 0
+  childAnchorStepTimeRange: {x: 0.03, y: 0.08}
+  childExtraPerpJitter: 0.4
+  childExtraParallelJitter: 0.3
+  childExtraNoiseFrequency: 3
+  childExtraNoiseSpeed: 2
+  masterArray: []
+  isChildToMasterArray: 0
+  masterArraySource: {fileID: 0}
+  childCopyFractionRange: {x: 0.4, y: 1}
+  sharpChild: 0
+  childLifetimeRange: {x: 0.05, y: 0.15}
+  childDelayRange: {x: 0, y: 0.05}
+  sparks: {fileID: 0}
+  sparksIntervalRange: {x: 0.05, y: 0.2}
+  sparksDurationRange: {x: 0.05, y: 0.15}
+  sparksDensity: 0.3
+  maxConcurrentSparks: 5
+  alphaMaxDistance: 120
+  sparkCutoffFraction: 1
+  arcAlpha: 1
+  onlyShowWhenStopped: 1
+  magnetMoving: 0
+  magnetIsStopped: 0
+  splineLength: 0
+  desiredInteriorPoints: 0
+--- !u!114 &2016547757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016547754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90539df1cd5704abcb25fec9f3f5f84b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Spline:
+    m_IsOpenEnded: 1
+    m_ControlPoints:
+    - position: {x: 5.926, y: -6.9620004, z: 0}
+      leftTangent: {x: 0, y: 0, z: 0}
+      rightTangent: {x: -0.8000002, y: 1.5999999, z: 0}
+      mode: 1
+      height: 1
+      spriteIndex: 0
+      corner: 1
+      m_CornerMode: 1
+    - position: {x: 8.188042, y: 4.903905, z: 0}
+      leftTangent: {x: -0.5656891, y: -1.6970558, z: 0}
+      rightTangent: {x: 0.37712097, y: 1.1313705, z: 0}
+      mode: 1
+      height: 1
+      spriteIndex: 0
+      corner: 1
+      m_CornerMode: 1
+  m_SpriteShape: {fileID: 11400000, guid: 4479303a25d3adc4788e3fa8e6cc5e74, type: 2}
+  m_FillPixelPerUnit: 256
+  m_StretchTiling: 1
+  m_SplineDetail: 16
+  m_AdaptiveUV: 1
+  m_StretchUV: 0
+  m_WorldSpaceUV: 0
+  m_CornerAngleThreshold: 30
+  m_ColliderDetail: 16
+  m_ColliderOffset: 0
+  m_UpdateCollider: 1
+  m_EnableTangents: 0
+  m_GeometryCached: 0
+  m_UTess2D: 1
+  m_UpdateShadow: 0
+  m_ShadowDetail: 16
+  m_ShadowOffset: 0.5
+  m_BoundsScale: 2
+  m_Creator: {fileID: 0}
+  m_Modifiers: []
+  m_ColliderSegment: []
+  m_ShadowSegment: []
+--- !u!1971053207 &2016547758
+SpriteShapeRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016547754}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 0
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: dd7487d6df9b07741ace7fd25f63d07c, type: 2}
+  - {fileID: 2100000, guid: dd7487d6df9b07741ace7fd25f63d07c, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 1519511713
+  m_SortingLayer: -1
+  m_SortingOrder: 0
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_MaskInteraction: 0
+  m_ShapeTexture: {fileID: 2800000, guid: b281b91a70a624a0da1c43adc1c30c7b, type: 3}
+  m_Sprites:
+  - {fileID: 21300000, guid: 0ae2b74b1edd14bb18dd7b65ae916a54, type: 3}
+  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
+  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
+  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
+  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
+  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
+  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
+  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
+  - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
+  m_LocalAABB:
+    m_Center: {x: 7.0106006, y: -1.0465546, z: 0}
+    m_Extent: {x: 1.4911647, y: 6.267507, z: 0}
+  m_SpriteSortPoint: 0
 --- !u!1 &2023428301
 GameObject:
   m_ObjectHideFlags: 0
@@ -65062,25 +65588,7 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8625475655797674624, guid: 3cdd95d7e7ef1014384613e394591fd9, type: 3}
       insertIndex: 4
-      addedObject: {fileID: 1300200886}
-    - targetCorrespondingSourceObject: {fileID: 8625475655797674624, guid: 3cdd95d7e7ef1014384613e394591fd9, type: 3}
-      insertIndex: 5
-      addedObject: {fileID: 1752557312}
-    - targetCorrespondingSourceObject: {fileID: 8625475655797674624, guid: 3cdd95d7e7ef1014384613e394591fd9, type: 3}
-      insertIndex: 6
-      addedObject: {fileID: 57835653}
-    - targetCorrespondingSourceObject: {fileID: 8625475655797674624, guid: 3cdd95d7e7ef1014384613e394591fd9, type: 3}
-      insertIndex: 7
-      addedObject: {fileID: 659327438}
-    - targetCorrespondingSourceObject: {fileID: 8625475655797674624, guid: 3cdd95d7e7ef1014384613e394591fd9, type: 3}
-      insertIndex: 8
-      addedObject: {fileID: 475411787}
-    - targetCorrespondingSourceObject: {fileID: 8625475655797674624, guid: 3cdd95d7e7ef1014384613e394591fd9, type: 3}
-      insertIndex: 9
-      addedObject: {fileID: 1583351026}
-    - targetCorrespondingSourceObject: {fileID: 8625475655797674624, guid: 3cdd95d7e7ef1014384613e394591fd9, type: 3}
-      insertIndex: 10
-      addedObject: {fileID: 1742915014}
+      addedObject: {fileID: 208121241}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4543268757205519199, guid: 3cdd95d7e7ef1014384613e394591fd9, type: 3}
       insertIndex: -1
