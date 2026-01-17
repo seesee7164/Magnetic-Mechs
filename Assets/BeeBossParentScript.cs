@@ -9,6 +9,7 @@ public class BeeBossParentScript : MonoBehaviour
     public CinemachineVirtualCamera myVirtualCamera;
     public CeilingLaserScript ceilingLaserScript;
     public RockSpawnerScript rockSpawnerScript;
+    public DroneRespawnerScript droneRespawnerScript;
     [Header("variables")]
     public bool beeBossActive;
     private float speed;
@@ -42,5 +43,12 @@ public class BeeBossParentScript : MonoBehaviour
         speed = Stage2Speed;
         ceilingLaserScript.TriggerStage2();
         rockSpawnerScript.TriggerStage2();
+    }
+    public void BossDied()
+    {
+        speed = 0;
+        ceilingLaserScript.BossDied();
+        rockSpawnerScript.BossDied();
+        droneRespawnerScript.BossDied();
     }
 }

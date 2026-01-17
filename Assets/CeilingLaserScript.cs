@@ -27,6 +27,7 @@ public class CeilingLaserScript : MonoBehaviour
     private float laserFullTime;
     private float laserCurrTime = 0f;
     public bool laserEnabled = false;
+    private bool bossDead = false;
     [Header("Stages")]
     private float laserPointerTimeStage1 = 1.5f;
     private float laserPointerTimeStage2 = 1.25f;
@@ -63,6 +64,7 @@ public class CeilingLaserScript : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (bossDead) return;
         if (!laserEnabled)
         {
             if (timeBetweenShootingTimer >= timeBetweenShooting)
@@ -169,6 +171,7 @@ public class CeilingLaserScript : MonoBehaviour
     }
     void enableLaserRenderer()
     {
+        if(bossDead) return;
         lineRendererMiddle.enabled = true;
         lineRendererBottom.enabled = true;
         lineRendererTop.enabled = true;
@@ -180,5 +183,11 @@ public class CeilingLaserScript : MonoBehaviour
         lineRendererBottom.enabled = false;
         lineRendererTop.enabled = false;
         laserEnabled = false;
+    }
+    public void BossDied()
+    {
+        stopLaser();
+        laserPointer.enabled = false;
+        bossDead = true;
     }
 }

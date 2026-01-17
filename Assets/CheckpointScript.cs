@@ -24,6 +24,7 @@ public class CheckpointScript : MonoBehaviour
         {
             if(multiSceneVariables.getCheckpoint() == checkpoint)
             {
+                hasTriggered = true;
                 float myX = transform.position.x;
                 float myY = transform.position.y;
                 player.transform.position = new Vector3(myX,myY, player.transform.position.z);

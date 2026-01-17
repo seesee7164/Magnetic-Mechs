@@ -60,7 +60,7 @@ public class TutorialAllCutscenes : MonoBehaviour
         magnetCutscene = gameObject.AddComponent<Dialogue>();
         magnetCutscene.postHocConstructor(
         "Magnet Cutscene",
-        new DialogueIndividualLine("Mission control, we've encountered a gap too large for our jetpacks to get over it. Next steps needed.", imageLocations["Goon"], audioLocations["General"], 3),
+        new DialogueIndividualLine("Mission control, we've encountered a cliff too large for our jetpacks to get over it. Next steps needed.", imageLocations["Goon"], audioLocations["General"], 3),
         new DialogueIndividualLine("Ace 1, that mech is equipped with state of the art magnetic technology for this issue.", imageLocations["General"], audioLocations["General"], 2.5f),
         new DialogueIndividualLine("Get your mech to proceed. Make it happen.", imageLocations["General"], audioLocations["General"], 1.5f),
         new DialogueIndividualLine("Mech, you heard. Hurry and do it.", imageLocations["Goon"], audioLocations["General"], 2)

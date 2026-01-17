@@ -129,8 +129,9 @@ public class MainMenuButtonSelectionManager : MonoBehaviour
                     {
                         currentPage = 1;
                         buttons = page2Buttons;
-                        page1Parent.gameObject.SetActive(false);
-                        page2Parent.gameObject.SetActive(true);
+                        //page1Parent.gameObject.SetActive(false);
+                        //page2Parent.gameObject.SetActive(true);
+                        setPageTwoActive();
                         UpdateNavButtons();
                     }
                     currentSelection = 0;
@@ -144,8 +145,9 @@ public class MainMenuButtonSelectionManager : MonoBehaviour
                     {
                         currentPage = 0;
                         buttons = page1Buttons;
-                        page1Parent.gameObject.SetActive(true);
-                        page2Parent.gameObject.SetActive(false);
+                        //page1Parent.gameObject.SetActive(true);
+                        //page2Parent.gameObject.SetActive(false);
+                        setPageOneActive();
                         UpdateNavButtons();
                     }
                     currentSelection = buttons.Count - 1;
@@ -197,12 +199,7 @@ public class MainMenuButtonSelectionManager : MonoBehaviour
 
         currentPage = 1;
         buttons = page2Buttons;
-        nextButton.SetActive(false);
-        previousButton.SetActive(true);
-        page1Parent.gameObject.SetActive(false);
-        page2Parent.gameObject.SetActive(true);
-        beatenConnectorsPageOne.SetActive(false);
-        beatenConnectorsPageTwo.SetActive(true);
+        setPageTwoActive();
         currentSelection = 0;
         currentLevelCapacitor.SetActive(currentLevelPage == currentPage);
         readyToChange = Time.realtimeSinceStartup + delay;
@@ -218,16 +215,29 @@ public class MainMenuButtonSelectionManager : MonoBehaviour
 
         currentPage = 0;
         buttons = page1Buttons;
+        setPageOneActive();
+        currentSelection = 0;
+        currentLevelCapacitor.SetActive(currentLevelPage == currentPage);
+        readyToChange = Time.realtimeSinceStartup + delay;
+        SetButtonSize(currentSelection);
+    }
+    public void setPageOneActive()
+    {
         nextButton.SetActive(true);
         previousButton.SetActive(false);
         page1Parent.gameObject.SetActive(true);
         page2Parent.gameObject.SetActive(false);
         beatenConnectorsPageOne.SetActive(true);
         beatenConnectorsPageTwo.SetActive(false);
-        currentSelection = 0;
-        currentLevelCapacitor.SetActive(currentLevelPage == currentPage);
-        readyToChange = Time.realtimeSinceStartup + delay;
-        SetButtonSize(currentSelection);
+    }
+    public void setPageTwoActive()
+    {
+        nextButton.SetActive(false);
+        previousButton.SetActive(true);
+        page1Parent.gameObject.SetActive(false);
+        page2Parent.gameObject.SetActive(true);
+        beatenConnectorsPageOne.SetActive(false);
+        beatenConnectorsPageTwo.SetActive(true);
     }
 
     public void UpdateNavButtons()
@@ -260,6 +270,7 @@ public class MainMenuButtonSelectionManager : MonoBehaviour
         PlayerPrefs.SetInt("Level 9", 1);
         PlayerPrefs.SetInt("Level 10", 1);
         PlayerPrefs.SetInt("Level 11", 1);
+        PlayerPrefs.SetInt("Level 12", 1);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

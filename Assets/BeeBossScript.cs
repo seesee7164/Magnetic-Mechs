@@ -17,7 +17,12 @@ public class BeeBossScript : MonoBehaviour
     public PlayerScript playerScript;
     public GameObject endingPlatformGrid;
     public GameObject StartNextLevel;
-
+    [Header("Position")]
+    private Vector2 StartPosition;
+    private Vector2 EndPosition;
+    private float timeRate = 0.5f;
+    private float timer = 0f;
+    private bool finishedMoving = false;
 
     void Awake()
     {
@@ -28,6 +33,22 @@ public class BeeBossScript : MonoBehaviour
         //sprite = GetComponent<SpriteRenderer>();
         endingPlatformGrid.SetActive(false);
         bossActive = false;
+        //PositionStuff
+        EndPosition = (Vector2)transform.localPosition - Vector2.right * 6f;
+        StartPosition = (Vector2)transform.localPosition;
+        transform.localPosition = StartPosition;
+    }
+    private void FixedUpdate()
+    {
+        if (finishedMoving) return;
+        if (timer >= .99f)
+        {
+            Debug.Log("done");
+            transform.localPosition = EndPosition;
+            finishedMoving = true;
+        }
+        transform.localPosition = Vector2.Lerp(StartPosition, EndPosition, timer);
+        timer += Time.deltaTime * timeRate;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -79,8 +100,8 @@ public class BeeBossScript : MonoBehaviour
         //yield return new WaitUntil(() => gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Dead"));
         //Destroy(gameObject);
         transform.parent.GetComponent<BeeBossParentScript>().beeBossActive = false;
-        endingPlatformGrid.SetActive(true);
-        StartNextLevel.SetActive(true);
+        //endingPlatformGrid.SetActive(true);
+        //StartNextLevel.SetActive(true);
         gameObject.SetActive(false);
 
     }

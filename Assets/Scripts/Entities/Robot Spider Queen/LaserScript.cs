@@ -29,6 +29,7 @@ public class LaserScript : MonoBehaviour
     private float defaultInvincibleTime = .1f;
     public bool laserEnabled = false;
     private bool triggerStage2 = false;
+    private bool bossDied = false;
     [Header("Explosion")]
     public float explosionTime = .2f;
     private float explosionTimer;
@@ -244,6 +245,7 @@ public class LaserScript : MonoBehaviour
     }
     void enableLaserRenderer()
     {
+        if (bossDied) return;
         lineRendererMiddle.enabled = true;
         lineRendererLeft.enabled = true;
         lineRendererRight.enabled = true;
@@ -255,5 +257,10 @@ public class LaserScript : MonoBehaviour
         lineRendererLeft.enabled = false;
         lineRendererRight.enabled = false;
         laserEnabled = false;
+    }
+    public void BossDied()
+    {
+        disableLaserRenderer ();
+        bossDied = true;
     }
 }

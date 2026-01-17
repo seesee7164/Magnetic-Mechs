@@ -12,7 +12,7 @@ public class RockSpawnerScript : MonoBehaviour
     //public float despawnHeight = 0;
     private float timer;
     [Header("Stages")]
-    private bool notStarted = true;
+    private bool dontSpawn = true;
     // Start is called before the first frame update
     [Header("Manage Queue")]
     private GameObject[] RocksArray;
@@ -52,7 +52,7 @@ public class RockSpawnerScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (notStarted)
+        if (dontSpawn)
         {
             return;
         }
@@ -82,6 +82,10 @@ public class RockSpawnerScript : MonoBehaviour
     }
     public void TriggerStage2()
     {
-        notStarted = false;
+        dontSpawn = false;
+    }
+    public void BossDied()
+    {
+        dontSpawn = true;
     }
 }

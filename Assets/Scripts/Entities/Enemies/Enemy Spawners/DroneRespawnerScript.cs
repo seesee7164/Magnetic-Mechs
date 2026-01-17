@@ -22,10 +22,11 @@ public class DroneRespawnerScript : MonoBehaviour
     public bool uniformSpeed = false;
     public Transform minYPosition;
     public Transform maxYPosition;
+    private bool disabled = false;
     private void Start()
     {
         timeToSpawn = 6.5f;
-        timer = timeToSpawn;
+        timer = timeToSpawn - 3.0f;
         myTransform = transform;
         SetUpArrays();
     }
@@ -53,6 +54,7 @@ public class DroneRespawnerScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if(disabled) return;
         if (DronesAvailableQueue.Count == 0)
         {
             timer = 0;
@@ -89,5 +91,9 @@ public class DroneRespawnerScript : MonoBehaviour
     {
         DronesAvailableQueue.Enqueue(1);
         timeToSpawn = 5.5f;
+    }
+    public void BossDied()
+    {
+        disabled = true;
     }
 }

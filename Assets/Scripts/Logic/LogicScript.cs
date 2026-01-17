@@ -156,9 +156,18 @@ public class LogicScript : MonoBehaviour
         yield return new WaitForSeconds(delay);
         StartLevel("Level 8");
     }
+    public void StartPostBeeBossDelay()
+    {
+        StartScreenFade(1.5f, 1.5f);
+        StartCoroutine(StartPostBeeBoss(3.25f));
+    }
+    public IEnumerator StartPostBeeBoss(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        StartLevel("Main Menu");
+    }
     public void StartScreenFade(float duration = 1.0f, float delay = .25f)
     {
-        Debug.Log("test1");
         controlScreenFade.startFadeIn(duration, delay);
     }
     // public void StartPostBeeBossDelay()

@@ -47,6 +47,7 @@ public class BeeBossHealthScript : MonoBehaviour
         {
             currentHealth = 0;
             HandleBossDeath();
+            beeBossParentScript.BossDied();
         }
         else if (!inStage2 && currentHealth <= maxHealth * 2 / 3)
         {
@@ -62,7 +63,8 @@ public class BeeBossHealthScript : MonoBehaviour
     public void HandleBossDeath()
     {
         if (beeBossScript == null) return;
-        //logic.StartPostBeeBossDelay();
+        logic.StartPostBeeBossDelay();
         beeBossScript.KillBoss();
+        beeBossParentScript.BossDied();
     }
 }

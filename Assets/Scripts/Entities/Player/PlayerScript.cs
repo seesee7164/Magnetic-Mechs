@@ -316,6 +316,7 @@ public class PlayerScript : MonoBehaviour
     }
     public IEnumerator handleKnockback(float knockback, Vector2 knockbackDirection)
     {
+        if (!playerAlive) yield break;
         //movementEnabled = false;
         myRigidbody2D.AddForce(knockbackDirection * knockback * 10, ForceMode2D.Impulse);
         playerAnimationManagerScript.setAllSpritesColor(Color.red);
@@ -326,10 +327,7 @@ public class PlayerScript : MonoBehaviour
 
     public void KillPlayer()
     {
-        if (!playerAlive)
-        {
-            return;
-        }
+        if (!playerAlive) return;
         playerAlive = false;
         //TODO dying stuff
         //animator.SetBool("hasDied", true);

@@ -173,6 +173,7 @@ public class RobotSpiderQueenScript : MonoBehaviour
         bossActive = false;
         animator.SetBool("hasDied", true);
         myRigidbody2D.linearVelocity = new Vector3(0, 0, 0);
+        TurnOffAttacks();
         StartCoroutine(HandleDeath());
     }
     IEnumerator HandleDeath()
@@ -180,6 +181,15 @@ public class RobotSpiderQueenScript : MonoBehaviour
         yield return new WaitUntil(() => gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Dead"));
         //Destroy(gameObject);
         gameObject.SetActive(false);
+    }
+    private void TurnOffAttacks()
+    {
+        goomechSpawnerScriptTop.bossActive = false;
+        goomechSpawnerScriptBottom.bossActive = false;
+        spiderQueenBulletSpawnerScript.DisableShooting();
+        rockSpawnerScript.BossDied();
+        laserScript.BossDied();
+        wideAttackScript.BossDied();
     }
     private void OnDrawGizmos()
     {

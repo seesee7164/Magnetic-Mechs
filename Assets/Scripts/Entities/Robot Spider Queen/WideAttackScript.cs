@@ -23,6 +23,7 @@ public class WideAttackScript : BulletSpawnerParent
     public float angleBetweenShots = 10;
     public int shotsOnEachSide;
     private bool currentlyShooting = false;
+    private bool bossIsDead = false;
     [Header("Timing")]
     public float laserTime;
     public float shootDelay = .5f;
@@ -140,6 +141,7 @@ public class WideAttackScript : BulletSpawnerParent
     {
         //Vector3 rot = transform.rotation.eulerAngles.;
         //List<Vector3> shootAngles = new List<Vector3>();
+        if(bossIsDead) return;
         transform.rotation *= Quaternion.Euler(0, 0, -angleBetweenShots * shotsOnEachSide);
         for (int i = 0; i < (shotsOnEachSide*2+1); i++)
         {
@@ -150,5 +152,9 @@ public class WideAttackScript : BulletSpawnerParent
         RobotSpiderQueen?.GetComponent<RobotSpiderQueenScript>().endBigAttack();
         currentlyShooting = false;
         if (triggerStage2) ActuallyTriggerStage2();
+    }
+    public void BossDied()
+    {
+        bossIsDead = true;
     }
 }
