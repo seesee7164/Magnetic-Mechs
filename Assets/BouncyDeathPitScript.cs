@@ -8,9 +8,11 @@ public class BouncyDeathPitScript : MonoBehaviour
     private float defaultDamage = 2f;
     private float defaultInvincibleTime = .5f;
     private float knockbackStrength = 1.5f;
+    public bool lessBouncy = false;
     private void Awake()
     {
         playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
+        if (lessBouncy) knockbackStrength = .9f;
     }
 
     // Update is called once per frame

@@ -18,7 +18,7 @@ public class VerticalMovementScript : MonoBehaviour
 
     [Header("Variables")]
     private float maxYSpeed = 20f;
-    private float maxYSpeedPressingDown = 35f;
+    private float maxYSpeedPressingDown = 32f;
     private bool trulyOnGround;
     private bool recentlyOnGround;
 
@@ -35,7 +35,7 @@ public class VerticalMovementScript : MonoBehaviour
     private float jumpForce = 7f;
 
     [Header("Jetpack")]
-    private float jetpackTotalTime = 1.2f;
+    private float jetpackTotalTime = 1.0f;
     public float jetpackCurrentTime;
     private float jetPackForce = 12f;
     private float maxJetSpeed = 19f;
@@ -48,7 +48,7 @@ public class VerticalMovementScript : MonoBehaviour
 
     [Header("Overused Jetpack")]
     private bool jetpackAvailable = true;
-    private float jetpackRecoveryRatio = .5f;
+    private float jetpackRecoveryRatio = .75f;
 
     [Header("Jetpack Components")]
     public GameObject jetpackLower;
