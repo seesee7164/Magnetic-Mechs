@@ -13,6 +13,9 @@ public class MultiSceneVariables : MonoBehaviour
     private int currCheckpoint = 0;
     [Header("Difficulty")]
     public int difficulty = 0;
+    [Header("Level Clear Times")]
+    public float[] clearTimes = new float[12];
+    public bool startedFromLevelOne = false;
     private void Awake()
     {
         if (multiSceneVariablesInstance != null && multiSceneVariablesInstance != this)
