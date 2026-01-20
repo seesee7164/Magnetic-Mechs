@@ -22,6 +22,7 @@ public class CheckpointScript : MonoBehaviour
         hasTriggered = false;
         if (multiSceneVariables != null && player != null && checkpoint != 0)
         {
+            multiSceneVariables.loadCheckPointTimer();
             if(multiSceneVariables.getCheckpoint() == checkpoint)
             {
                 hasTriggered = true;

@@ -1213,7 +1213,7 @@ GameObject:
   - component: {fileID: 339494813}
   - component: {fileID: 339494815}
   m_Layer: 0
-  m_Name: Start Level 10
+  m_Name: Start Next Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1293,6 +1293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelToLoad: Level 10
+  currentLevel: 9
 --- !u!1001 &348712772
 PrefabInstance:
   m_ObjectHideFlags: 0

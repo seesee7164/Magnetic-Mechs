@@ -11,6 +11,7 @@ public class TutorialAllEvents : MonoBehaviour
     public Queue<CivilianScript> civilianScripts;
     public GameObject[] civilians;
     public LogicScript logic;
+    public MultiSceneVariables multiSceneVariables;
 
     //[Header("Agent")]
     //public GameObject agentPrefab;
@@ -47,6 +48,7 @@ public class TutorialAllEvents : MonoBehaviour
         GameObject lastCutscenePartThreeObject = GameObject.FindGameObjectWithTag("LastCutscenePartThree");
         GameObject lastCutscenePartFourObject = GameObject.FindGameObjectWithTag("LastCutscenePartFour");
         GameObject shootingPrompt = GameObject.FindGameObjectWithTag("ShootingPrompt");
+        multiSceneVariables = GameObject.FindGameObjectWithTag("MultiSceneVariables").GetComponent<MultiSceneVariables>();
         startKillingPilot = inputOne = inputTwo = false;
 
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
@@ -207,5 +209,9 @@ public class TutorialAllEvents : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         logic.StartLevel("Level 2");
+    }
+    public void FinishLevel1()
+    {
+        multiSceneVariables.finishLevel(1);
     }
 }

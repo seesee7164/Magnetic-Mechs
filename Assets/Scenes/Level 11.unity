@@ -20399,7 +20399,7 @@ GameObject:
   - component: {fileID: 1285581326}
   - component: {fileID: 1285581328}
   m_Layer: 0
-  m_Name: Start Level 12
+  m_Name: Start Next Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20479,6 +20479,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelToLoad: Level 12
+  currentLevel: 11
 --- !u!1 &1286053913
 GameObject:
   m_ObjectHideFlags: 0

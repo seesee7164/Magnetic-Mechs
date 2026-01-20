@@ -7,6 +7,8 @@ public class ControlScreenFade : MonoBehaviour
     [Header("Components")]
     //private Image blackScreen;
     private CanvasGroup blackScreen;
+    public GameObject clearTimeText;
+    private MultiSceneVariables multiSceneVariables;
     [Header("Variables")]
     private float currTarget;
     private float currAlpha = 1;
@@ -14,6 +16,7 @@ public class ControlScreenFade : MonoBehaviour
     private bool currentlyChanging = false;
     private void Awake()
     {
+        multiSceneVariables = GameObject.FindGameObjectWithTag("MultiSceneVariables").GetComponent<MultiSceneVariables>();
         blackScreen = GetComponent<CanvasGroup>();
         currTarget = 1f;
         setAlphaValue(1f);
@@ -43,6 +46,7 @@ public class ControlScreenFade : MonoBehaviour
             setAlphaValue(currAlpha);
             yield return new WaitForSeconds(timeBetweenSteps);
         }
+        HandleClearTimeText();
         currentlyChanging = false;
     }
     public void startFadeOut()
@@ -66,5 +70,10 @@ public class ControlScreenFade : MonoBehaviour
             yield return new WaitForSeconds(timeBetweenSteps);
         }
         currentlyChanging = false;
+    }
+    private void HandleClearTimeText()
+    {
+        clearTimeText.SetActive(true);
+        clearTimeText.GetComponent<Text>().text = "Clear Time: " + multiSceneVariables.returnCurrentTimeAsString();
     }
 }

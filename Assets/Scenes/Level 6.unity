@@ -6876,7 +6876,7 @@ GameObject:
   - component: {fileID: 1047129812}
   - component: {fileID: 1047129811}
   m_Layer: 0
-  m_Name: Start Level 7
+  m_Name: Start Next Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6895,6 +6895,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelToLoad: Level 7
+  currentLevel: 6
 --- !u!60 &1047129812
 PolygonCollider2D:
   m_ObjectHideFlags: 0
