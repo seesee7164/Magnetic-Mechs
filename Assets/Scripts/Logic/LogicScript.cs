@@ -19,6 +19,10 @@ public class LogicScript : MonoBehaviour
     public GameObject gameOverScreen;
     public GameObject pauseScreen;
     private MultiSceneVariables multiSceneVariables;
+
+    [Header("Variables")]
+    private float delayForEndScreen = 1f;
+
     //public Text remainingFuelText;
     public GameObject settingsScreen;
     public PlayerInput playerInput;
@@ -59,7 +63,7 @@ public class LogicScript : MonoBehaviour
 
     public void StartLevel(string level)
     {
-        multiSceneVariables.setCheckpoint(0);
+        multiSceneVariables.fullyRestartLevel();
         PlayerPrefs.SetInt(level, 1);
         SceneManager.LoadScene(level);
     }
@@ -148,8 +152,11 @@ public class LogicScript : MonoBehaviour
     }
     public void StartPostSpiderBossDelay()
     {
+        multiSceneVariables.finishLevel(7);
         StartScreenFade(1.5f, 1.5f);
-        StartCoroutine(StartPostSpiderBoss(3.25f));
+        float timeUntilLevelEnd = 3.25f;
+        if (multiSceneVariables.ShowTime()) timeUntilLevelEnd += delayForEndScreen;
+        StartCoroutine(StartPostSpiderBoss(timeUntilLevelEnd));
     }
     public IEnumerator StartPostSpiderBoss(float delay)
     {
@@ -158,13 +165,17 @@ public class LogicScript : MonoBehaviour
     }
     public void StartPostBeeBossDelay()
     {
+        multiSceneVariables.finishLevel(12);
         StartScreenFade(1.5f, 1.5f);
-        StartCoroutine(StartPostBeeBoss(3.25f));
+        float timeUntilLevelEnd = 3.25f;
+        if (multiSceneVariables.ShowTime()) timeUntilLevelEnd += delayForEndScreen;
+        StartCoroutine(StartPostBeeBoss(timeUntilLevelEnd));
     }
     public IEnumerator StartPostBeeBoss(float delay)
     {
         yield return new WaitForSeconds(delay);
-        StartLevel("Main Menu");
+        multiSceneVariables.FinishGame();
+        StartLevel("Ending");
     }
     public void StartScreenFade(float duration = 1.0f, float delay = .25f)
     {
@@ -179,4 +190,8 @@ public class LogicScript : MonoBehaviour
     //     yield return new WaitForSeconds(delay);
     //     StartLevelNine();
     // }
+    public float ReturnDelayForEndScreen()
+    {
+        return delayForEndScreen;
+    }
 }

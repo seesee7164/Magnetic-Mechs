@@ -32,6 +32,7 @@ public class StartScreenLogic : MonoBehaviour
         myInput = GetComponent<PlayerInput>();
         myInput.SwitchCurrentActionMap("UI");
         variableStorage = GameObject.FindGameObjectWithTag("MultiSceneVariables").GetComponent<MultiSceneVariables>();
+        variableStorage.resetFullGamePlaythrough();
     }
 
     public void returnToStartScreen()
@@ -64,7 +65,7 @@ public class StartScreenLogic : MonoBehaviour
 
     public void StartStage(string level)
     {
-        variableStorage.setCheckpoint(0);
+        variableStorage.fullyRestartLevel();
         SceneManager.LoadScene(level);
     }
     public void Quit()
