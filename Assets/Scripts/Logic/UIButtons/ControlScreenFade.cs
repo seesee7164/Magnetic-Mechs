@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -74,6 +75,14 @@ public class ControlScreenFade : MonoBehaviour
     private void HandleClearTimeText()
     {
         clearTimeText.SetActive(true);
-        clearTimeText.GetComponent<Text>().text = "Clear Time: " + multiSceneVariables.returnCurrentTimeAsString();
+        int prevTime = multiSceneVariables.returnPreviousTime();
+        if (prevTime == 0)
+        {
+            clearTimeText.GetComponent<Text>().text = "Clear Time: " + multiSceneVariables.returnCurrentTimeAsString();
+        }
+        else
+        {
+            clearTimeText.GetComponent<Text>().text = "Clear Time: " + multiSceneVariables.returnCurrentTimeAsString() + Environment.NewLine + "Previous Best: " + multiSceneVariables.returnPrevTimeAsString();
+        }
     }
 }

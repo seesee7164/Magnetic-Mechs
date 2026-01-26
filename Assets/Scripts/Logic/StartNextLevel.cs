@@ -22,7 +22,7 @@ public class StartNextLevel : MonoBehaviour
     }
     public IEnumerator StartSpecifiedLevel()
     {
-        if (multiSceneVariables != null) multiSceneVariables.finishLevel(currentLevel);
+        if (multiSceneVariables != null) multiSceneVariables.FinishLevel(currentLevel);
         logic.StartScreenFade();
         yield return new WaitForSeconds(timeToWait + logic.ReturnDelayForEndScreen());
         if (multiSceneVariables != null) multiSceneVariables.fullyRestartLevel();

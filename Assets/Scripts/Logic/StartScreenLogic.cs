@@ -164,4 +164,8 @@ public class StartScreenLogic : MonoBehaviour
         //    returnToStartScreen();
         //}
     }
+    public void StartWithLevelOne()
+    {
+        variableStorage.StartWithLevelOne();
+    }
 }

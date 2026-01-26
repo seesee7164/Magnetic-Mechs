@@ -58,6 +58,7 @@ public class LogicScript : MonoBehaviour
         menuState = GameMenuState.PLAYING;
         Time.timeScale = 1.0f;
         //playerInput.SwitchCurrentActionMap("Player");
+        multiSceneVariables.resetTimer();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
@@ -152,7 +153,7 @@ public class LogicScript : MonoBehaviour
     }
     public void StartPostSpiderBossDelay()
     {
-        multiSceneVariables.finishLevel(7);
+        multiSceneVariables.FinishLevel(7);
         StartScreenFade(1.5f, 1.5f);
         float timeUntilLevelEnd = 3.25f;
         if (multiSceneVariables.ShowTime()) timeUntilLevelEnd += delayForEndScreen;
@@ -165,7 +166,7 @@ public class LogicScript : MonoBehaviour
     }
     public void StartPostBeeBossDelay()
     {
-        multiSceneVariables.finishLevel(12);
+        multiSceneVariables.FinishLevel(12);
         StartScreenFade(1.5f, 1.5f);
         float timeUntilLevelEnd = 3.25f;
         if (multiSceneVariables.ShowTime()) timeUntilLevelEnd += delayForEndScreen;

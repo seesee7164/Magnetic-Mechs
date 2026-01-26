@@ -212,6 +212,6 @@ public class TutorialAllEvents : MonoBehaviour
     }
     public void FinishLevel1()
     {
-        multiSceneVariables.finishLevel(1);
+        multiSceneVariables.FinishLevel(1);
     }
 }

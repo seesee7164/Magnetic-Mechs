@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System;
 
 public class EndingLogicScript : MonoBehaviour
 {
@@ -15,7 +16,15 @@ public class EndingLogicScript : MonoBehaviour
     private void Update()
     {
         if (!multiSceneVariables.StartedWithLevelOne()) return;
-        FullGameFinishTime.text = "Full Time: " + multiSceneVariables.returnFullGameTimeAsString();
+        int prevTime = multiSceneVariables.returnPreviousGameTime();
+        if (prevTime == 0)
+        {
+            FullGameFinishTime.text = "Full Time: " + multiSceneVariables.returnFullGameTimeAsString();
+        }
+        else
+        {
+            FullGameFinishTime.text = "Full Time: " + multiSceneVariables.returnFullGameTimeAsString() + Environment.NewLine + "Previous Best: " + multiSceneVariables.returnPrevGameTimeAsString();
+        }
     }
     public void ReturnToMainMenu()
     {

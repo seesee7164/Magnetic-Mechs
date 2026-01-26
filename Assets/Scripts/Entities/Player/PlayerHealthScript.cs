@@ -25,7 +25,8 @@ public class PlayerHealthScript : MonoBehaviour
         GameObject savedVariablesObject = GameObject.FindGameObjectWithTag("MultiSceneVariables");
         if (savedVariablesObject != null)
         {
-            float difficulty = savedVariablesObject.GetComponent<MultiSceneVariables>().difficulty;
+            savedVariables = savedVariablesObject.GetComponent<MultiSceneVariables>();
+            float difficulty = savedVariables.difficulty;
             if(difficulty == 2)
             {
                 maxHealth = 3;
@@ -75,6 +76,7 @@ public class PlayerHealthScript : MonoBehaviour
     public void HandlePlayerDeath()
     {
         currentHealth = 0;
+        savedVariables.playerKilled();
         playerScript.KillPlayer();
         Logic.GameOver();
     }
