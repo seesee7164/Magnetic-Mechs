@@ -20,7 +20,7 @@ public class BeeBossScript : MonoBehaviour
     [Header("Position")]
     private Vector2 StartPosition;
     private Vector2 EndPosition;
-    private float timeRate = 0.5f;
+    private float timeRate = 0.8f;
     private float timer = 0f;
     private bool finishedMoving = false;
 

@@ -375,7 +375,6 @@ public class PlayerScript : MonoBehaviour
     {
         if (context.performed)
         {
-            Debug.Log("test");
             jumpPressed = true;
             lastJumpInputTime = Time.time;
             if (cutsceneManagerScript != null)

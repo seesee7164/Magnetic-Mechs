@@ -9,6 +9,8 @@ public class DifficultyScript : MonoBehaviour
     [Header("Components")]
     //public Text currentDifficultyText;
     public List<GameObject> difficultyButtons;
+    public List<DisplayLevelTimeScript> clearTimes;
+    public DisplayFullGameTimeScript fullClearTime;
     [Header("Scripts")]
     public MultiSceneVariables multiSceneVariables;
     //[Header("Variables")]
@@ -31,16 +33,19 @@ public class DifficultyScript : MonoBehaviour
     {
         multiSceneVariables.difficulty = 0;
         PlayerPrefs.SetInt(DIFFICULTY_STRING, multiSceneVariables.difficulty);
+        updateClearTimes();
     }
     public void SetHard()
     {
         multiSceneVariables.difficulty = 1;
         PlayerPrefs.SetInt(DIFFICULTY_STRING, multiSceneVariables.difficulty);
+        updateClearTimes();
     }
     public void SetImpossible()
     {
         multiSceneVariables.difficulty = 2;
         PlayerPrefs.SetInt(DIFFICULTY_STRING, multiSceneVariables.difficulty);
+        updateClearTimes();
     }
     public void SetButtonSize(int currentSelection)
     {
@@ -49,5 +54,13 @@ public class DifficultyScript : MonoBehaviour
             button.GetComponent<RectTransform>().localScale = Vector3.one;
         }
         difficultyButtons[currentSelection].GetComponent<RectTransform>().localScale = new Vector3(1.25f, 1.25f, 1.25f);
+    }
+    public void updateClearTimes()
+    {
+        foreach (DisplayLevelTimeScript levelTime in clearTimes)
+        {
+            levelTime.SetDisplayTime();
+        }
+        fullClearTime.SetDisplayTime();
     }
 }

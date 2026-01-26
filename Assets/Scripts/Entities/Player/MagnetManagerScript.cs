@@ -25,6 +25,7 @@ public class MagnetManagerScript : MonoBehaviour
     private Vector2 magnetRelativePosition;
     public float magnetDistance;
     public bool magnetActive = false;
+    public bool attracting = false;
     void Awake()
     {
         MagnetSpawner = GameObject.FindGameObjectWithTag("MagnetSpawner");
@@ -76,6 +77,8 @@ public class MagnetManagerScript : MonoBehaviour
     public void handleMagneticRepulsion(bool repelOn, bool attractOn)
     {
         if (myMagnet == null || !(repelOn ^ attractOn) || !magnetSpawnerScript.magnetActive) return;
+        if (attractOn) attracting = true;
+        else attracting = false;
         magnetRelativePosition = transform.position - myMagnet.transform.position;
         magnetDistance = magnetRelativePosition.magnitude;
         if (magnetDistance < 1.1f)

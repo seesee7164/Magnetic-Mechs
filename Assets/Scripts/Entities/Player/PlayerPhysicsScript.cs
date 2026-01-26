@@ -11,7 +11,7 @@ public class PlayerPhysicsScript : MonoBehaviour
     private float linearDrag = 3f;
     public float defaultGravity = 1f;
     private float fallMultiplier = 3f;
-    private float pressingDownGravityMultiplier = 1.8f;
+    private float pressingDownGravityMultiplier = 2.5f;
     [Header("Drag Values")]
     private float defaultDrag = .05f;
     private float clampXDrag = 2.0f;
@@ -86,30 +86,30 @@ public class PlayerPhysicsScript : MonoBehaviour
                 if (playerRigidBody.linearVelocity.y < 0f)
                 {
                     appliedGravity = defaultGravity * fallMultiplier;
-                    if (downPressed)
-                    {
-                        appliedGravity *= pressingDownGravityMultiplier;
-                    }
                 }
                 else
                 {
                     appliedGravity = defaultGravity * fallMultiplier / 2;
                     if (downPressed)
                     {
-                        appliedGravity *= pressingDownGravityMultiplier;
                         playerRigidBody.linearDamping = linearDrag * pressingDownDragMultiplier;
                     }
                 }
                 if (magnetManagerScript.magnetActive && magnetManagerScript.returnMagnetMaximumDistance() > magnetManagerScript.magnetDistance)
                 {
-                    float distanceEffect = (magnetManagerScript.returnMagnetMaximumDistance() - magnetManagerScript.magnetDistance) / magnetManagerScript.returnMagnetMaximumDistance();
-                    float angleEffect = Mathf.Abs(Mathf.Cos(magnetManagerScript.returnPolarMagnetAngle() * Mathf.Deg2Rad));
-                    appliedGravity = defaultGravity * fallMultiplier / 2 * (4 - 2 * distanceEffect - angleEffect) / 4;
-                    //playerRigidBody.gravityScale = defaultGravity / 2 * (4 - 3 * );
-                    if (downPressed)
+                    bool attractingUp = MathF.Abs(magnetManagerScript.returnPolarMagnetAngle()) >= 90 && magnetManagerScript.attracting;
+                    bool repellingDown = MathF.Abs(magnetManagerScript.returnPolarMagnetAngle()) < 90 && !magnetManagerScript.attracting;
+                    if (attractingUp || repellingDown)
                     {
-                        appliedGravity *= pressingDownGravityMultiplier;
+                        float distanceEffect = (magnetManagerScript.returnMagnetMaximumDistance() - magnetManagerScript.magnetDistance) / magnetManagerScript.returnMagnetMaximumDistance();
+                        float angleEffect = Mathf.Abs(Mathf.Cos(magnetManagerScript.returnPolarMagnetAngle() * Mathf.Deg2Rad));
+                        appliedGravity = defaultGravity * fallMultiplier / 2 * (4 - 2 * distanceEffect - angleEffect) / 4;
+                        //playerRigidBody.gravityScale = defaultGravity / 2 * (4 - 3 * );
                     }
+                }
+                if (downPressed)
+                {
+                    appliedGravity *= pressingDownGravityMultiplier;
                 }
             }
             playerRigidBody.gravityScale = appliedGravity;
