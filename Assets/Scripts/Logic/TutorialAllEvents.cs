@@ -10,8 +10,11 @@ public class TutorialAllEvents : MonoBehaviour
     public GameObject title;
     public Queue<CivilianScript> civilianScripts;
     public GameObject[] civilians;
+    public GameObject MagnetPrompt;
     public LogicScript logic;
     public MultiSceneVariables multiSceneVariables;
+    public ControlScreenFade controlScreenFade;
+    public DeathCutsceneScript deathCutsceneScript;
 
     //[Header("Agent")]
     //public GameObject agentPrefab;
@@ -132,6 +135,11 @@ public class TutorialAllEvents : MonoBehaviour
         promptUIScript.promptEnabled = false;
     }
 
+    public void enableMagnetPrompt()
+    {
+        MagnetPrompt.SetActive(true);
+    }
+
     public void disablePlayerMovementAndPrompt()
     {
         disablePlayerMovement();
@@ -172,9 +180,19 @@ public class TutorialAllEvents : MonoBehaviour
     }
     public void killingPilotEvent()
     {
-        StartCoroutine(killingPilot());
+        StartCoroutine(StartCutscene());
     }
-    public IEnumerator killingPilot()
+    public IEnumerator StartCutscene()
+    {
+        controlScreenFade.startFadeIn(1, 0);
+        yield return new WaitForSeconds(1);
+        deathCutsceneScript.startPlaying();
+    }
+    public void afterCutscene()
+    {
+        StartCoroutine(afterCutsceneCoroutine());
+    }
+    public IEnumerator afterCutsceneCoroutine()
     {
         if (playerScript == null) { 
             Debug.Log("playerScript disappeared");
@@ -184,6 +202,8 @@ public class TutorialAllEvents : MonoBehaviour
         {
             pilotsDeath.transform.localScale = new Vector3(pilotsDeath.transform.localScale.x * -1, pilotsDeath.transform.localScale.y, pilotsDeath.transform.localScale.z);
         }
+        controlScreenFade.startFadeOut(1, 0);
+        yield return new WaitForSeconds(1);
         pilotsDeath.GetComponent<ParticleSystem>().Play();
         pilotsDeath.GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(.01f);
@@ -191,6 +211,7 @@ public class TutorialAllEvents : MonoBehaviour
         {
             civilianScript.turnOffTargetingReticle();
         }
+        yield return new WaitForSeconds(2);
         lastCutscenePartFour.triggerDisplayDialogue();
     }
 

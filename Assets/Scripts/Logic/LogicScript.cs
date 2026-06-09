@@ -180,7 +180,7 @@ public class LogicScript : MonoBehaviour
     }
     public void StartScreenFade(float duration = 1.0f, float delay = .25f)
     {
-        controlScreenFade.startFadeIn(duration, delay);
+        controlScreenFade.startFadeInClearTime(duration, delay);
     }
     // public void StartPostBeeBossDelay()
     // {

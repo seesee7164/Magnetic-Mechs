@@ -1,3 +1,4 @@
+using TMPro;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -6,7 +7,8 @@ using UnityEngine.UI;
 public class PromptUIScript : MonoBehaviour
 {
     //handles the UI for prompts during the tutorial level
-    private Text promptText;
+    //private Text promptText;
+    private TextMeshProUGUI promptText;
     private Prompt currentPrompt;
     [Header("parameters")]
     public bool promptActive;
@@ -20,7 +22,7 @@ public class PromptUIScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        promptText = GetComponent<Text>();
+        promptText = GetComponent<TextMeshProUGUI>();
         directionalArrow = GameObject.FindGameObjectWithTag("DirectionalArrow");
         GameObject directionalArrowOrientationObject = GameObject.FindGameObjectWithTag("DirectionalArrowOrientation");
         if (directionalArrowOrientationObject != null) directionalArrowOrientation = directionalArrowOrientationObject.GetComponent<Transform>();

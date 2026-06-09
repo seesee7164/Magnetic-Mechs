@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,10 +8,10 @@ public class DisplayLevelTimeScript : MonoBehaviour
     public int level;
     [Header("Components")]
     private MultiSceneVariables multiSceneVariables;
-    private Text displayTime;
+    private TextMeshProUGUI displayTime;
     private void Awake()
     {
-        displayTime = GetComponent<Text>();
+        displayTime = GetComponent<TextMeshProUGUI>();
         multiSceneVariables = GameObject.FindGameObjectWithTag("MultiSceneVariables").GetComponent<MultiSceneVariables>();
         SetDisplayTime();
     }

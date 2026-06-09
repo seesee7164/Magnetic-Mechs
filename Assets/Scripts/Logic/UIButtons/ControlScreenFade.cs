@@ -27,11 +27,16 @@ public class ControlScreenFade : MonoBehaviour
     {
         blackScreen.alpha = alpha;
     }
+    public void startFadeInClearTime(float fadeDuration = 1.0f, float delay = 0.25f)
+    {
+        StartCoroutine(fadeIn(fadeDuration, delay, 1f, true));
+    }
     public void startFadeIn(float fadeDuration = 1.0f, float delay = 0.25f)
     {
-        StartCoroutine(fadeIn(fadeDuration, delay));
+        StartCoroutine(fadeIn(fadeDuration, delay, 1f, false));
     }
-    private IEnumerator fadeIn(float fadeDuration = 1.0f, float delay = 0.25f, float target = 1f)
+
+    private IEnumerator fadeIn(float fadeDuration = 1.0f, float delay = 0.25f, float target = 1f, bool showClearText = true)
     {
         while (currentlyChanging)
         {
@@ -47,14 +52,14 @@ public class ControlScreenFade : MonoBehaviour
             setAlphaValue(currAlpha);
             yield return new WaitForSeconds(timeBetweenSteps);
         }
-        HandleClearTimeText();
+        if(showClearText) HandleClearTimeText();
         currentlyChanging = false;
     }
-    public void startFadeOut()
+    public void startFadeOut(float fadeDuration = 1.0f, float delay = 0.5f, float target = 0f)
     {
-        StartCoroutine(fadeOut());
+        StartCoroutine(fadeOut(fadeDuration, delay, target));
     }
-    private IEnumerator fadeOut(float fadeDuration = 1.0f, float delay = 0.5f, float target = 0f)
+    private IEnumerator fadeOut(float fadeDuration, float delay, float target)
     {
         while (currentlyChanging)
         {

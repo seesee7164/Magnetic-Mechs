@@ -15,6 +15,7 @@ public class TutorialAllCutscenes : MonoBehaviour
     private Dialogue lastCutscenePartTwo;
     private Dialogue lastCutscenePartThree;
     private Dialogue lastCutscenePartFour;
+    private Dialogue lastCutscenePartFive;
     //private Dialogue lastCutscenePartFive;
     [Header("Components")]
     public GameObject dialogueBox;
@@ -52,7 +53,7 @@ public class TutorialAllCutscenes : MonoBehaviour
         new DialogueIndividualLine("Maneuver the mech over and proceed with the mission. Report back upon completion, over", imageLocations["General"], audioLocations["General"], 2.5f),
         new DialogueIndividualLine("Mech, head over to the right.", imageLocations["Goon"], audioLocations["General"], 1.5f),
         new DialogueIndividualLine("Standby. Orders not understood. Hostiles are not…", imageLocations["Player"], audioLocations["Player"], 2.5f),
-        new DialogueIndividualLine("Don’t make us go through this again. You proceed with my order. Do you damn job.", imageLocations["Goon"], audioLocations["General"], 2.5f)
+        new DialogueIndividualLine("Don’t make us go through this again. You proceed with my order. Do your damn job.", imageLocations["Goon"], audioLocations["General"], 2.5f)
         );
         cutscenes.Add("First Cutscene", firstCutscene);
 
@@ -103,8 +104,8 @@ public class TutorialAllCutscenes : MonoBehaviour
         lastCutscenePartFour = gameObject.AddComponent<Dialogue>();
         lastCutscenePartFour.postHocConstructor(
         "Last Cutscene Part Four",
-        new DialogueIndividualLine("AAAHHHHHHHHHHHHHHHHHH…", imageLocations["Goon"], "", 3),
-        new DialogueIndividualLine("…", imageLocations["Player"], "", 2),
+        //new DialogueIndividualLine("AAAHHHHHHHHHHHHHHHHHH…", imageLocations["Goon"], "", 3),
+        //new DialogueIndividualLine("…", imageLocations["Player"], "", 2),
         new DialogueIndividualLine("What in the…", imageLocations["General"], audioLocations["General"], 2),
         new DialogueIndividualLine("Ace 1… do you copy Ace 1 ? ", imageLocations["General"], audioLocations["General"], 2),
         new DialogueIndividualLine("Pilot, do you copy? Can you copy? What is going on?", imageLocations["General"], audioLocations["General"], 2.5f),

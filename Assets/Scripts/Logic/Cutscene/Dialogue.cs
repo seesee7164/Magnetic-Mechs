@@ -1,3 +1,4 @@
+using TMPro;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -35,7 +36,7 @@ public class Dialogue : MonoBehaviour
         //dialogueText.SetActive(true);
         //dialogueImage.SetActive(true);
         //dialogueAudio.SetActive(true);
-        Text textBox = dialogueText.GetComponent<Text>();
+        TextMeshProUGUI textBox = dialogueText.GetComponent<TextMeshProUGUI>();
         Image imageBox = dialogueImage.GetComponent<Image>();
         AudioSource audioBox = dialogueAudio.GetComponent<AudioSource>();
         if(preCutsceneEvent != null) {

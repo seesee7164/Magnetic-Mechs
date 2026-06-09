@@ -148,6 +148,53 @@ public class MultiSceneVariables : MonoBehaviour
         currentGamePreviousTime = 0;
     }
 
+    public void fillInFullTimes()
+    {
+        //Normal Times
+        SetLevelTime(NormalLevelBestTimes[0], 1290);
+        SetLevelTime(NormalLevelBestTimes[1], 61);
+        SetLevelTime(NormalLevelBestTimes[2], 122);
+        SetLevelTime(NormalLevelBestTimes[3], 91);
+        SetLevelTime(NormalLevelBestTimes[4], 69);
+        SetLevelTime(NormalLevelBestTimes[5], 172);
+        SetLevelTime(NormalLevelBestTimes[6], 92);
+        SetLevelTime(NormalLevelBestTimes[7], 81);
+        SetLevelTime(NormalLevelBestTimes[8], 177);
+        SetLevelTime(NormalLevelBestTimes[9], 158);
+        SetLevelTime(NormalLevelBestTimes[10], 43);
+        SetLevelTime(NormalLevelBestTimes[11], 44);
+        SetLevelTime(NormalLevelBestTimes[12], 52);
+
+        //Hard Times
+        SetLevelTime(HardLevelBestTimes[0], 1423);
+        SetLevelTime(HardLevelBestTimes[1], 69);
+        SetLevelTime(HardLevelBestTimes[2], 144);
+        SetLevelTime(HardLevelBestTimes[3], 96);
+        SetLevelTime(HardLevelBestTimes[4], 84);
+        SetLevelTime(HardLevelBestTimes[5], 192);
+        SetLevelTime(HardLevelBestTimes[6], 99);
+        SetLevelTime(HardLevelBestTimes[7], 81);
+        SetLevelTime(HardLevelBestTimes[8], 201);
+        SetLevelTime(HardLevelBestTimes[9], 171);
+        SetLevelTime(HardLevelBestTimes[10], 42);
+        SetLevelTime(HardLevelBestTimes[11], 51);
+        SetLevelTime(HardLevelBestTimes[12], 60);
+
+        //Impossible Times
+        SetLevelTime(ImpossibleLevelBestTimes[0], 1542);
+        SetLevelTime(ImpossibleLevelBestTimes[1], 75);
+        SetLevelTime(ImpossibleLevelBestTimes[2], 154);
+        SetLevelTime(ImpossibleLevelBestTimes[3], 101);
+        SetLevelTime(ImpossibleLevelBestTimes[4], 88);
+        SetLevelTime(ImpossibleLevelBestTimes[5], 199);
+        SetLevelTime(ImpossibleLevelBestTimes[6], 97);
+        SetLevelTime(ImpossibleLevelBestTimes[7], 84);
+        SetLevelTime(ImpossibleLevelBestTimes[8], 213);
+        SetLevelTime(ImpossibleLevelBestTimes[9], 180);
+        SetLevelTime(ImpossibleLevelBestTimes[10], 46);
+        SetLevelTime(ImpossibleLevelBestTimes[11], 55);
+        SetLevelTime(ImpossibleLevelBestTimes[12], 69);
+    }
 
     //Saving times between sessions
     public static readonly string[] NormalLevelBestTimes =
