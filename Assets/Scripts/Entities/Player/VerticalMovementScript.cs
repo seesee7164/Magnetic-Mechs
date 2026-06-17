@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using System.Collections;
 
 
 public class VerticalMovementScript : MonoBehaviour
@@ -33,6 +34,7 @@ public class VerticalMovementScript : MonoBehaviour
     public float maxYSpeedTimer;
     private float maxYSpeedDelay = .7f;
     private float jumpForce = 7f;
+    private bool jumpDisabled = false;
 
     [Header("Jetpack")]
     private float jetpackTotalTime = 1.0f;
@@ -80,7 +82,7 @@ public class VerticalMovementScript : MonoBehaviour
             handleJetPackTime();
         }
         checkReenableJetpack();
-        jetpackOn = jumpPressed && (!trulyOnGround) && jetpackAvailable;
+        jetpackOn = jumpPressed && (!trulyOnGround) && jetpackAvailable && !jumpDisabled;
         if (jetpackOn)
         {
             if (jetpackCurrentTime <= 0)
@@ -105,7 +107,7 @@ public class VerticalMovementScript : MonoBehaviour
             }
             handleJetPackTime();
         }
-        if (jumpPressed)
+        if (jumpPressed && !jumpDisabled)
         {
             jumpTimer = Time.time + jumpDelay;
             if (recentlyOnGround)
@@ -155,20 +157,20 @@ public class VerticalMovementScript : MonoBehaviour
 
     public void SetJetpackSprites(float direction, float verticalDirection)
     {
-        bool downPressed = verticalDirection <= -.25f;
+        bool downPressed = verticalDirection <= -.25f || jumpDisabled;
         jetpackLower.GetComponent<JetpackScript>().setJetpackDown(jetpackOn, downPressed, trulyOnGround);
         //jetpackLowerRight.GetComponent<JetpackScript>().setJetpack(jetpackOn);
-        jetpackBackwardsOn = !trulyOnGround && Mathf.Abs(direction) > 0;
+        jetpackBackwardsOn = !jumpDisabled && (!trulyOnGround && Mathf.Abs(direction) > 0);
         jetpackBackwards.GetComponent<JetpackScript>().setJetpackBack(jetpackBackwardsOn);
     }
     public void handleVerticalMovement()
     {
         //handles checks and related to vertical movement once every Update cycle
-        if (recentlyOnGround && jumpTimer > Time.time)
+        if (recentlyOnGround && jumpTimer > Time.time && !jumpDisabled)
         {
             jump();
         }
-        if (!trulyOnGround && jetpackOn)
+        if (!trulyOnGround && jetpackOn && !jumpDisabled)
         {
             float currentJetPackForce = jetPackForce;
             if (playerRigidBody.linearVelocity.y < 5)
@@ -224,5 +226,19 @@ public class VerticalMovementScript : MonoBehaviour
     public bool returnJetpackOn()
     {
         return jetpackOn;
+    }
+
+    public void disableJump()
+    {
+        jumpDisabled = true;
+    }
+    public void EnableJumpAfterDelay(float delay = .15f)
+    {
+        StartCoroutine(enableJumpAfterDelay(delay));
+    }
+    public IEnumerator enableJumpAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        jumpDisabled = false;
     }
 }
