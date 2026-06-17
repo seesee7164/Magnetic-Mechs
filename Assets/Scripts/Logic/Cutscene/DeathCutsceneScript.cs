@@ -24,7 +24,6 @@ public class DeathCutsceneScript : MonoBehaviour
         {
             imageDisplay.sprite = cutsceneImages[i];
             yield return new WaitForSeconds(1 / FPS);
-            Debug.Log(i);
         }
         imageGameObject.SetActive(false);
         tutorialAllEvents.afterCutscene();

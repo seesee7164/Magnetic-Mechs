@@ -25,7 +25,7 @@ public class AgentScript : MonoBehaviour
     {
         if (collision.gameObject.layer == 3 && allEvents!= null)
         {
-            allEvents.GetComponent<TutorialAllEvents>().AfterAgentDestroyed();
+            //allEvents.GetComponent<TutorialAllEvents>().AfterAgentDestroyed();
             Destroy(gameObject);
         }
     }

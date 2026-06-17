@@ -26,6 +26,7 @@ public class MagnetManagerScript : MonoBehaviour
     public float magnetDistance;
     public bool magnetActive = false;
     public bool attracting = false;
+    public bool magnetismDisabled = false;
     void Awake()
     {
         MagnetSpawner = GameObject.FindGameObjectWithTag("MagnetSpawner");
@@ -41,7 +42,7 @@ public class MagnetManagerScript : MonoBehaviour
     {
         if (magnetAttractionAudio != null && magnetRepulsionAudio != null)
         {
-            if (magnetSpawnerScript.magnetActive && (repelOn ^ attractOn))
+            if ((magnetSpawnerScript.magnetActive && (repelOn ^ attractOn)))
             {
                 if (repelOn)
                 {
@@ -69,6 +70,7 @@ public class MagnetManagerScript : MonoBehaviour
     {
         if (magnetAttractionAudio != null && magnetAttractionAudio.isPlaying) magnetAttractionAudio.Stop();
         if (magnetRepulsionAudio != null && magnetRepulsionAudio.isPlaying) magnetRepulsionAudio.Stop();
+        disableMagnetism();
     }
     public void setMagnetSpawnerAngle(Vector2 firingAngle)
     {
@@ -166,5 +168,14 @@ public class MagnetManagerScript : MonoBehaviour
     {
         float originalAngle = Mathf.Atan2(magnetRelativePosition.y, magnetRelativePosition.x) * Mathf.Rad2Deg;
         return playerAnimationManagerScript.convertToPolarCoordinates(originalAngle);
+    }
+
+    public void disableMagnetism()
+    {
+        magnetismDisabled = true;
+    }
+    public void enableMagnetism()
+    {
+        magnetismDisabled = false;
     }
 }
