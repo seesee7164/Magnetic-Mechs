@@ -22,6 +22,7 @@ public class LogicScript : MonoBehaviour
 
     [Header("Variables")]
     private float delayForEndScreen = 1f;
+    public bool pauseDisabled = false;
 
     //public Text remainingFuelText;
     public GameObject settingsScreen;
@@ -78,7 +79,9 @@ public class LogicScript : MonoBehaviour
     {
         gameOverScreen.SetActive(true);
     }
-    public void SetPausePressed() {
+    public void SetPausePressed() 
+    {
+        if (pauseDisabled) return;
         pausePressed = true;
     }
     public void Pause()

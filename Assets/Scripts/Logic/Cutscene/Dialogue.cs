@@ -14,6 +14,8 @@ public class Dialogue : MonoBehaviour
     private Queue<DialogueIndividualLine> dialogue;
     private float endCutsceneTime;
     private bool skipCutscene = false;
+    private VerticalMovementScript verticalMovementScript;
+    private LogicScript logicScript;
     //private bool confirmationNotSent;
     public void postHocConstructor(string title, params DialogueIndividualLine[] linesToAdd)
     {
@@ -25,6 +27,9 @@ public class Dialogue : MonoBehaviour
                 dialogue.Enqueue(line);
             }
         }
+        PlayerScript playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
+        this.verticalMovementScript = playerScript.myVerticalMovementScript;
+        this.logicScript = playerScript.logic;
     }
     public void displayDialogue(GameObject dialogueBox,GameObject dialogueText, GameObject dialogueImage, GameObject dialogueAudio, CutsceneManager cutsceneManagerScript, UnityEvent preCutsceneEvent, UnityEvent postCutsceneEvent)
     {
@@ -42,6 +47,8 @@ public class Dialogue : MonoBehaviour
         if(preCutsceneEvent != null) {
             preCutsceneEvent.Invoke();
         }
+        verticalMovementScript.disableJump();
+        logicScript.pauseDisabled = true;
         while (dialogue.Count > 0)
         {
             DialogueIndividualLine nextLine = dialogue.Dequeue();
@@ -91,6 +98,8 @@ public class Dialogue : MonoBehaviour
             postCutsceneEvent.Invoke();
         }
         dialogueBox.SetActive(false);
+        verticalMovementScript.EnableJumpAfterDelay();
+        logicScript.pauseDisabled = false;
         //dialogueText.SetActive(false);
         //dialogueImage.SetActive(false);
         //dialogueAudio.SetActive(false);
