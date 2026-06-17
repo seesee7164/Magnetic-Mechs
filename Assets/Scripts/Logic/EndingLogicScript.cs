@@ -2,12 +2,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System;
+using TMPro;
 
 public class EndingLogicScript : MonoBehaviour
 {
     [Header("Components")]
     private MultiSceneVariables multiSceneVariables;
-    public Text FullGameFinishTime;
+    public TextMeshProUGUI FullGameFinishTime;
     void Awake()
     {
         multiSceneVariables = GameObject.FindGameObjectWithTag("MultiSceneVariables").GetComponent<MultiSceneVariables>();

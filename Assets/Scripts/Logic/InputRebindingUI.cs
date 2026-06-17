@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,16 +7,16 @@ public class InputRebindingUI : MonoBehaviour {
     [SerializeField] private GameObject rebindingOverlay;
 
     [Header("UI Elements")]
-    [SerializeField] private Text moveUpButtonText;
-    [SerializeField] private Text moveDownButtonText;
-    [SerializeField] private Text moveLeftButtonText;
-    [SerializeField] private Text moveRightButtonText;
-    [SerializeField] private Text jumpButtonText;
-    [SerializeField] private Text fireButtonText;
-    [SerializeField] private Text launchMagnetButtonText;
-    [SerializeField] private Text attractButtonText;
-    [SerializeField] private Text repelButtonText;
-    [SerializeField] private Text chargeButtonText;
+    [SerializeField] private TextMeshProUGUI moveUpButtonText;
+    [SerializeField] private TextMeshProUGUI moveDownButtonText;
+    [SerializeField] private TextMeshProUGUI moveLeftButtonText;
+    [SerializeField] private TextMeshProUGUI moveRightButtonText;
+    [SerializeField] private TextMeshProUGUI jumpButtonText;
+    [SerializeField] private TextMeshProUGUI fireButtonText;
+    [SerializeField] private TextMeshProUGUI launchMagnetButtonText;
+    [SerializeField] private TextMeshProUGUI attractButtonText;
+    [SerializeField] private TextMeshProUGUI repelButtonText;
+    [SerializeField] private TextMeshProUGUI chargeButtonText;
     [SerializeField] private Toggle holdToAttractToggle;
 
     private void Start() {

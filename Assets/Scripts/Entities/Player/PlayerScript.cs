@@ -124,6 +124,11 @@ public class PlayerScript : MonoBehaviour
     void Update()
     {
         attractOn = attractButtonHeld || (holdToAttract && launchMagnetHeld);
+        if (myMagnetManagerScript.magnetismDisabled)
+        {
+            attractOn = false;
+            repelOn = false;
+        }
         if (!playerAlive || logic.IsPaused)
         {
             return;

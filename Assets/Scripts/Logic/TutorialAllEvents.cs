@@ -15,6 +15,9 @@ public class TutorialAllEvents : MonoBehaviour
     public MultiSceneVariables multiSceneVariables;
     public ControlScreenFade controlScreenFade;
     public DeathCutsceneScript deathCutsceneScript;
+    public BulletSpawnerScript bulletSpawnerScript;
+    public MagnetSpawnerScript magnetSpawnerScript;
+    public MagnetManagerScript magnetManagerScript;
 
     //[Header("Agent")]
     //public GameObject agentPrefab;
@@ -101,14 +104,6 @@ public class TutorialAllEvents : MonoBehaviour
         }
 
     }
-    //public functions
-    public void AfterAgentDestroyed()
-    {
-
-        enablePlayerMovement();
-        promptUIScript.stopIndefinitePrompt();
-        StartCoroutine(TriggerFinalCutscenePartTwo());
-    }
 
     public IEnumerator TriggerFinalCutscenePartTwo()
     {
@@ -139,16 +134,34 @@ public class TutorialAllEvents : MonoBehaviour
     {
         MagnetPrompt.SetActive(true);
     }
-
-    public void disablePlayerMovementAndPrompt()
+    public void disablePlayerActions()
     {
         disablePlayerMovement();
-        disablePrompt();
+        disablePlayerProjectiles();
+        magnetManagerScript.disableMagnetism();
     }
-    public void enablePlayerMovementAndPrompt()
+    public void disablePlayerActionsAndPrompt()
+    {
+        disablePlayerActions();
+        disablePrompt();
+
+    }
+    public void enablePlayerActionsAndPrompt()
     {
         enablePlayerMovement();
         enablePrompt();
+        enablePlayerProjectiles();
+        magnetManagerScript.enableMagnetism();
+    }
+    public void disablePlayerProjectiles()
+    {
+        bulletSpawnerScript.DisableShooting();
+        magnetSpawnerScript.DisableShooting();
+    }
+    public void enablePlayerProjectiles()
+    {
+        bulletSpawnerScript.EnableShooting();
+        magnetSpawnerScript.EnableShooting();
     }
 
     //final cutscene events
@@ -161,10 +174,13 @@ public class TutorialAllEvents : MonoBehaviour
             civilianScript.turnOnTargetingReticle();
         }
     }
-    public void spawnAgent()
+    public void AfterLastCutscenePartOne()
     {
-        AfterAgentDestroyed();
-        //GameObject agent = Instantiate(agentPrefab, new Vector3(player.transform.position.x, player.transform.position.y + agentHeight, 0), player.transform.rotation);
+        enablePlayerMovement();
+        magnetSpawnerScript.EnableShooting();
+        magnetManagerScript.enableMagnetism();
+        targetCivilians();
+        StartCoroutine(TriggerFinalCutscenePartTwo());
     }
 
     public void startKillPilotEvent()

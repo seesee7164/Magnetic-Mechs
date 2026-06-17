@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -5,11 +6,11 @@ public class PauseMenuTimerDisplayScript : MonoBehaviour
 {
     [Header("Components")]
     private MultiSceneVariables multiSceneVariables;
-    private Text myTime;
+    private TextMeshProUGUI myTime;
     void Awake()
     {
         multiSceneVariables = GameObject.FindGameObjectWithTag("MultiSceneVariables").GetComponent<MultiSceneVariables>();
-        myTime = GetComponent<Text>();
+        myTime = GetComponent<TextMeshProUGUI>();
     }
 
     void Update()
