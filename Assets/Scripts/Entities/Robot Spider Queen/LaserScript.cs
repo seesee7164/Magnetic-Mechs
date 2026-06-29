@@ -6,6 +6,7 @@ public class LaserScript : MonoBehaviour
 {
     //script for managing the robot spider queen's sweeping laser attack
     [Header("Components")]
+    public LayerMask blockInitialLaserLayers;
     public LayerMask blockLaserLayers;
     public GameObject laserSpawnMiddle;
     public GameObject laserSpawnLeft;
@@ -50,6 +51,7 @@ public class LaserScript : MonoBehaviour
         laserAngle = 0;
         explosionTimer = 0;
         //rotationSpeed = 30f;
+        blockInitialLaserLayers = LayerMask.GetMask("Ground", "Wall");
         blockLaserLayers = LayerMask.GetMask("Ground", "Player", "Wall");
         lineRendererMiddle = laserSpawnMiddle.GetComponent<LineRenderer>();
         lineRendererLeft = laserSpawnLeft.GetComponent<LineRenderer>();
@@ -143,7 +145,7 @@ public class LaserScript : MonoBehaviour
         laserPointer.enabled = true;
         laserPointer.startColor = Color.red;
         laserPointer.endColor = Color.red;
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 100, blockLaserLayers);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 100, blockInitialLaserLayers);
         if (hit.point == null)
         {
             return;

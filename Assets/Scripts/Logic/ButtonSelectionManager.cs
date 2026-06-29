@@ -23,6 +23,7 @@ public class ButtonSelectionManager : MonoBehaviour
     private List<GameObject> buttons;
     private bool isEnabled;
     public GameObject pauseEffect;
+    private LogicScript.GameMenuState currentGameMenuState;
 
     [SerializeField] private float[] pauseEffectHeights;
 
@@ -73,6 +74,7 @@ public class ButtonSelectionManager : MonoBehaviour
 
     public void SetButtonSize(int currentSelection)
     {
+        Debug.Log(currentSelection);
         if (!isEnabled) {
             return;
         }
@@ -115,7 +117,21 @@ public class ButtonSelectionManager : MonoBehaviour
                 isEnabled = false;
                 return;
         }
+        currentGameMenuState = menuState;
         currentSelection = 0;
+        SetButtonSize(currentSelection);
+    }
+    public void ResetButtonColors()
+    {
+        if (currentGameMenuState != LogicScript.GameMenuState.SETTINGS_MENU) return;
+        foreach(GameObject button in settingsButtons)
+        {
+            button.GetComponent<Image>().color= Color.white;
+        }
+    }
+    public void SetCurrentButton(int newButton)
+    {
+        currentSelection = newButton;
         SetButtonSize(currentSelection);
     }
 }
