@@ -78,7 +78,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Charge",
+                    "name": "RecoverMagnet",
                     "type": "Button",
                     "id": "88a185ce-d4ce-4480-ae7d-55c511cc9a38",
                     "expectedControlType": "",
@@ -98,17 +98,6 @@
                     "action": "Move",
                     "isComposite": true,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "9a65f789-32a0-4f18-8570-192a120d0f82",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
                 },
                 {
                     "name": "left",
@@ -153,17 +142,6 @@
                     "action": "Move",
                     "isComposite": true,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "6d609018-620d-46ce-951a-8aae2955705e",
-                    "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
                 },
                 {
                     "name": "down",
@@ -465,11 +443,11 @@
                 {
                     "name": "",
                     "id": "53ddbfeb-6733-4784-9df9-5f39e79dd8d0",
-                    "path": "<Keyboard>/f",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Charge",
+                    "action": "RecoverMagnet",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -480,7 +458,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
-                    "action": "Charge",
+                    "action": "RecoverMagnet",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

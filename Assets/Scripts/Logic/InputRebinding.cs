@@ -23,12 +23,11 @@ public class InputRebinding : MonoBehaviour {
     [SerializeField] private string launchMagnetInputActionString = "LaunchMagnet";
     [SerializeField] private string attractInputActionString = "Attract";
     [SerializeField] private string repelInputActionString = "Repel";
-    [SerializeField] private string chargeInputActionString = "Charge";
+    [SerializeField] private string recoverMagnetInputActionString = "RecoverMagnet";
 
     private bool holdToAttract = false;
 
     public enum Binding {
-        MOVE_UP,
         MOVE_DOWN,
         MOVE_LEFT,
         MOVE_RIGHT,
@@ -37,7 +36,7 @@ public class InputRebinding : MonoBehaviour {
         LAUNCH_MAGNET,
         ATTRACT,
         REPEL,
-        CHARGE
+        RECOVER_MAGNET
     }
 
     private void Awake() {
@@ -65,21 +64,17 @@ public class InputRebinding : MonoBehaviour {
         int bindingIndex = 0;
         switch (binding) {
             default:
-            case Binding.MOVE_UP:
+            case Binding.MOVE_LEFT:
                 action = playerInput.actions.FindAction(moveInputActionString);
                 bindingIndex = 1;
                 break;
-            case Binding.MOVE_LEFT:
+            case Binding.MOVE_DOWN:
                 action = playerInput.actions.FindAction(moveInputActionString);
                 bindingIndex = 2;
                 break;
-            case Binding.MOVE_DOWN:
-                action = playerInput.actions.FindAction(moveInputActionString);
-                bindingIndex = 3;
-                break;
             case Binding.MOVE_RIGHT:
                 action = playerInput.actions.FindAction(moveInputActionString);
-                bindingIndex = 4;
+                bindingIndex = 3;
                 break;
             case Binding.JUMP:
                 action = playerInput.actions.FindAction(jumpInputActionString);
@@ -96,21 +91,43 @@ public class InputRebinding : MonoBehaviour {
             case Binding.REPEL:
                 action = playerInput.actions.FindAction(repelInputActionString);
                 break;
-            case Binding.CHARGE:
-                action = playerInput.actions.FindAction(chargeInputActionString);
+            case Binding.RECOVER_MAGNET:
+                action = playerInput.actions.FindAction(recoverMagnetInputActionString);
                 break;
         }
 
         OnInputRebindingStarted?.Invoke(this, EventArgs.Empty);
+        InputBinding oldBinding = action.bindings[bindingIndex];
         playerInput.actions.FindActionMap("Player").Disable();
         action.Disable();
-        action.PerformInteractiveRebinding(bindingIndex).OnComplete(callback => {
+        action.PerformInteractiveRebinding(bindingIndex).WithCancelingThrough("<Keyboard>/Escape").OnComplete(callback => {
             callback.Dispose();
+            InputBinding newBinding = action.bindings[bindingIndex];
+            foreach (InputAction currentAction in action.actionMap.actions)
+            {
+                for(int i = 0; i < currentAction.bindings.Count; i++)
+                {
+                    if (action.Equals(currentAction) && i == bindingIndex) continue;
+                    if (currentAction.bindings[i].isComposite) continue;
+                    if (newBinding.effectivePath == currentAction.bindings[i].effectivePath)
+                    {
+                        currentAction.Disable();
+                        currentAction.ApplyBindingOverride(i, oldBinding.effectivePath);
+                        currentAction.Enable();
+                    }
+                }
+            }
             playerInput.actions.FindActionMap("Player").Enable();
             action.Enable();
             PlayerPrefs.SetString(PLAYER_PREFS_BINDING_OVERRIDES, playerInput.actions.SaveBindingOverridesAsJson());
             OnInputRebindingCompleted?.Invoke(this, EventArgs.Empty);
+        }).OnCancel(callback => {
+            callback.Dispose();
+            playerInput.actions.FindActionMap("Player").Enable();
+            action.Enable();
+            OnInputRebindingCompleted?.Invoke(this, EventArgs.Empty);
         }).Start();
+        //buttonSelectionManager.ResetButtonColors();
     }
 
     public void ResetAllBindings() {
@@ -131,14 +148,12 @@ public class InputRebinding : MonoBehaviour {
     public string GetBinding(Binding binding) {
         switch (binding) {
             default:
-            case Binding.MOVE_UP:
-                return playerInput.actions.FindAction(moveInputActionString).bindings[1].ToDisplayString();
             case Binding.MOVE_LEFT:
-                return playerInput.actions.FindAction(moveInputActionString).bindings[2].ToDisplayString();
+                return playerInput.actions.FindAction(moveInputActionString).bindings[1].ToDisplayString();
             case Binding.MOVE_DOWN:
-                return playerInput.actions.FindAction(moveInputActionString).bindings[3].ToDisplayString();
+                return playerInput.actions.FindAction(moveInputActionString).bindings[2].ToDisplayString();
             case Binding.MOVE_RIGHT:
-                return playerInput.actions.FindAction(moveInputActionString).bindings[4].ToDisplayString();
+                return playerInput.actions.FindAction(moveInputActionString).bindings[3].ToDisplayString();
             case Binding.JUMP:
                 return playerInput.actions.FindAction(jumpInputActionString).bindings[0].ToDisplayString();
             case Binding.FIRE:
@@ -149,8 +164,8 @@ public class InputRebinding : MonoBehaviour {
                 return playerInput.actions.FindAction(attractInputActionString).bindings[0].ToDisplayString();
             case Binding.REPEL:
                 return playerInput.actions.FindAction(repelInputActionString).bindings[0].ToDisplayString();
-            case Binding.CHARGE:
-                return playerInput.actions.FindAction(chargeInputActionString).bindings[0].ToDisplayString();
+            case Binding.RECOVER_MAGNET:
+                return playerInput.actions.FindAction(recoverMagnetInputActionString).bindings[0].ToDisplayString();
         }
     }
 
