@@ -94,7 +94,6 @@ public class InputRebindingUI : MonoBehaviour {
     public void RebindRecoverMagnet() {
         InputRebinding.Instance.RebindBinding(InputRebinding.Binding.RECOVER_MAGNET);
         buttonSelectionManager.SetCurrentButton(8);
-        Debug.Log("test");
     }
 
     public void ResetBindings() => InputRebinding.Instance.ResetAllBindings();

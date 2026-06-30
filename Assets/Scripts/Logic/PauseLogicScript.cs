@@ -20,6 +20,7 @@ public class PauseLogicScript : MonoBehaviour
     }
     public void ShowSettingsMenu()
     {
+        Debug.Log("PauseLogicScript:ShowSettingsMenu");
         LogicScript.logicSingleton.ShowSettingsMenu();
     }
     public void ShowPauseMenu()

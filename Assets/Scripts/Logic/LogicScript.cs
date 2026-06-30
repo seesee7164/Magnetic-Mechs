@@ -19,6 +19,7 @@ public class LogicScript : MonoBehaviour
     public GameObject gameOverScreen;
     public GameObject pauseScreen;
     private MultiSceneVariables multiSceneVariables;
+    [SerializeField] private CanvasGroup settingsCanvasGroup;
 
     [Header("Variables")]
     private float delayForEndScreen = 1f;
@@ -102,17 +103,25 @@ public class LogicScript : MonoBehaviour
     }
     public void ShowSettingsMenu()
     {
+        Debug.Log("LogicScript:ShowSettingsMenu");
         // Pause game
         Time.timeScale = 0.0f;
         //playerInput.SwitchCurrentActionMap("UI");
 
         // Show settings menu
         pauseScreen.SetActive(false);
+        settingsCanvasGroup.interactable = false;
         settingsScreen.SetActive(true);
-        
+
         // Update button selection visual
         menuState = GameMenuState.SETTINGS_MENU;
         buttonSelectionManager.SetGameMenuState(menuState);
+        StartCoroutine(EnableSettingsMenuAfterDelay());
+    }
+    private IEnumerator EnableSettingsMenuAfterDelay() {
+        yield return new WaitForEndOfFrame();
+
+        settingsCanvasGroup.interactable = true;
     }
     public void ShowPauseMenu()
     {
