@@ -27,6 +27,8 @@ public class ButtonSelectionManager : MonoBehaviour
 
     [SerializeField] private float[] pauseEffectHeights;
 
+    private int lastSelection = -1;
+
     private void Awake()
     {
         foreach (Transform child in pauseButtonParent) {
@@ -42,39 +44,59 @@ public class ButtonSelectionManager : MonoBehaviour
         SetButtonSize(currentSelection);
     }
 
+    private void Start() {
+        InputRebinding.Instance.OnInputRebindingStarted += InputRebinding_OnInputRebindingStarted;
+        InputRebinding.Instance.OnInputRebindingCompleted += InputRebinding_OnInputRebindingCompleted;
+    }
+
+    private void OnDestroy() {
+        InputRebinding.Instance.OnInputRebindingStarted -= InputRebinding_OnInputRebindingStarted;
+        InputRebinding.Instance.OnInputRebindingCompleted -= InputRebinding_OnInputRebindingCompleted;
+    }
+
+    private void Update() {
+        if (lastSelection != currentSelection) {
+            lastSelection = currentSelection;
+        }
+    }
+
     public void Move(InputAction.CallbackContext context)
     {
         if (!isEnabled) {
             return;
         }
 
-        float change = context.ReadValue<Vector2>().x - context.ReadValue<Vector2>().y;
-        if(Time.realtimeSinceStartup > readyToChange)
-        {
-            if(change > .25)
-            {
-                currentSelection += 1;
-                if(currentSelection >= buttons.Count)
-                {
-                    currentSelection = 0;
+        if (context.performed && context.ReadValue<Vector2>().magnitude > 0) {
+            float change = context.ReadValue<Vector2>().x - context.ReadValue<Vector2>().y;
+            if (Time.realtimeSinceStartup > readyToChange) {
+                if (change > .25) {
+                    currentSelection += 1;
+                    if (currentSelection >= buttons.Count) {
+                        currentSelection = 0;
+                    }
+                } else if (change < -.25) {
+                    currentSelection -= 1;
+                    if (currentSelection < 0) {
+                        currentSelection = buttons.Count - 1;
+                    }
                 }
+                readyToChange = Time.realtimeSinceStartup + delay;
+                SetButtonSize(currentSelection);
             }
-            else if (change < -.25)
-            {
-                currentSelection -= 1;
-                if (currentSelection < 0)
-                {
-                    currentSelection = buttons.Count - 1;
-                }
-            }
-            readyToChange = Time.realtimeSinceStartup + delay;
-            SetButtonSize(currentSelection);
         }
     }
 
+    private void InputRebinding_OnInputRebindingStarted(object sender, System.EventArgs e) {
+        isEnabled = false;
+    }
+
+    private void InputRebinding_OnInputRebindingCompleted(object sender, System.EventArgs e) {
+        isEnabled = true;
+    }
+
+
     public void SetButtonSize(int currentSelection)
     {
-        Debug.Log(currentSelection);
         if (!isEnabled) {
             return;
         }
