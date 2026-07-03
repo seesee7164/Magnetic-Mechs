@@ -25,6 +25,7 @@ public class ControlScreenFade : MonoBehaviour
     }
     public void setAlphaValue(float alpha)
     {
+        currAlpha = alpha;
         blackScreen.alpha = alpha;
     }
     public void startFadeInClearTime(float fadeDuration = 1.0f, float delay = 0.25f)
