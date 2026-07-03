@@ -87,6 +87,7 @@ public class LogicScript : MonoBehaviour
     }
     public void Pause()
     {
+        controlScreenFade.setAlphaValue(0.0f);
         switch (menuState) {
             case GameMenuState.PLAYING:
                 ShowPauseMenu();
