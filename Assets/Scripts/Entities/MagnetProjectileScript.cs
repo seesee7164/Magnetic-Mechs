@@ -13,6 +13,11 @@ public class MagnetProjectileScript : MonoBehaviour
     private Rigidbody2D myRigidBody;
     private bool attached;
     public MagnetSpawnerScript myMagnetSpawnerScript;
+    public GameObject player;
+    [Header("Return to Player")]
+    public bool returnToPlayer = false;
+    private float speed = 40f;
+    private float retrievalDistance = 2f;
     
     private void Awake()
     {
@@ -42,17 +47,36 @@ public class MagnetProjectileScript : MonoBehaviour
     }
     private void Update()
     {
-        if(!attached && Time.time > deathTime)
+        //if(!attached && Time.time > deathTime)
+        //{
+        //    DestroyThis();
+        //}
+    }
+    private void FixedUpdate()
+    {
+        if (returnToPlayer)
         {
-            DestroyThis();
+            Vector2 velocity = (player.transform.position - transform.position).normalized;
+            myRigidBody.linearVelocity = velocity * speed;
+            transform.right = -velocity;
+            if((player.transform.position - transform.position).magnitude <= retrievalDistance)
+            {
+                returnToPlayer = false;
+                DestroyThis();
+                myMagnetSpawnerScript.EnableShooting();
+            }
         }
+    }
+    public void FullReset()
+    {
+        capsuleCollider.enabled = true;
+        //deathTime = Time.time + 5;
+        Reset();
     }
     public void Reset()
     {
-        capsuleCollider.enabled = true;
         myRigidBody.bodyType = RigidbodyType2D.Dynamic;
         gameObject.transform.parent = null;
-        deathTime = Time.time + 5;
         attached = false;
     }
     public void DestroyThis()
@@ -94,4 +118,9 @@ public class MagnetProjectileScript : MonoBehaviour
     //    Vector2 startPos = (Vector2)transform.position - (Vector2)transform.right * .35f;
     //    Gizmos.DrawLine(startPos, startPos + (Vector2) transform.right * 1f);
     //}
+    public void RecoverMagnet()
+    {
+        Reset();
+        returnToPlayer = true;
+    }
 }
