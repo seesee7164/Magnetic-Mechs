@@ -11,7 +11,6 @@ public class MagnetManagerScript : MonoBehaviour
     public MagnetVisualEffectScript magnetVisualEffectScript;
     public Rigidbody2D playerRigidBody;
 
-
     [Header("Scripts")]
     private MagnetSpawnerScript magnetSpawnerScript;
     public PlayerAnimationManagerScript playerAnimationManagerScript;

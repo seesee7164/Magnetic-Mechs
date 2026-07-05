@@ -11,6 +11,7 @@ public class MagnetSpawnerScript : MonoBehaviour
     private float timer;
     private bool magnetDisabled = false;
     public GameObject myMagnet;
+    public MagnetProjectileScript myMagnetProjectileScript;
     public bool magnetActive;
     [Header("Components")]
     public GameObject magnetPrefab;
@@ -20,11 +21,13 @@ public class MagnetSpawnerScript : MonoBehaviour
     //private AudioSource audioBox;
 
     public GameObject player;
+    public PlayerScript playerScript;
     void Start()
     {
         timer = reloadTime;
         //audioBox = gameObject.GetComponent<AudioSource>();
         player = GameObject.FindGameObjectWithTag("Player");
+        playerScript = player.GetComponent<PlayerScript>();
         initializeMagnet();
         magnetManagerScript.setMagnet(myMagnet);
         //player.GetComponent<PlayerScript>().setMagnet(myMagnet);
@@ -33,12 +36,19 @@ public class MagnetSpawnerScript : MonoBehaviour
     private void initializeMagnet()
     {
         myMagnet = Instantiate(magnetPrefab);
-        myMagnet.GetComponent<MagnetProjectileScript>().myMagnetSpawnerScript = this;
+        myMagnetProjectileScript = myMagnet.GetComponent<MagnetProjectileScript>();
+        myMagnetProjectileScript.myMagnetSpawnerScript = this;
+        myMagnetProjectileScript.player = player;
         myMagnet.SetActive(false);
     }
     private void FixedUpdate()
     {
         timer = timer + Time.fixedDeltaTime;
+        if (playerScript.recoverMagnet && magnetActive)
+        {
+            DisableShooting();
+            myMagnetProjectileScript.RecoverMagnet();
+        }
     }
     public void Launch()
     {
@@ -50,7 +60,7 @@ public class MagnetSpawnerScript : MonoBehaviour
         if (timer < reloadTime || magnetDisabled) return;
         //GameObject magnet = Instantiate(magnetPrefab, magnetSpawnpoint.transform.position + new Vector3(0,0,-1), transform.rotation);
         magnetActive = true;
-        myMagnet.GetComponent<MagnetProjectileScript>().Reset();
+        myMagnet.GetComponent<MagnetProjectileScript>().FullReset();
         myMagnet.transform.position = magnetSpawnpoint.transform.position + new Vector3(0, 0, -1);
         myMagnet.transform.rotation = transform.rotation;
         //myMagnet.transform.Rotate(new Vector3(0, 0, 90));

@@ -42,6 +42,7 @@ public class PlayerScript : MonoBehaviour
     public bool jumpPressed;
     private bool jetpackOn;
     public bool chargePressed = false;
+    public bool recoverMagnet = false;
 
     [Header("Horizontal Movement")]
     public float direction;
@@ -172,7 +173,7 @@ public class PlayerScript : MonoBehaviour
         myVerticalMovementScript.handleVerticalMovement();
         myVerticalMovementScript.handleRemainingFuelBar();
         myMagnetManagerScript.handleMagneticRepulsion(repelOn, attractOn);
-        isCharging = myChargeScript.handleCharging(chargePressed);
+        //isCharging = myChargeScript.handleCharging(chargePressed);
         myGroundCheckScript.CheckIfStuckInGround();
     }
 
@@ -393,15 +394,15 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    public void ChargeInput(InputAction.CallbackContext context)
+    public void RecoverMagnetInput(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-            chargePressed = true;
+            recoverMagnet = true;
         }
         if (context.canceled)
         {
-            chargePressed = false;
+            recoverMagnet = false;
         }
     }
 
