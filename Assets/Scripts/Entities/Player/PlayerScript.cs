@@ -196,7 +196,6 @@ public class PlayerScript : MonoBehaviour
             jumpPressed = false;
             checkJumpInput = false;
         }
-        //Debug.Log("OnJump Activate");
     }
 
     public void OnRepel(UnityEngine.InputSystem.InputAction.CallbackContext ctx) { 

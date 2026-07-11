@@ -8,7 +8,7 @@ public class TutorialAllEvents : MonoBehaviour
     //Holds the scripts for the events which play out in cutscenes during the tutorial level
     [Header("Components")]
     public GameObject title;
-    public Queue<CivilianScript> civilianScripts;
+    public List<CivilianScript> civilianScripts;
     public GameObject[] civilians;
     public GameObject MagnetPrompt;
     public LogicScript logic;
@@ -62,10 +62,10 @@ public class TutorialAllEvents : MonoBehaviour
         //title = GameObject.FindGameObjectWithTag("TitleDrop").GetComponent<Text>();
         //title.enabled = false;
         civilians = GameObject.FindGameObjectsWithTag("Civilian");
-        civilianScripts = new Queue<CivilianScript>();
+        civilianScripts = new List<CivilianScript>();
         foreach (GameObject civilian in civilians) 
         {
-            civilianScripts.Enqueue(civilian.GetComponent<CivilianScript>());
+            civilianScripts.Add(civilian.GetComponent<CivilianScript>());
         }
         if (promptUI != null) promptUIScript = promptUI.GetComponent<PromptUIScript>();
         else Debug.Log("Can't find PromptText");

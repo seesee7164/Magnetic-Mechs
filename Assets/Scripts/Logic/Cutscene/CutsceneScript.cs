@@ -12,7 +12,7 @@ public class CutsceneScript : MonoBehaviour
     private GameObject allCutscenes;
     private bool hasNotTriggered;
     [Header("Public Variables")]
-    public string cutsceneString;
+    public int cutsceneInt;
     [Header("Components")]
     public TutorialAllCutscenes allCutscenesScript;
     public TutorialAllEvents allCutscenesEvents;
@@ -40,7 +40,7 @@ public class CutsceneScript : MonoBehaviour
             return;
         }
         allCutscenesScript = allCutscenes.GetComponent<TutorialAllCutscenes>();
-        currentDialogue = allCutscenesScript.cutscenes[cutsceneString];
+        currentDialogue = allCutscenesScript.cutscenes[cutsceneInt];
         dialogueBox = allCutscenesScript.dialogueBox;
         dialogueImage = allCutscenesScript.dialogueImage;
         dialogueText = allCutscenesScript.dialogueText;

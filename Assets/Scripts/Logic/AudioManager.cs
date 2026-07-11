@@ -21,7 +21,7 @@ public class AudioManager : MonoBehaviour
     {
         PlayerPrefs.DeleteKey("audioVolume");
         mixer = (AudioMixer) Resources.Load("AudioMixer/Volume Control");
-        allSources = FindObjectsByType<AudioSource>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        allSources = FindObjectsByType<AudioSource>(FindObjectsInactive.Include);
         sfxGroup = mixer.FindMatchingGroups("SFX")[0];
         musicGroup = mixer.FindMatchingGroups("Music")[0];
         foreach (AudioSource source in allSources)

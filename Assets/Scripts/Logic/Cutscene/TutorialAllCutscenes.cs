@@ -5,7 +5,7 @@ using UnityEngine;
 public class TutorialAllCutscenes : MonoBehaviour
 {
     //a file which holds all of the dialgoue, images and sounds used in cutscenes
-    public Dictionary<string,Dialogue> cutscenes;
+    public List<Dialogue> cutscenes;
     private Dictionary<string, string> imageLocations;
     private Dictionary<string, string> audioLocations;
     [Header("Dialogues")]
@@ -43,9 +43,9 @@ public class TutorialAllCutscenes : MonoBehaviour
             { "Player", "DialogueAudio/High-Beep" }
         };
         //set up cutscenes
-        cutscenes = new Dictionary<string, Dialogue>();
+        cutscenes = new List<Dialogue>();
 
-        //first cutscene
+        //first cutscene 0
         firstCutscene = gameObject.AddComponent<Dialogue>();
         firstCutscene.postHocConstructor(
         "First Cutscene",
@@ -55,9 +55,9 @@ public class TutorialAllCutscenes : MonoBehaviour
         new DialogueIndividualLine("Standby. Orders not understood. Hostiles are not…", imageLocations["Player"], audioLocations["Player"], 2.5f),
         new DialogueIndividualLine("Don’t make us go through this again. You proceed with my order. Do your damn job.", imageLocations["Goon"], audioLocations["General"], 2.5f)
         );
-        cutscenes.Add("First Cutscene", firstCutscene);
+        cutscenes.Add(firstCutscene);
 
-        //magnet cutscene
+        //magnet cutscene 1
         magnetCutscene = gameObject.AddComponent<Dialogue>();
         magnetCutscene.postHocConstructor(
         "Magnet Cutscene",
@@ -66,9 +66,9 @@ public class TutorialAllCutscenes : MonoBehaviour
         new DialogueIndividualLine("Get your mech to proceed. Make it happen.", imageLocations["General"], audioLocations["General"], 1.5f),
         new DialogueIndividualLine("Mech, you heard. Hurry and do it.", imageLocations["Goon"], audioLocations["General"], 2)
         );
-        cutscenes.Add("Magnet Cutscene", magnetCutscene);
+        cutscenes.Add(magnetCutscene);
 
-        //Finale Part One Cutscene
+        //Finale Part One Cutscene 2
         lastCutscenePartOne = gameObject.AddComponent<Dialogue>();
         lastCutscenePartOne.postHocConstructor(
         "Last Cutscene Part One",
@@ -79,18 +79,18 @@ public class TutorialAllCutscenes : MonoBehaviour
                 new DialogueIndividualLine("You see the hostiles? Neutralize. Now.", imageLocations["Goon"], audioLocations["General"], 2)
 
         );
-        cutscenes.Add("Last Cutscene Part One", lastCutscenePartOne);
+        cutscenes.Add(lastCutscenePartOne);
 
-        //Last Cutscene Part Two
+        //Last Cutscene Part Two 3
         lastCutscenePartTwo = gameObject.AddComponent<Dialogue>();
         lastCutscenePartTwo.postHocConstructor(
         "Last Cutscene Part Two",
         new DialogueIndividualLine("...", imageLocations["Player"], "", 2),
         new DialogueIndividualLine("... I understand.", imageLocations["Player"], audioLocations["Player"], 2)
         );
-        cutscenes.Add("Last Cutscene Part Two", lastCutscenePartTwo);
+        cutscenes.Add(lastCutscenePartTwo);
 
-        //Last Cutscene Part Three
+        //Last Cutscene Part Three 4
         lastCutscenePartThree = gameObject.AddComponent<Dialogue>();
         lastCutscenePartThree.postHocConstructor(
         "Last Cutscene Part Three",
@@ -98,9 +98,9 @@ public class TutorialAllCutscenes : MonoBehaviour
         new DialogueIndividualLine("Hostile identified. Neutralizing.", imageLocations["Player"], audioLocations["Player"], 2),
         new DialogueIndividualLine("Wait, what's this thing -", imageLocations["Goon"], audioLocations["General"], 2)
         );
-        cutscenes.Add("Last Cutscene Part Three", lastCutscenePartThree);
+        cutscenes.Add(lastCutscenePartThree);
 
-        //Last Cutscene Part Four
+        //Last Cutscene Part Four 5
         lastCutscenePartFour = gameObject.AddComponent<Dialogue>();
         lastCutscenePartFour.postHocConstructor(
         "Last Cutscene Part Four",
@@ -113,7 +113,7 @@ public class TutorialAllCutscenes : MonoBehaviour
         new DialogueIndividualLine("…", imageLocations["Player"], "", 2),
         new DialogueIndividualLine("Neutralize hostiles", imageLocations["Player"], "", 2)
         );
-        cutscenes.Add("Last Cutscene Part Four", lastCutscenePartFour);
+        cutscenes.Add(lastCutscenePartFour);
 
         ////Last Cutscene Part five
         //lastCutscenePartFive = gameObject.AddComponent<Dialogue>();

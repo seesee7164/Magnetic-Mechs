@@ -412,7 +412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f38c758913f93674b8ae18a626a61d55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  promptScript: Kill
+  promptInt: 10
   directionalArrowOrientation: 360
 --- !u!114 &162165841 stripped
 MonoBehaviour:
@@ -516,7 +516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d2e63232db8681468973a522c5f2110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cutsceneString: Last Cutscene Part One
+  cutsceneInt: 2
   allCutscenesScript: {fileID: 0}
   allCutscenesEvents: {fileID: 0}
   cutsceneManagerScript: {fileID: 0}
@@ -1075,7 +1075,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f38c758913f93674b8ae18a626a61d55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  promptScript: Drop
+  promptInt: 9
   directionalArrowOrientation: 360
 --- !u!1 &307152003
 GameObject:
@@ -2181,11 +2181,6 @@ Transform:
   - {fileID: 86418580}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &579700559 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8809830902116780432, guid: 088bdfad9b040fc48a3b78164e9cca25, type: 3}
-  m_PrefabInstance: {fileID: 1168908898}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &613465989
 GameObject:
   m_ObjectHideFlags: 0
@@ -2277,7 +2272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f38c758913f93674b8ae18a626a61d55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  promptScript: MagnetTwo
+  promptInt: 6
   directionalArrowOrientation: 360
 --- !u!1 &629255839
 GameObject:
@@ -2605,7 +2600,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f38c758913f93674b8ae18a626a61d55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  promptScript: Attract
+  promptInt: 8
   directionalArrowOrientation: 360
 --- !u!114 &683479140 stripped
 MonoBehaviour:
@@ -7903,7 +7898,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f38c758913f93674b8ae18a626a61d55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  promptScript: Jump
+  promptInt: 2
   directionalArrowOrientation: -15
 --- !u!1 &770933246
 GameObject:
@@ -8192,6 +8187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: {fileID: 1893636745}
+  civilianScripts: []
   civilians: []
   MagnetPrompt: {fileID: 1773625540}
   logic: {fileID: 0}
@@ -49991,7 +49987,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d2e63232db8681468973a522c5f2110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cutsceneString: Last Cutscene Part Four
+  cutsceneInt: 5
   allCutscenesScript: {fileID: 0}
   allCutscenesEvents: {fileID: 0}
   cutsceneManagerScript: {fileID: 0}
@@ -50196,7 +50192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f38c758913f93674b8ae18a626a61d55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  promptScript: RecoverMagnet
+  promptInt: 5
   directionalArrowOrientation: 360
 --- !u!1 &944033287
 GameObject:
@@ -53183,7 +53179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f38c758913f93674b8ae18a626a61d55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  promptScript: Shoot
+  promptInt: 1
   directionalArrowOrientation: 360
 --- !u!1 &1047835024
 GameObject:
@@ -53276,7 +53272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f38c758913f93674b8ae18a626a61d55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  promptScript: Jump
+  promptInt: 2
   directionalArrowOrientation: 30
 --- !u!1 &1129159885 stripped
 GameObject:
@@ -53374,7 +53370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d2e63232db8681468973a522c5f2110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cutsceneString: Magnet Cutscene
+  cutsceneInt: 1
   allCutscenesScript: {fileID: 0}
   allCutscenesEvents: {fileID: 0}
   cutsceneManagerScript: {fileID: 0}
@@ -53450,7 +53446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f38c758913f93674b8ae18a626a61d55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  promptScript: Move
+  promptInt: 0
   directionalArrowOrientation: 0
 --- !u!4 &1161549951
 Transform:
@@ -53519,7 +53515,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1746258738}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5968971796557104724, guid: 088bdfad9b040fc48a3b78164e9cca25, type: 3}
       propertyPath: m_Name
@@ -53527,15 +53523,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8809830902116780432, guid: 088bdfad9b040fc48a3b78164e9cca25, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 835.03894
+      value: 1052.7518
       objectReference: {fileID: 0}
     - target: {fileID: 8809830902116780432, guid: 088bdfad9b040fc48a3b78164e9cca25, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 561.5856
+      value: 557.48376
       objectReference: {fileID: 0}
     - target: {fileID: 8809830902116780432, guid: 088bdfad9b040fc48a3b78164e9cca25, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.997503
+      value: -7.140262
       objectReference: {fileID: 0}
     - target: {fileID: 8809830902116780432, guid: 088bdfad9b040fc48a3b78164e9cca25, type: 3}
       propertyPath: m_LocalRotation.w
@@ -53917,6 +53913,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17746964790a264458a1e61a3ab98117, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cutscenes: []
   dialogueBox: {fileID: 0}
   dialogueText: {fileID: 0}
   dialogueImage: {fileID: 0}
@@ -54332,7 +54329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d2e63232db8681468973a522c5f2110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cutsceneString: Last Cutscene Part Three
+  cutsceneInt: 4
   allCutscenesScript: {fileID: 0}
   allCutscenesEvents: {fileID: 0}
   cutsceneManagerScript: {fileID: 0}
@@ -78653,7 +78650,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f38c758913f93674b8ae18a626a61d55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  promptScript: Repel
+  promptInt: 7
   directionalArrowOrientation: 360
 --- !u!1 &1504446288
 GameObject:
@@ -83920,6 +83917,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eb2de2080f0cb449b5acfaaf3fa76a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prompts: []
   savedVariables: {fileID: 0}
 --- !u!4 &1674130681
 Transform:
@@ -84027,7 +84025,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f38c758913f93674b8ae18a626a61d55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  promptScript: After Jump
+  promptInt: 3
   directionalArrowOrientation: 360
 --- !u!1 &1690102246
 GameObject:
@@ -84341,7 +84339,6 @@ Transform:
   - {fileID: 1943576264}
   - {fileID: 2097441837}
   - {fileID: 1820532179}
-  - {fileID: 579700559}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1773625540
@@ -84435,7 +84432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f38c758913f93674b8ae18a626a61d55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  promptScript: MagnetOne
+  promptInt: 4
   directionalArrowOrientation: 360
 --- !u!1 &1780524917
 GameObject:
@@ -84556,7 +84553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d2e63232db8681468973a522c5f2110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cutsceneString: Last Cutscene Part Two
+  cutsceneInt: 3
   allCutscenesScript: {fileID: 0}
   allCutscenesEvents: {fileID: 0}
   cutsceneManagerScript: {fileID: 0}
@@ -85290,7 +85287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d2e63232db8681468973a522c5f2110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cutsceneString: First Cutscene
+  cutsceneInt: 0
   allCutscenesScript: {fileID: 0}
   allCutscenesEvents: {fileID: 0}
   cutsceneManagerScript: {fileID: 0}
@@ -85779,11 +85776,11 @@ PrefabInstance:
       objectReference: {fileID: 78868484}
     - target: {fileID: 8625475655797674624, guid: 3cdd95d7e7ef1014384613e394591fd9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 193.65
+      value: 31.53
       objectReference: {fileID: 0}
     - target: {fileID: 8625475655797674624, guid: 3cdd95d7e7ef1014384613e394591fd9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 22.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8625475655797674624, guid: 3cdd95d7e7ef1014384613e394591fd9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -86460,3 +86457,4 @@ SceneRoots:
   - {fileID: 558770463}
   - {fileID: 1322151735}
   - {fileID: 8906732620288849860}
+  - {fileID: 1168908898}
