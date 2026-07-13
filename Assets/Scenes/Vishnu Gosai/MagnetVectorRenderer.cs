@@ -1964,6 +1964,6 @@ public class MagnetVectorRenderer : MonoBehaviour
             }
         }
 
-        return Object.FindFirstObjectByType<MagnetSpawnerScript>();
+        return Object.FindAnyObjectByType<MagnetSpawnerScript>();
     }
 }

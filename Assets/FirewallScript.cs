@@ -31,7 +31,6 @@ public class FirewallScript : MonoBehaviour
             finishedMoving = true;
         }
         transform.localPosition = Vector2.Lerp(StartPosition, EndPosition, timer);
-        Debug.Log(timer);
         timer += Time.deltaTime * timeRate;
     }
 

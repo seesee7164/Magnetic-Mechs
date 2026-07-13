@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class SettingsButtonSelectionManager : MonoBehaviour
+public class SettingsButtonSelectionManager : ButtonSelectionParent
 {
     [Header("Components")]
     public Transform settingsButtonParent;
@@ -12,7 +12,6 @@ public class SettingsButtonSelectionManager : MonoBehaviour
     [Header("Timers")]
     private float delay = .02f;
     private float readyToChange = 0f;
-    public int currentSelection = 0;
 
     private bool isEnabled = true;
     public float displayChange;
@@ -28,7 +27,7 @@ public class SettingsButtonSelectionManager : MonoBehaviour
         SetButtonSize(currentSelection);
     }
 
-    public void SetButtonSize(int currentSelection)
+    public override void SetButtonSize(int currentSelection)
     {
         if (!isEnabled)
         {

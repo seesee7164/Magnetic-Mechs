@@ -1,11 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
+[Serializable]
+public struct StringPromptPair
+{
+    public string myString;
+    public Prompt myPrompt;
+}
 public class TutorialAllPrompts : MonoBehaviour
 {
     //holds all prompts which might appear to the player during the tutorial
-    public Dictionary<string, Prompt> prompts;
+    
+    public List<Prompt> prompts;
     private Dictionary<string, float> priorityOrder;
     public MultiSceneVariables savedVariables;
     private bool gamePadNotMouse = false;
@@ -52,6 +61,7 @@ public class TutorialAllPrompts : MonoBehaviour
     private string magnetingG = "Press Left Trigger to Shoot Magnet. Hold Right or Left Bumpers to Repel/Attract";
     private string dropG = "Move Left Joystick down to Drop Through Wooden Floors";
     private string killingPilotG = "Hold Left Trigger, Right Trigger, and A";
+
     void Awake()
     {
         //set up saved variables
@@ -62,7 +72,7 @@ public class TutorialAllPrompts : MonoBehaviour
         }
 
         //set up prompts
-        prompts = new Dictionary<string, Prompt>();
+        prompts = new List<Prompt>();
 
         //set up priority order
         priorityOrder = new Dictionary<string, float>
@@ -80,91 +90,91 @@ public class TutorialAllPrompts : MonoBehaviour
             { killPilotString, 10 }
         };
 
-        //move prompt
+        //move prompt 0
         movePrompt = gameObject.AddComponent<Prompt>();
         movePrompt.postHocConstructor(
         (gamePadNotMouse ? moveRightG : moveRightK),
         priorityOrder[firstMoveString]
         );
-        prompts.Add(firstMoveString, movePrompt);
+        prompts.Add(movePrompt);
 
-        //shooting prompt
+        //shooting prompt 1
         shootPrompt = gameObject.AddComponent<Prompt>();
         shootPrompt.postHocConstructor(
         (gamePadNotMouse ? shootingG : shootingK),
         priorityOrder[shootString]
         );
-        prompts.Add(shootString, shootPrompt);
+        prompts.Add(shootPrompt);
 
-        //jump prompt
+        //jump prompt 2
         jumpPrompt = gameObject.AddComponent<Prompt>();
         jumpPrompt.postHocConstructor(
         (gamePadNotMouse ? jumpingG : jumpingK),
         priorityOrder[jumpString]
         );
-        prompts.Add(jumpString, jumpPrompt);
-        //jump prompt
+        prompts.Add(jumpPrompt);
+        //jump prompt 3
         afterJumpPrompt = gameObject.AddComponent<Prompt>();
         afterJumpPrompt.postHocConstructor(
         afterJumpKG,
         priorityOrder[afterJumpString]
         );
-        prompts.Add(afterJumpString, afterJumpPrompt);
+        prompts.Add(afterJumpPrompt);
 
-        //magnet one prompt
+        //magnet one prompt 4
         magnetOnePrompt = gameObject.AddComponent<Prompt>();
         magnetOnePrompt.postHocConstructor(
         (gamePadNotMouse ? magnetingG : magnetingOneK),
         priorityOrder[magnetOneString]
         );
-        prompts.Add(magnetOneString, magnetOnePrompt);
+        prompts.Add(magnetOnePrompt);
 
-        //recover magnet prompt
+        //recover magnet prompt 5
         recoverMagnetPrompt = gameObject.AddComponent<Prompt>();
         recoverMagnetPrompt.postHocConstructor(
         (gamePadNotMouse ? magnetingG : recoverMagnetK),
         priorityOrder[recoverMagnetString]
         );
-        prompts.Add(recoverMagnetString, recoverMagnetPrompt);
+        prompts.Add(recoverMagnetPrompt);
 
-        //magnet two prompt
+        //magnet two prompt 6
         magnetTwoPrompt = gameObject.AddComponent<Prompt>();
         magnetTwoPrompt.postHocConstructor(
         (gamePadNotMouse ? magnetingG : magnetingTwoK),
         priorityOrder[magnetTwoString]
         );
-        prompts.Add(magnetTwoString, magnetTwoPrompt);
+        prompts.Add(magnetTwoPrompt);
 
-        //magnet repel prompt
+        //magnet repel prompt 7
         magnetRepelPrompt = gameObject.AddComponent<Prompt>();
         magnetRepelPrompt.postHocConstructor(
         (gamePadNotMouse ? magnetingG : magnetingRepelK),
         priorityOrder[magnetRepelString]
         );
-        prompts.Add(magnetRepelString, magnetRepelPrompt);
+        prompts.Add(magnetRepelPrompt);
 
-        //magnet attract prompt
+        //magnet attract prompt 8
         magnetAttractPrompt = gameObject.AddComponent<Prompt>();
         magnetAttractPrompt.postHocConstructor(
         (gamePadNotMouse ? magnetingG : magnetingAttractK),
         priorityOrder[magnetAttractString]
         );
-        prompts.Add(magnetAttractString, magnetAttractPrompt);
+        prompts.Add(magnetAttractPrompt);
 
-        //drop prompt
+        //drop prompt 9
         dropPrompt = gameObject.AddComponent<Prompt>();
         dropPrompt.postHocConstructor(
         (gamePadNotMouse ? dropG : dropK),
         priorityOrder[dropString]
         );
-        prompts.Add(dropString, dropPrompt);
+        prompts.Add(dropPrompt);
 
-        //kill pilot prompt
+        //kill pilot prompt 10
         killPilotPrompt = gameObject.AddComponent<Prompt>();
         killPilotPrompt.postHocConstructor(
         (gamePadNotMouse ? killingPilotG : killingPilotK),
         priorityOrder[killPilotString]
         );
-        prompts.Add(killPilotString, killPilotPrompt);
+        prompts.Add(killPilotPrompt);
     }
 }

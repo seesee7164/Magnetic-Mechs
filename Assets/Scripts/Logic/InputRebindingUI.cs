@@ -20,7 +20,7 @@ public class InputRebindingUI : MonoBehaviour {
     private Image currentButtonImage;
 
     [Header("Components")]
-    public ButtonSelectionManager buttonSelectionManager;
+    public ButtonSelectionParent buttonSelectionManager;
 
     private void Start() {
         InputRebinding.Instance.OnInputRebindingCompleted += InputRebinding_OnInputRebindingCompleted;

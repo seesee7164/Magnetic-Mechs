@@ -214,7 +214,7 @@ public class WallGoomechScript : GoomechScript
         if (cam == null) return true;
         Vector3 pos = cam.WorldToViewportPoint(transform.position);
         bool returnVal = pos.x >= 0 && pos.x <= 1 && pos.y >= 0 && pos.y <= 1;
-        Debug.Log($"InCamera returned {returnVal}");
+        //Debug.Log($"InCamera returned {returnVal}");
         return returnVal;
     }
 
