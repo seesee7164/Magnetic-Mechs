@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.Windows;
 
-public class ButtonSelectionManager : MonoBehaviour
+public class ButtonSelectionManager : ButtonSelectionParent
 {
     //manages selecting buttons in the menu and pause screen
     [Header("Game Objects")]
@@ -18,7 +18,6 @@ public class ButtonSelectionManager : MonoBehaviour
     [Header("Timers")]
     private float delay = .02f;
     private float readyToChange = 0f;
-    public int currentSelection = 0;
 
     private List<GameObject> buttons;
     private bool isEnabled;
@@ -95,7 +94,7 @@ public class ButtonSelectionManager : MonoBehaviour
     }
 
 
-    public void SetButtonSize(int currentSelection)
+    public override void SetButtonSize(int currentSelection)
     {
         if (!isEnabled) {
             return;
@@ -150,10 +149,5 @@ public class ButtonSelectionManager : MonoBehaviour
         {
             button.GetComponent<Image>().color= Color.white;
         }
-    }
-    public void SetCurrentButton(int newButton)
-    {
-        currentSelection = newButton;
-        SetButtonSize(currentSelection);
     }
 }

@@ -77,7 +77,7 @@ public class Dialogue : MonoBehaviour
             switch (loadedAudio)
             {
                 case null:
-                    Debug.Log("Silence");
+                    //Debug.Log("Silence");
                     break;
                 default:
                     audioBox.clip = loadedAudio;

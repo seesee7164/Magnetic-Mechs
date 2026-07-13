@@ -24,10 +24,9 @@ public class NewMonoBehaviourScript : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("test1");
         if(collision.gameObject.layer == 6)
         {
-            Debug.Log("test2");
+            //Debug.Log("test2");
             playerRigidBody.AddForce(new Vector2(horizontalForce,upwardsForce));
         }
     }

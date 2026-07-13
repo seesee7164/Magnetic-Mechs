@@ -214,12 +214,12 @@ public class TutorialAllEvents : MonoBehaviour
             Debug.Log("playerScript disappeared");
             yield break; 
         }
+        controlScreenFade.startFadeOut(1, 0);
+        yield return new WaitForSeconds(1);
         if (!playerScript.torsoFacingRight)
         {
             pilotsDeath.transform.localScale = new Vector3(pilotsDeath.transform.localScale.x * -1, pilotsDeath.transform.localScale.y, pilotsDeath.transform.localScale.z);
         }
-        controlScreenFade.startFadeOut(1, 0);
-        yield return new WaitForSeconds(1);
         pilotsDeath.GetComponent<ParticleSystem>().Play();
         pilotsDeath.GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(.01f);
