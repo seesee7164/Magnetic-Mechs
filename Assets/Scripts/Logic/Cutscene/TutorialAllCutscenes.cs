@@ -49,11 +49,11 @@ public class TutorialAllCutscenes : MonoBehaviour
         firstCutscene = gameObject.AddComponent<Dialogue>();
         firstCutscene.postHocConstructor(
         "First Cutscene",
-        new DialogueIndividualLine("Alright Ace 1, we need you to proceed and eliminate any and all hostiles in the area", imageLocations["General"], audioLocations["General"], 2.5f),
-        new DialogueIndividualLine("Maneuver the mech over and proceed with the mission. Report back upon completion, over", imageLocations["General"], audioLocations["General"], 2.5f),
-        new DialogueIndividualLine("Mech, head over to the right.", imageLocations["Goon"], audioLocations["General"], 1.5f),
-        new DialogueIndividualLine("Standby. Orders not understood. Hostiles are not…", imageLocations["Player"], audioLocations["Player"], 2.5f),
-        new DialogueIndividualLine("Don’t make us go through this again. You proceed with my order. Do your damn job.", imageLocations["Goon"], audioLocations["General"], 2.5f)
+        new DialogueIndividualLine("Alright Ace 1, we need you to proceed and eliminate any and all hostiles in the area", imageLocations["General"], audioLocations["General"], 5f),
+        new DialogueIndividualLine("Maneuver the mech over and proceed with the mission. Report back upon completion, over", imageLocations["General"], audioLocations["General"], 5f),
+        new DialogueIndividualLine("Mech, head over to the right.", imageLocations["Goon"], audioLocations["General"], 3.5f),
+        new DialogueIndividualLine("Standby. Orders not understood. Hostiles are not…", imageLocations["Player"], audioLocations["Player"], 4.5f),
+        new DialogueIndividualLine("Don’t make us go through this again. You proceed with my order. Do your damn job.", imageLocations["Goon"], audioLocations["General"], 5.5f)
         );
         cutscenes.Add(firstCutscene);
 
@@ -61,10 +61,10 @@ public class TutorialAllCutscenes : MonoBehaviour
         magnetCutscene = gameObject.AddComponent<Dialogue>();
         magnetCutscene.postHocConstructor(
         "Magnet Cutscene",
-        new DialogueIndividualLine("Mission control, we've encountered a cliff too large for our jetpacks to get over it. Next steps needed.", imageLocations["Goon"], audioLocations["General"], 3),
-        new DialogueIndividualLine("Ace 1, that mech is equipped with state of the art magnetic technology for this issue.", imageLocations["General"], audioLocations["General"], 2.5f),
-        new DialogueIndividualLine("Get your mech to proceed. Make it happen.", imageLocations["General"], audioLocations["General"], 1.5f),
-        new DialogueIndividualLine("Mech, you heard. Hurry and do it.", imageLocations["Goon"], audioLocations["General"], 2)
+        new DialogueIndividualLine("Mission control, we've encountered a cliff too large for our jetpacks to get over it. Next steps needed.", imageLocations["Goon"], audioLocations["General"], 5),
+        new DialogueIndividualLine("Ace 1, that mech is equipped with state of the art magnetic technology for this issue.", imageLocations["General"], audioLocations["General"], 5f),
+        new DialogueIndividualLine("Get your mech to proceed. Make it happen.", imageLocations["General"], audioLocations["General"], 3.5f),
+        new DialogueIndividualLine("Mech, you heard. Hurry and do it.", imageLocations["Goon"], audioLocations["General"], 3.5f)
         );
         cutscenes.Add(magnetCutscene);
 
@@ -72,11 +72,11 @@ public class TutorialAllCutscenes : MonoBehaviour
         lastCutscenePartOne = gameObject.AddComponent<Dialogue>();
         lastCutscenePartOne.postHocConstructor(
         "Last Cutscene Part One",
-        new DialogueIndividualLine("Mission control, multiple hostiles identified.", imageLocations["Goon"], audioLocations["General"], 2),
-        new DialogueIndividualLine("Excellent work, neutralize them.", imageLocations["General"], audioLocations["General"], 2),
-        new DialogueIndividualLine("But, sir, this is not right. Permission to revert course…", imageLocations["Player"], audioLocations["Player"], 2),
-        new DialogueIndividualLine("I didn’t say a damn thing about reverting course. Listen and kill, or you'll be parts for my next mech.", imageLocations["Goon"], audioLocations["General"], 4),
-                new DialogueIndividualLine("You see the hostiles? Neutralize. Now.", imageLocations["Goon"], audioLocations["General"], 2)
+        new DialogueIndividualLine("Mission control, multiple hostiles identified.", imageLocations["Goon"], audioLocations["General"], 4),
+        new DialogueIndividualLine("Excellent work, neutralize them.", imageLocations["General"], audioLocations["General"], 3),
+        new DialogueIndividualLine("But, sir, this is not right. Permission to revert course…", imageLocations["Player"], audioLocations["Player"], 4),
+        new DialogueIndividualLine("I didn’t say a damn thing about reverting course. Listen and kill, or you'll be parts for my next mech.", imageLocations["Goon"], audioLocations["General"], 5),
+                new DialogueIndividualLine("You see the hostiles? Neutralize. Now.", imageLocations["Goon"], audioLocations["General"], 3.5f)
 
         );
         cutscenes.Add(lastCutscenePartOne);
@@ -85,8 +85,8 @@ public class TutorialAllCutscenes : MonoBehaviour
         lastCutscenePartTwo = gameObject.AddComponent<Dialogue>();
         lastCutscenePartTwo.postHocConstructor(
         "Last Cutscene Part Two",
-        new DialogueIndividualLine("...", imageLocations["Player"], "", 2),
-        new DialogueIndividualLine("... I understand.", imageLocations["Player"], audioLocations["Player"], 2)
+        new DialogueIndividualLine("...", imageLocations["Player"], "", 3.5f),
+        new DialogueIndividualLine("... I understand.", imageLocations["Player"], audioLocations["Player"], 3.5f)
         );
         cutscenes.Add(lastCutscenePartTwo);
 
@@ -94,9 +94,9 @@ public class TutorialAllCutscenes : MonoBehaviour
         lastCutscenePartThree = gameObject.AddComponent<Dialogue>();
         lastCutscenePartThree.postHocConstructor(
         "Last Cutscene Part Three",
-        new DialogueIndividualLine("Damn it, my override controls are completely fried. The dumb mech’s not cooperating at all.", imageLocations["Goon"], audioLocations["General"], 3),
-        new DialogueIndividualLine("Hostile identified. Neutralizing.", imageLocations["Player"], audioLocations["Player"], 2),
-        new DialogueIndividualLine("Wait, what's this thing -", imageLocations["Goon"], audioLocations["General"], 2)
+        new DialogueIndividualLine("Damn it, my override controls are completely fried. The dumb mech’s not cooperating at all.", imageLocations["Goon"], audioLocations["General"], 5),
+        new DialogueIndividualLine("Hostile identified. Neutralizing.", imageLocations["Player"], audioLocations["Player"], 3),
+        new DialogueIndividualLine("Wait, what's this thing -", imageLocations["Goon"], audioLocations["General"], 3)
         );
         cutscenes.Add(lastCutscenePartThree);
 
@@ -106,12 +106,12 @@ public class TutorialAllCutscenes : MonoBehaviour
         "Last Cutscene Part Four",
         //new DialogueIndividualLine("AAAHHHHHHHHHHHHHHHHHH…", imageLocations["Goon"], "", 3),
         //new DialogueIndividualLine("…", imageLocations["Player"], "", 2),
-        new DialogueIndividualLine("What in the…", imageLocations["General"], audioLocations["General"], 2),
-        new DialogueIndividualLine("Ace 1… do you copy Ace 1 ? ", imageLocations["General"], audioLocations["General"], 2),
-        new DialogueIndividualLine("Pilot, do you copy? Can you copy? What is going on?", imageLocations["General"], audioLocations["General"], 2.5f),
-        new DialogueIndividualLine("Something’s wrong… we need better visuals. We have lost control…", imageLocations["General"], audioLocations["General"], 3),
-        new DialogueIndividualLine("…", imageLocations["Player"], "", 2),
-        new DialogueIndividualLine("Neutralize hostiles", imageLocations["Player"], "", 2)
+        new DialogueIndividualLine("What in the…", imageLocations["General"], audioLocations["General"], 3.5f),
+        new DialogueIndividualLine("Ace 1… do you copy Ace 1 ? ", imageLocations["General"], audioLocations["General"], 3.5f),
+        new DialogueIndividualLine("Pilot, do you copy? Can you copy? What is going on?", imageLocations["General"], audioLocations["General"], 4.5f),
+        new DialogueIndividualLine("Something’s wrong… we need better visuals. We have lost control…", imageLocations["General"], audioLocations["General"], 5),
+        new DialogueIndividualLine("…", imageLocations["Player"], "", 3),
+        new DialogueIndividualLine("Neutralize hostiles", imageLocations["Player"], "", 3)
         );
         cutscenes.Add(lastCutscenePartFour);
 

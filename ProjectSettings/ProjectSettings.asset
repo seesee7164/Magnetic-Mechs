@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: Mech Game
+  productName: Magnetic Mechs
   defaultCursor: {fileID: 2800000, guid: e5657b785911eac419f88ac599e623af, type: 3}
   cursorHotspot: {x: 10, y: 10}
   m_SplashScreenBackgroundColor: {r: 0.12156863, g: 0.12156863, b: 0.1254902, a: 1}

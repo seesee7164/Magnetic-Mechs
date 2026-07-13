@@ -3,7 +3,7 @@ using UnityEngine;
 public class LavaFloorScript : MonoBehaviour
 {
     [Header("variables")]
-    private float speed = 1.5f;
+    private float speed = 1.7f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

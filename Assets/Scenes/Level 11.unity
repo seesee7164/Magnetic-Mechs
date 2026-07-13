@@ -19822,10 +19822,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 335, y: 11}
-      - {x: -10, y: 11}
-      - {x: -10, y: -5.1}
-      - {x: 335, y: -5.1}
+    - - {x: 335, y: 10.9}
+      - {x: -10, y: 10.9}
+      - {x: -10, y: -5.2}
+      - {x: 335, y: -5.2}
   m_UseDelaunayMesh: 0
 --- !u!61 &1193151008
 BoxCollider2D:
@@ -25183,7 +25183,7 @@ Transform:
   m_GameObject: {fileID: 1973955186}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.2222214, y: 2.9000099, z: -10}
+  m_LocalPosition: {x: 4.222221, y: 2.80001, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
