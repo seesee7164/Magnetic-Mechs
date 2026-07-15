@@ -13,6 +13,7 @@ public class BulletScript : MonoBehaviour
     public int index;
     public BulletSpawnerParent bulletSpawnerParent;
     public float lifetime = 3;
+    private LayerMask blockBulletLayers;
     //private GameObject explosionEffect;
     //private Vector3 explosionOffset = new Vector3(0, .05f, 0);
 
@@ -21,6 +22,10 @@ public class BulletScript : MonoBehaviour
     void Start()
     {
         isPlatformMissile = gameObject.GetComponent<MissilePlatformManager>() != null;
+    }
+    private void Awake()
+    {
+        blockBulletLayers = LayerMask.GetMask("Player", "Enemy", "Rock");
     }
 
     // Update is called once per frame
@@ -44,7 +49,8 @@ public class BulletScript : MonoBehaviour
     {
         //GameObject effect = Instantiate(explosionEffect, transform.position + explosionOffset, Quaternion.identity);
         //Destroy(effect, effect.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
-        if(parent!= null && collision.gameObject != parent && collision.gameObject.layer != 8 && collision.gameObject.layer != 13 && collision.gameObject.layer != 14 && collision.gameObject.layer != 5)
+        //collision.gameObject.layer != 8 && collision.gameObject.layer != 13 && collision.gameObject.layer != 14 && collision.gameObject.layer != 5 && collision.gameObject.layer != 6
+        if (parent!= null && collision.gameObject != parent && (blockBulletLayers & (1 << collision.gameObject.layer)) != 0)
         {
             if (!isPlatformMissile)
             {
