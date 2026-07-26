@@ -13,6 +13,7 @@ public class MagnetSpawnerScript : MonoBehaviour
     public GameObject myMagnet;
     public MagnetProjectileScript myMagnetProjectileScript;
     public bool magnetActive;
+    public bool magnetAttached;
     [Header("Components")]
     public GameObject magnetPrefab;
     public GameObject magnetSpawnpoint;

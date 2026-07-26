@@ -77,7 +77,7 @@ public class MagnetManagerScript : MonoBehaviour
     }
     public void handleMagneticRepulsion(bool repelOn, bool attractOn)
     {
-        if (myMagnet == null || !(repelOn ^ attractOn) || !magnetSpawnerScript.magnetActive) return;
+        if (myMagnet == null || !(repelOn ^ attractOn) || !magnetSpawnerScript.magnetActive || !magnetSpawnerScript.magnetAttached) return;
         if (attractOn) attracting = true;
         else attracting = false;
         magnetRelativePosition = transform.position - myMagnet.transform.position;
