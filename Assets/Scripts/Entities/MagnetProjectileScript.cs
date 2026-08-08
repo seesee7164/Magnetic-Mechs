@@ -77,7 +77,7 @@ public class MagnetProjectileScript : MonoBehaviour
     {
         myRigidBody.bodyType = RigidbodyType2D.Dynamic;
         gameObject.transform.parent = null;
-        //attached = false;
+        myMagnetSpawnerScript.magnetAttached = false;
     }
     public void DestroyThis()
     {
@@ -91,7 +91,7 @@ public class MagnetProjectileScript : MonoBehaviour
     {
         myRigidBody.linearVelocity = Vector3.zero;
         capsuleCollider.enabled = false;
-        //attached = true;
+        myMagnetSpawnerScript.magnetAttached = true;
         //Vector2 myTransform = (Vector2) transform;
         //Vector2 startPos = (Vector2)transform.position + (Vector2) transform.right * .35f + (Vector2) transform.up * .25f;
         //RaycastHit2D hit = Physics2D.Raycast(startPos, -(Vector2)transform.up, .5f, groundLayer);

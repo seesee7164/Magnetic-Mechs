@@ -201,6 +201,7 @@ public class TutorialAllEvents : MonoBehaviour
     public IEnumerator StartCutscene()
     {
         controlScreenFade.startFadeIn(1, 0);
+        disablePlayerActions();
         yield return new WaitForSeconds(1);
         deathCutsceneScript.startPlaying();
     }
@@ -214,6 +215,8 @@ public class TutorialAllEvents : MonoBehaviour
             Debug.Log("playerScript disappeared");
             yield break; 
         }
+        enablePlayerActionsAndPrompt();
+        bulletSpawnerScript.DisableShooting();
         controlScreenFade.startFadeOut(1, 0);
         yield return new WaitForSeconds(1);
         if (!playerScript.torsoFacingRight)

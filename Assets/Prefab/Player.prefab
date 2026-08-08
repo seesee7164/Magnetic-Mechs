@@ -466,7 +466,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1519511713
   m_SortingLayer: -1
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 8274668961183575903, guid: beac48629e758f74ab19b10405fd359f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -56606,7 +56606,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1519511713
   m_SortingLayer: -1
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: -5662495556154247178, guid: beac48629e758f74ab19b10405fd359f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -57029,7 +57029,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1519511713
   m_SortingLayer: -1
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 8345279206666027734, guid: beac48629e758f74ab19b10405fd359f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -67564,6 +67564,7 @@ MonoBehaviour:
   myMagnet: {fileID: 0}
   myMagnetProjectileScript: {fileID: 0}
   magnetActive: 0
+  magnetAttached: 0
   magnetPrefab: {fileID: 4053676811272379075, guid: d16f63f48043eff49980c3ce61792598, type: 3}
   magnetSpawnpoint: {fileID: 7227881204220879007}
   magnetManagerScript: {fileID: 3560627938554875985}
@@ -72591,7 +72592,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 3219394370554855052, guid: d82077d703b0c554188c6e2dbae413f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -87750,7 +87751,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1519511713
   m_SortingLayer: -1
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7209291481614884139, guid: beac48629e758f74ab19b10405fd359f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -87934,7 +87935,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: -6058407748385119856, guid: 11c6e18b5d24f934a8ff4ddb3bc7c368, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -102758,7 +102759,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1519511713
   m_SortingLayer: -1
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: -7554178808616996167, guid: beac48629e758f74ab19b10405fd359f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

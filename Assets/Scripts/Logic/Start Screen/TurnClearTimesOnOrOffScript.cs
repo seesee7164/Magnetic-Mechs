@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using TMPro;
 
 
 public class TurnClearTimesOnOrOffScript : MonoBehaviour
@@ -8,7 +9,7 @@ public class TurnClearTimesOnOrOffScript : MonoBehaviour
     [Header("Components")]
     //public Text currentDifficultyText;
     public DifficultyScript difficultyScript;
-    public Text myText;
+    public TextMeshProUGUI myText;
     [Header("Scripts")]
     private MultiSceneVariables multiSceneVariables;
     // Start is called once before the first execution of Update after the MonoBehaviour is created

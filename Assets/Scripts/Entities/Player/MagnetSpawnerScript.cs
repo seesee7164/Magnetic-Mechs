@@ -6,13 +6,14 @@ using UnityEngine;
 public class MagnetSpawnerScript : MonoBehaviour
 {
     //script for launching the magnet from the player
-    private float LaunchForce = 35f;
+    private float LaunchForce = 50f;
     private float reloadTime = .6f;
     private float timer;
     private bool magnetDisabled = false;
     public GameObject myMagnet;
     public MagnetProjectileScript myMagnetProjectileScript;
     public bool magnetActive;
+    public bool magnetAttached;
     [Header("Components")]
     public GameObject magnetPrefab;
     public GameObject magnetSpawnpoint;

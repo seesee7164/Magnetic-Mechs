@@ -149,7 +149,7 @@ public class GoomechScript : MonoBehaviour
             TakeDamage(1, collision.transform.up.normalized, .25f);
         }
 
-        if (collision.gameObject.layer == 3 && playerTransform.GetComponent<PlayerScript>().isCharging)
+        if (collision.gameObject.layer == 3 && playerTransform!=null && playerTransform.GetComponent<PlayerScript>().isCharging)
         {
             TakeDamage(1, collision.transform.up.normalized, .25f);
         }

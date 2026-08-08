@@ -7,7 +7,7 @@ public class BulletSpawnerParent : MonoBehaviour
 {
     //the parent class for scripts which spawn bullets
     [Header("Objects")]
-    protected int maxBullets = 10;
+    protected int maxBullets = 6;
     protected GameObject muzzleEffect;
     protected GameObject[] bulletsArray;
     protected Queue<int> bulletsQueue;

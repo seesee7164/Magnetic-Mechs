@@ -63,6 +63,7 @@ public class MultiSceneVariables : MonoBehaviour
     {
         if (levelComplete || playerDead) return;
         currentLevelTime += Time.deltaTime;
+        //if(currentLevelTime >= 0.5f) setCheckPointTimer(); //comment this out to make it so dying and resetting resets timers to pre checkpoint times
         if (!startedFromLevelOne || gameComplete) return;
         fullGameTime += Time.deltaTime;
     }
@@ -70,6 +71,10 @@ public class MultiSceneVariables : MonoBehaviour
     {
         currentLevelTime = 0;
         currentLevelTimePreCheckPoint = 0;
+        tryAgainReset();
+    }
+    public void tryAgainReset()
+    {
         levelComplete = false;
         playerDead = false;
         currentLevelPreviousTime = 0;
@@ -84,7 +89,7 @@ public class MultiSceneVariables : MonoBehaviour
     }
     public void loadCheckPointTimer()
     {
-        currentLevelTime = currentLevelTimePreCheckPoint;
+        //currentLevelTime = currentLevelTimePreCheckPoint;
     }
     public float returnCurrentTime()
     {

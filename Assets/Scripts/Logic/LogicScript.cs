@@ -60,7 +60,7 @@ public class LogicScript : MonoBehaviour
         menuState = GameMenuState.PLAYING;
         Time.timeScale = 1.0f;
         //playerInput.SwitchCurrentActionMap("Player");
-        multiSceneVariables.resetTimer();
+        multiSceneVariables.tryAgainReset();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
