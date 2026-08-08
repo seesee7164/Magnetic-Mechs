@@ -73,6 +73,9 @@ TagManager:
   - name: Background Back
     uniqueID: 1607732749
     locked: 0
+  - name: Background Mid
+    uniqueID: 4090778367
+    locked: 0
   - name: Background Front
     uniqueID: 2622558571
     locked: 0
@@ -87,3 +90,4 @@ TagManager:
     locked: 0
   m_RenderingLayers:
   - Default
+  m_MigratedRenderPipelines: []

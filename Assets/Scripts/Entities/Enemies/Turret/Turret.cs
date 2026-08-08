@@ -36,12 +36,17 @@ public class Turret : BulletSpawnerParent
     {
         if (timer <= 0f && bulletsQueue.Count != 0)
         {
-            SpawnBullet();
-            SpawnMuzzleEffect();
-            audioBox.Play();
-            timer = timeBetweenShots;
+            Fire();
         }
 
         timer -= Time.fixedDeltaTime;
+    }
+
+    protected virtual void Fire()
+    {
+        SpawnBullet();
+        SpawnMuzzleEffect();
+        audioBox.Play();
+        timer = timeBetweenShots;
     }
 }

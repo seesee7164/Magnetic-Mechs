@@ -15,7 +15,11 @@ public class PauseMenuTimerDisplayScript : MonoBehaviour
 
     void Update()
     {
-        //Debug.Log("updateScript");
+        if (!multiSceneVariables.ShowTime())
+        {
+            myTime.text = "";
+            return;
+        }
         string newText = "Current Level" + System.Environment.NewLine + multiSceneVariables.returnCurrentTimeAsString();
         if (multiSceneVariables.StartedWithLevelOne())
         {

@@ -814,7 +814,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 750, y: -310}
-  m_SizeDelta: {x: 201, y: 60}
+  m_SizeDelta: {x: 309, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &76309667
 MonoBehaviour:
@@ -892,7 +892,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -6869100977615577207, guid: 6aa424b1e8cbcff49b6472fd595980a3, type: 3}
+  m_Sprite: {fileID: 4036440652818345511, guid: 9c9dd0878778eaa479fae58c87c09004, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13422,7 +13422,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 750, y: -400}
-  m_SizeDelta: {x: 147, y: 60}
+  m_SizeDelta: {x: 309, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1447290890
 MonoBehaviour:
@@ -13500,7 +13500,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -6760078510417435190, guid: 3a9166e16c08c7b4a94274590d62dfa2, type: 3}
+  m_Sprite: {fileID: 6595048628972093899, guid: c5c74a8d39c1c4046aafa748388ae245, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13798,7 +13798,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   difficultyScript: {fileID: 521464098}
-  myText: {fileID: 1237779246}
+  myText: {fileID: 900780124}
 --- !u!114 &1512299099
 MonoBehaviour:
   m_ObjectHideFlags: 0
