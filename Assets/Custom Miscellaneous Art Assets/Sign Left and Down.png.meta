@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 92df0c64df70cbd40ae9e36350015460
+guid: 4580ca511193172489173fb74ff0baf5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8606379804695185084
-    second: Alien_Civilian_0
-  - first:
-      213: 2621969771533377831
-    second: Alien_Civilian_1
+      213: 6919092653634333976
+    second: Sign Left and Down_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -54,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 96
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -103,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Alien_Civilian_0
+      name: Sign Left and Down_0
       rect:
         serializedVersion: 2
-        x: 4
+        x: 14
         y: 0
-        width: 7
-        height: 16
+        width: 68
+        height: 88
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,30 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4493c0b8a2fff8880800000000000000
-      internalID: -8606379804695185084
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Alien_Civilian_1
-      rect:
-        serializedVersion: 2
-        x: 18
-        y: 1
-        width: 11
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7212f0c8d9b136420800000000000000
-      internalID: 2621969771533377831
+      spriteID: 81da3eb0c1e850060800000000000000
+      internalID: 6919092653634333976
       vertices: []
       indices: 
       edges: []
@@ -160,8 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Alien_Civilian_0: -8606379804695185084
-      Alien_Civilian_1: 2621969771533377831
+      Sign Left and Down_0: 6919092653634333976
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -26,6 +26,7 @@ public class LaserScript : MonoBehaviour
     private float rotationSpeed;
     private float laserPointerTime;
     private float goThroughDegrees = 360f;
+    private float goneThroughDegrees = 0f;
     private float defaultDamage = .25f;
     private float defaultInvincibleTime = .1f;
     public bool laserEnabled = false;
@@ -112,16 +113,32 @@ public class LaserScript : MonoBehaviour
         {
             return;
         }
+        AdjustDirection();
         laserAngle -= rotationSpeed * Time.fixedDeltaTime;
+        goneThroughDegrees += Mathf.Abs(rotationSpeed) * Time.fixedDeltaTime;
         transform.rotation = Quaternion.Euler(Vector3.forward * laserAngle);
         explosionTimer += Time.fixedDeltaTime;
         ShootLaser(laserSpawnMiddle.GetComponent<Transform>(),lineRendererMiddle);
         ShootLaser(laserSpawnLeft.GetComponent<Transform>(),lineRendererLeft);
         ShootLaser(laserSpawnRight.GetComponent<Transform>(), lineRendererRight);
-        if (Mathf.Abs(laserAngle - startingAngle) > goThroughDegrees)
+        if (goneThroughDegrees > goThroughDegrees)
         {
             stopLaser();
         }
+    }
+    private void AdjustDirection()
+    {
+        float angleToPlayer = Mathf.Atan2(playerTransform.position.y - transform.position.y, playerTransform.position.x - transform.position.x) * Mathf.Rad2Deg;
+        //adjustedLaserAngle = 180f - Mathf.DeltaAngle
+        float deltaAngle = Mathf.DeltaAngle(laserAngle,angleToPlayer);
+        if (rotationSpeed > 0 && deltaAngle > 5f) StartCoroutine(ChangeSpeedAfterDelay(-rotationSpeed));
+        else if(rotationSpeed < 0 && deltaAngle < -5f) StartCoroutine(ChangeSpeedAfterDelay(-rotationSpeed));
+    }
+    public IEnumerator ChangeSpeedAfterDelay(float newSpeed)
+    {
+        rotationSpeed = 0f;
+        yield return new WaitForSeconds(.2f);
+        rotationSpeed = newSpeed;
     }
     //External Functions
     public void setInitialAngle()
@@ -135,7 +152,7 @@ public class LaserScript : MonoBehaviour
             float playerPositionAngle = Mathf.Atan2(relativePositionToTarget.y, relativePositionToTarget.x) * Mathf.Rad2Deg;
             int rounded = (int)Mathf.Round(playerPositionAngle / 90);
             laserAngle = (float)(rounded * 90) % 360;
-            startingAngle = laserAngle;
+            goneThroughDegrees = 0;
             transform.rotation = Quaternion.Euler(Vector3.forward * laserAngle);
             //if (playerPositionAngle > laserAngle)
             //{

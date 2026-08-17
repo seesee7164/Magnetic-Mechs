@@ -11,10 +11,13 @@ public class StartNextLevel : MonoBehaviour
     [Header("Components")]
     private MultiSceneVariables multiSceneVariables;
     private LogicScript logic;
+    private PlayerHealthScript playerHealthScript;
+
     private void Awake()
     {
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
         multiSceneVariables = GameObject.FindGameObjectWithTag("MultiSceneVariables").GetComponent<MultiSceneVariables>();
+        playerHealthScript = GameObject.FindGameObjectWithTag("PlayerHealth").GetComponent<PlayerHealthScript>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -23,6 +26,7 @@ public class StartNextLevel : MonoBehaviour
     public IEnumerator StartSpecifiedLevel()
     {
         if (multiSceneVariables != null) multiSceneVariables.FinishLevel(currentLevel);
+        if(playerHealthScript != null) playerHealthScript.invincible = true;
         logic.StartScreenFade();
         yield return new WaitForSeconds(timeToWait + logic.ReturnDelayForEndScreen());
         if (multiSceneVariables != null) multiSceneVariables.fullyRestartLevel();

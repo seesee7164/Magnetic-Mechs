@@ -7,6 +7,7 @@ public class TutorialChangeCameraScript : MonoBehaviour
     public CinemachineVirtualCamera VirtualCamera;
     public CinemachineConfiner2D Confiner;
     public Camera Camera;
+    public TutorialChangeCameraEndingScript otherChangeCameraScript;
     [Header("Variables")]
     private bool active = false;
     private bool increase;
@@ -16,12 +17,16 @@ public class TutorialChangeCameraScript : MonoBehaviour
     private float step = .1f;
     private float delay = .0075f;
     private float timer = 0f;
+    public bool overridden = false;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.layer == 3)
         {
             active = true;
             increase = true;
+            currSize = VirtualCamera.m_Lens.OrthographicSize;
+            overridden = false;
+            otherChangeCameraScript.Override();
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -37,7 +42,7 @@ public class TutorialChangeCameraScript : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (active)
+        if (active && !overridden)
         {
             if (timer > delay)
             {

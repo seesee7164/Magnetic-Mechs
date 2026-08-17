@@ -10,7 +10,7 @@ public class GoomechScript : MonoBehaviour
     [Header("Starting Behavior")]
     public bool startingBehavior = false;
     public float startingTime = 2f;
-    public float startingSpeed = 1.5f;
+    private float startingSpeed = .9f;
     public int index;
     public bool initialFaceRight = true;
 
@@ -34,6 +34,7 @@ public class GoomechScript : MonoBehaviour
     public PlayPromptScript shootingPromptScript;
     public AudioSource DeathSound;
     public GoomechSpawnerScript GoomechSpawnerScript;
+    public GameObject takeDamageWhenSpawningCollider;
 
     [Header("Sensors")]
     public float horizontalCheckLength = .65f;
@@ -102,12 +103,18 @@ public class GoomechScript : MonoBehaviour
     }
     public void SpawnBehavior()
     {
+        if (!isAlive)
+        {
+            myRigidBody2D.linearVelocity = Vector3.zero;
+            return;
+        }
         myRigidBody2D.linearVelocity = new Vector3(startingSpeed * (facingRight ? 1 : -1), myRigidBody2D.linearVelocity.y, 0);
     }
     public void startSpawnBehavior()
     {
         //starts the traits that are active for a few seconds after a goomech is spawned
         myCollider.enabled = false;
+        takeDamageWhenSpawningCollider.SetActive(true);
         myRigidBody2D.gravityScale = 0;
         startingBehavior = true;
         animator.Play("Run");
@@ -119,6 +126,7 @@ public class GoomechScript : MonoBehaviour
         //ends the traits that are active for a few seconds after a goomech is spawned
         yield return new WaitForSeconds(startingTime);
         myCollider.enabled = true;
+        takeDamageWhenSpawningCollider.SetActive(false);
         myRigidBody2D.gravityScale = 1;
         startingBehavior = false;
     }
@@ -154,7 +162,7 @@ public class GoomechScript : MonoBehaviour
             TakeDamage(1, collision.transform.up.normalized, .25f);
         }
     }
-    void TakeDamage(float Damage, Vector2 knockbackDirection, float knockback)
+    public void TakeDamage(float Damage, Vector2 knockbackDirection, float knockback)
     {
         health -= Damage;
         if (health <= 0)

@@ -25,7 +25,7 @@ public class BulletScript : MonoBehaviour
     }
     private void Awake()
     {
-        blockBulletLayers = LayerMask.GetMask("Player", "Enemy", "Rock");
+        blockBulletLayers = LayerMask.GetMask("Player", "Enemy", "Rock", "Non Damaging Enemy");
     }
 
     // Update is called once per frame
