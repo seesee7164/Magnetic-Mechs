@@ -1,13 +1,25 @@
 fileFormatVersion: 2
-guid: 92df0c64df70cbd40ae9e36350015460
+guid: 93ab0b9177b98c54f91b2833b9019b63
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8606379804695185084
-    second: Alien_Civilian_0
+      213: -6253536555896340188
+    second: Basic_Energy_Blast_Enemy_0
   - first:
-      213: 2621969771533377831
-    second: Alien_Civilian_1
+      213: -7288894022397208545
+    second: Basic_Energy_Blast_Enemy_1
+  - first:
+      213: 7826325411993849278
+    second: Basic_Energy_Blast_Enemy_2
+  - first:
+      213: 4274340873256654501
+    second: Basic_Energy_Blast_Enemy_3
+  - first:
+      213: 5951738887552670714
+    second: Basic_Energy_Blast_Enemy_4
+  - first:
+      213: -4750969625883699899
+    second: Basic_Energy_Blast_Enemy_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -54,7 +66,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 96
+  spritePixelsToUnits: 60
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -103,12 +115,34 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Alien_Civilian_0
+      name: Basic_Energy_Blast_Enemy_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 0
-        width: 7
+        x: 0
+        y: 1
+        width: 29
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42101e392a9f639a0800000000000000
+      internalID: -6253536555896340188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Basic_Energy_Blast_Enemy_1
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 2
+        width: 29
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -118,20 +152,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4493c0b8a2fff8880800000000000000
-      internalID: -8606379804695185084
+      spriteID: f18db8d3185a8da90800000000000000
+      internalID: -7288894022397208545
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Alien_Civilian_1
+      name: Basic_Energy_Blast_Enemy_2
       rect:
         serializedVersion: 2
-        x: 18
-        y: 1
-        width: 11
-        height: 15
+        x: 60
+        y: 2
+        width: 29
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,8 +174,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7212f0c8d9b136420800000000000000
-      internalID: 2621969771533377831
+      spriteID: ebd818e1f71bc9c60800000000000000
+      internalID: 7826325411993849278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Basic_Energy_Blast_Enemy_3
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 3
+        width: 29
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a65567b062815b30800000000000000
+      internalID: 4274340873256654501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Basic_Energy_Blast_Enemy_4
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 4
+        width: 31
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afb947c0cf2d89250800000000000000
+      internalID: 5951738887552670714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Basic_Energy_Blast_Enemy_5
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 1
+        width: 29
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54518860c4a211eb0800000000000000
+      internalID: -4750969625883699899
       vertices: []
       indices: 
       edges: []
@@ -160,8 +260,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Alien_Civilian_0: -8606379804695185084
-      Alien_Civilian_1: 2621969771533377831
+      Basic_Energy_Blast_Enemy_0: -6253536555896340188
+      Basic_Energy_Blast_Enemy_1: -7288894022397208545
+      Basic_Energy_Blast_Enemy_2: 7826325411993849278
+      Basic_Energy_Blast_Enemy_3: 4274340873256654501
+      Basic_Energy_Blast_Enemy_4: 5951738887552670714
+      Basic_Energy_Blast_Enemy_5: -4750969625883699899
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

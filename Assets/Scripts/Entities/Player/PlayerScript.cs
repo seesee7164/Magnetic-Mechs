@@ -58,8 +58,11 @@ public class PlayerScript : MonoBehaviour
 
     [Header("Physics")]
     public bool repelOn = false;
-    public bool attractButtonHeld = false;
     public bool attractOn = false;
+    public bool attractButtonHeld = false;
+    public bool repelButtonHeld = false;
+    public bool attractButtonMostRecent = false;
+    public bool repelButtonMostRecent = false;
     public bool holdToAttract = false;
 
     [Header("Orientation")]
@@ -124,7 +127,8 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        attractOn = attractButtonHeld || (holdToAttract && launchMagnetHeld);
+        repelOn = repelButtonHeld && !attractButtonMostRecent;
+        attractOn = (attractButtonHeld || (holdToAttract && launchMagnetHeld)) && !repelButtonMostRecent;
         if (myMagnetManagerScript.magnetismDisabled)
         {
             attractOn = false;
@@ -203,7 +207,16 @@ public class PlayerScript : MonoBehaviour
            
             lastRepelInputTime = Time.time;
         }
-        repelOn = ctx.ReadValueAsButton();
+        repelButtonHeld = ctx.ReadValueAsButton();
+        if (ctx.started)
+        {
+            repelButtonMostRecent = true;
+            attractButtonMostRecent = false;
+        }
+        if (ctx.canceled)
+        {
+            repelButtonMostRecent = false;
+        }
     }
     public void OnAttract(UnityEngine.InputSystem.InputAction.CallbackContext ctx) { 
         if (ctx.ReadValueAsButton()) {
@@ -211,6 +224,15 @@ public class PlayerScript : MonoBehaviour
             lastAttractInputTime = Time.time;
         }
         attractButtonHeld = ctx.ReadValueAsButton();
+        if (ctx.started)
+        {
+            attractButtonMostRecent = true;
+            repelButtonMostRecent = false;
+        }
+        if (ctx.canceled)
+        {
+            attractButtonMostRecent = false;
+        }
     }
 
     public void DisableMovement()
@@ -431,13 +453,15 @@ public class PlayerScript : MonoBehaviour
     }
     public void MagnetRepel(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        repelButtonHeld = context.ReadValueAsButton();
+        if (context.started)
         {
-            repelOn = true;
+            repelButtonMostRecent = true;
+            attractButtonMostRecent = false;
         }
         if (context.canceled)
         {
-            repelOn = false;
+            repelButtonMostRecent = false;
         }
         if (context.performed && myMagnetManagerScript.returnMyMagnet() != null){
             lastRepelInputTime= Time.time;
@@ -445,13 +469,15 @@ public class PlayerScript : MonoBehaviour
     }
     public void MagnetAttract(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        attractButtonHeld = context.ReadValueAsButton();
+        if (context.started)
         {
-            attractButtonHeld = true;
+            attractButtonMostRecent = true;
+            repelButtonMostRecent = false;
         }
         if (context.canceled)
         {
-            attractButtonHeld = false;
+            attractButtonMostRecent = false;
         }
         if (context.performed && myMagnetManagerScript.returnMyMagnet() != null){
             lastAttractInputTime= Time.time;

@@ -29,6 +29,7 @@ public class TutorialAllPrompts : MonoBehaviour
     private Prompt magnetRepelPrompt;
     private Prompt magnetAttractPrompt;
     private Prompt dropPrompt;
+    private Prompt redBlockPrompt;
     private Prompt killPilotPrompt;
     [Header("Prompt Input Strings")]
     private string firstMoveString = "Move";
@@ -41,6 +42,7 @@ public class TutorialAllPrompts : MonoBehaviour
     private string magnetAttractString = "Attract";
     private string magnetRepelString = "Repel";
     private string dropString = "Drop";
+    private string redBlockString = "DestroyMagnet";
     private string killPilotString = "Kill";
     [Header("Prompt Output Strings keyboard")]
     private string moveRightK = "Press \"A\" and \"D\" to move left and right";
@@ -50,9 +52,10 @@ public class TutorialAllPrompts : MonoBehaviour
     private string magnetingOneK = "Right Mouse to Shoot Magnet. Hold \"Left Shift\" to Repel";
     private string recoverMagnetK = "Press \"Q\" to recover the Magnet. You can still fire the magnet without recovering it";
     private string magnetingTwoK = "Hold \"W\" to Attract to the magnet. Release to stop. Hold space mid-air to hover";
-    private string magnetingAttractK = "Hold \"W\" to Attract. Red X Blocks will destroy the magnet if they touch it";
+    private string magnetingAttractK = "Hold \"W\" to Attract";
     private string magnetingRepelK = "Hold \"Left Shift\" to Repel";
     private string dropK = "Hold \"S\" To Drop Through Wooden Floors or to Fall Faster";
+    private string redBlock = "Red X Blocks will destroy the magnet if they touch it";
     private string killingPilotK= "Hold \"G\" + \"L\"";
     [Header("Prompt Output Strings gamePad")]
     private string moveRightG = "Use the Left Joystick to move";
@@ -86,6 +89,7 @@ public class TutorialAllPrompts : MonoBehaviour
             { magnetRepelString, 8 },
             { magnetAttractString, 9 },
             { dropString, 4 },
+            { redBlockString, 5},
             {afterJumpString, 3 },
             { killPilotString, 10 }
         };
@@ -169,7 +173,15 @@ public class TutorialAllPrompts : MonoBehaviour
         );
         prompts.Add(dropPrompt);
 
-        //kill pilot prompt 10
+        //red Block prompt 10
+        redBlockPrompt = gameObject.AddComponent<Prompt>();
+        redBlockPrompt.postHocConstructor(
+        redBlock,
+        priorityOrder[redBlockString]
+        );
+        prompts.Add(redBlockPrompt);
+
+        //kill pilot prompt 11
         killPilotPrompt = gameObject.AddComponent<Prompt>();
         killPilotPrompt.postHocConstructor(
         (gamePadNotMouse ? killingPilotG : killingPilotK),

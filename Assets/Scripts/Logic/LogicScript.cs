@@ -19,6 +19,7 @@ public class LogicScript : MonoBehaviour
     public GameObject gameOverScreen;
     public GameObject pauseScreen;
     private MultiSceneVariables multiSceneVariables;
+    private PlayerHealthScript playerHealthScript;
     [SerializeField] private CanvasGroup settingsCanvasGroup;
 
     [Header("Variables")]
@@ -44,6 +45,7 @@ public class LogicScript : MonoBehaviour
             logicSingleton = this;
         }
         multiSceneVariables = GameObject.FindGameObjectWithTag("MultiSceneVariables").GetComponent<MultiSceneVariables>();
+        playerHealthScript = GameObject.FindGameObjectWithTag("PlayerHealth").GetComponent<PlayerHealthScript>();
     }
     private void Start()
     {
@@ -166,6 +168,7 @@ public class LogicScript : MonoBehaviour
     }
     public void StartPostSpiderBossDelay()
     {
+        playerHealthScript.invincible = true;
         multiSceneVariables.FinishLevel(7);
         StartScreenFade(1.5f, 1.5f);
         float timeUntilLevelEnd = 3.25f;
@@ -179,6 +182,7 @@ public class LogicScript : MonoBehaviour
     }
     public void StartPostBeeBossDelay()
     {
+        playerHealthScript.invincible = true;
         multiSceneVariables.FinishLevel(12);
         StartScreenFade(1.5f, 1.5f);
         float timeUntilLevelEnd = 3.25f;

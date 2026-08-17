@@ -60,7 +60,7 @@ TagManager:
   - FireWall
   - Platform Turret
   - Magnet
-  - 
+  - Non Damaging Enemy
   - 
   - 
   - 
@@ -87,6 +87,9 @@ TagManager:
     locked: 0
   - name: In Front
     uniqueID: 1178452379
+    locked: 0
+  - name: UI
+    uniqueID: 24938811
     locked: 0
   m_RenderingLayers:
   - Default
