@@ -162,7 +162,7 @@ public class GroundCheckScript : MonoBehaviour
         if (inGround)
         {
             inGroundTimer += Time.deltaTime;
-            if (inGroundTimer >= inGroundKillTime) playerHealthScript.HandlePlayerDeath();
+            if (inGroundTimer >= inGroundKillTime) playerHealthScript.HandlePlayerDeath(true);
         }
         else inGroundTimer = 0;
     }

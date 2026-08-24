@@ -44,7 +44,7 @@ public class PlayerHealthScript : MonoBehaviour
         Player = GameObject.FindGameObjectWithTag("Player");
         if(Player!=null) playerScript = Player.GetComponent<PlayerScript>();
     }
-    public void takeDamage(float Damage, Vector2 knockbackDirection, float knockback = 0, float invincibilityTime = invincibilityTimeDefault)
+    public void takeDamage(float Damage, Vector2 knockbackDirection, float knockback = 0, float invincibilityTime = invincibilityTimeDefault, bool DeathPit = false)
     {
         if(playerScript==null)
         {
@@ -53,31 +53,32 @@ public class PlayerHealthScript : MonoBehaviour
         }
         if (!invincible)
         {
-            StartCoroutine(handleDamage(Damage, invincibilityTime));
+            StartCoroutine(handleDamage(Damage, invincibilityTime, DeathPit));
+            if (DeathPit && Damage >= currentHealth) return;
             StartCoroutine(playerScript.handleKnockback(knockback, knockbackDirection));
         }
     }
-    IEnumerator handleDamage(float Damage, float invincibilityTime)
+    IEnumerator handleDamage(float Damage, float invincibilityTime, bool DeathPit)
     {
         invincible = true;
-        loseHealth(Damage);
+        loseHealth(Damage, DeathPit);
         yield return new WaitForSeconds(invincibilityTime);
         invincible = false;
     }
-    private void loseHealth(float Damage)
+    private void loseHealth(float Damage, bool DeathPit)
     {
         currentHealth -= Damage;
         if (currentHealth <= 0)
         {
-            HandlePlayerDeath();
+            HandlePlayerDeath(DeathPit);
         }
         HealthSystem.GetComponent<HealthHeartScript>().UpdateHeartsHUD();
     }
-    public void HandlePlayerDeath()
+    public void HandlePlayerDeath(bool DeathPit = false)
     {
         currentHealth = 0;
         savedVariables.playerKilled();
-        playerScript.KillPlayer();
+        playerScript.KillPlayer(DeathPit);
         Logic.GameOver();
     }
     public float getMaxHealth()

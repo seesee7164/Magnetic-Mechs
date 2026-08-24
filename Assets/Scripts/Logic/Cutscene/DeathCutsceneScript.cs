@@ -18,7 +18,6 @@ public class DeathCutsceneScript : MonoBehaviour
     }
     public IEnumerator startPlayingCoroutine()
     {
-        //Debug.Log("it Worked");
         imageGameObject.SetActive(true);
         for (int i = 0; i < cutsceneImages.Length; i++)
         {
