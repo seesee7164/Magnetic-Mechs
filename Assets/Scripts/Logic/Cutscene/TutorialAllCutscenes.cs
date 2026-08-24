@@ -32,6 +32,7 @@ public class TutorialAllCutscenes : MonoBehaviour
         {
             { "General", "DialogueImages/High_Command" },
             { "Player", "DialogueImages/PlayerImage" },
+            { "PlayerRed", "DialogueImages/PlayerImageRed" },
             { "Goon", "DialogueImages/Goon" },
             { "DeadGoon", "DialogueImages/Dead_Goon" },
 
@@ -52,7 +53,7 @@ public class TutorialAllCutscenes : MonoBehaviour
         new DialogueIndividualLine("Alright Ace 1, we need you to proceed and eliminate any and all hostiles in the area", imageLocations["General"], audioLocations["General"], 5f),
         new DialogueIndividualLine("Maneuver the mech over and proceed with the mission. Report back upon completion, over", imageLocations["General"], audioLocations["General"], 5f),
         new DialogueIndividualLine("Mech, head over to the right.", imageLocations["Goon"], audioLocations["General"], 3.5f),
-        new DialogueIndividualLine("Standby. Orders not understood. Hostiles are not…", imageLocations["Player"], audioLocations["Player"], 4.5f),
+        new DialogueIndividualLine("Standby. Orders not understood. Hostiles are not…", imageLocations["PlayerRed"], audioLocations["Player"], 4.5f),
         new DialogueIndividualLine("Don’t make us go through this again. You proceed with my order. Do your damn job.", imageLocations["Goon"], audioLocations["General"], 5.5f)
         );
         cutscenes.Add(firstCutscene);
@@ -74,7 +75,7 @@ public class TutorialAllCutscenes : MonoBehaviour
         "Last Cutscene Part One",
         new DialogueIndividualLine("Mission control, multiple hostiles identified.", imageLocations["Goon"], audioLocations["General"], 4),
         new DialogueIndividualLine("Excellent work, neutralize them.", imageLocations["General"], audioLocations["General"], 3),
-        new DialogueIndividualLine("But, sir, this is not right. Permission to revert course…", imageLocations["Player"], audioLocations["Player"], 4),
+        new DialogueIndividualLine("But, sir, this is not right. Permission to revert course…", imageLocations["PlayerRed"], audioLocations["Player"], 4),
         new DialogueIndividualLine("I didn’t say a damn thing about reverting course. Listen and kill, or you'll be parts for my next mech.", imageLocations["Goon"], audioLocations["General"], 5),
                 new DialogueIndividualLine("You see the hostiles? Neutralize. Now.", imageLocations["Goon"], audioLocations["General"], 3.5f)
 
@@ -85,8 +86,8 @@ public class TutorialAllCutscenes : MonoBehaviour
         lastCutscenePartTwo = gameObject.AddComponent<Dialogue>();
         lastCutscenePartTwo.postHocConstructor(
         "Last Cutscene Part Two",
-        new DialogueIndividualLine("...", imageLocations["Player"], "", 3.5f),
-        new DialogueIndividualLine("... I understand.", imageLocations["Player"], audioLocations["Player"], 3.5f)
+        new DialogueIndividualLine("...", imageLocations["PlayerRed"], "", 3.5f),
+        new DialogueIndividualLine("... I understand.", imageLocations["PlayerRed"], audioLocations["Player"], 3.5f)
         );
         cutscenes.Add(lastCutscenePartTwo);
 
@@ -95,7 +96,7 @@ public class TutorialAllCutscenes : MonoBehaviour
         lastCutscenePartThree.postHocConstructor(
         "Last Cutscene Part Three",
         new DialogueIndividualLine("Damn it, my override controls are completely fried. The dumb mech’s not cooperating at all.", imageLocations["Goon"], audioLocations["General"], 5),
-        new DialogueIndividualLine("Hostile identified. Neutralizing.", imageLocations["Player"], audioLocations["Player"], 3),
+        new DialogueIndividualLine("Hostile identified. Neutralizing.", imageLocations["PlayerRed"], audioLocations["Player"], 3),
         new DialogueIndividualLine("Wait, what's this thing -", imageLocations["Goon"], audioLocations["General"], 3)
         );
         cutscenes.Add(lastCutscenePartThree);

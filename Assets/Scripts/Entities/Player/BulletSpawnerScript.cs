@@ -12,6 +12,7 @@ public class BulletSpawnerScript : BulletSpawnerParent
     private float reloadTime = .55f;
     private float timer;
     private bool shootingDisabled = false;
+    public bool red;
     [Header("Components")]
     //public GameObject bulletPrefab;
     //public GameObject MuzzlePrefab;
@@ -28,6 +29,7 @@ public class BulletSpawnerScript : BulletSpawnerParent
         player = GameObject.FindGameObjectWithTag("Player");
         parentObject = player;
         SetUpGameObjects();
+        if(red) ChangeToRed();
     }
     private void FixedUpdate()
     {
@@ -56,5 +58,24 @@ public class BulletSpawnerScript : BulletSpawnerParent
     {
         shootingDisabled = false;
     }
-
+    public void ChangeToRed()
+    {
+        red = true;
+        if (muzzleEffect == null || bulletsArray[0] == null) return;
+        muzzleEffect.GetComponent<MuzzleScript>().ChangeToRed();
+        for (int i = 0; i < maxBullets; i++)
+        {
+            bulletsArray[i].GetComponent<BulletScript>().ChangeToRed();
+        }
+    }
+    public void ChangeToBlue()
+    {
+        red = false;
+        if (muzzleEffect == null || bulletsArray[0] == null) return;
+        muzzleEffect.GetComponent<MuzzleScript>().ChangeToBlue();
+        for (int i = 0; i < maxBullets; i++)
+        {
+            bulletsArray[i].GetComponent<BulletScript>().ChangeToBlue();
+        }
+    }
 }

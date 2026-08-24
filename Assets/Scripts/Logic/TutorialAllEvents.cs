@@ -18,6 +18,7 @@ public class TutorialAllEvents : MonoBehaviour
     public BulletSpawnerScript bulletSpawnerScript;
     public MagnetSpawnerScript magnetSpawnerScript;
     public MagnetManagerScript magnetManagerScript;
+    public ChangeMechColorScript changeMechColorScript;
 
     //[Header("Agent")]
     //public GameObject agentPrefab;
@@ -217,6 +218,7 @@ public class TutorialAllEvents : MonoBehaviour
         }
         enablePlayerActionsAndPrompt();
         bulletSpawnerScript.DisableShooting();
+        changeMechColorScript.ChangeToBlue();
         controlScreenFade.startFadeOut(1, 0);
         yield return new WaitForSeconds(1);
         if (!playerScript.torsoFacingRight)

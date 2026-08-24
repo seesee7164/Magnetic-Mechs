@@ -174,8 +174,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
-  index: 0
   bulletSpawnerParent: {fileID: 0}
+  animator: {fileID: 4532694132482238415}
+  index: 0
   lifetime: 3
   isPlatformMissile: 0
 --- !u!95 &4532694132482238415

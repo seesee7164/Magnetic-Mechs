@@ -30,13 +30,13 @@ public class JetpackScript : MonoBehaviour
             if (jetpackOn)
             {
                 //full jetpack
-                transform.localPosition = new Vector3(0, defaultPosition, 0);
+                transform.localPosition = new Vector3(-.07f, defaultPosition, 0);
                 transform.localScale = new Vector3(defaultHeight, defaultWidth, 1);
             }
             else
             {
                 //half jetpack
-                transform.localPosition = new Vector3(0, modifiedPosition, 0);
+                transform.localPosition = new Vector3(-.07f, modifiedPosition, 0);
                 transform.localScale = new Vector3(defaultHeight / 2, defaultWidth, 1);
             }
         }

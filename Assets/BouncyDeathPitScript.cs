@@ -31,7 +31,7 @@ public class BouncyDeathPitScript : MonoBehaviour
     {
         if (playerScript != null)
         {
-            playerScript.DamagePlayer(defaultDamage, new Vector2(0, 1), knockbackStrength, defaultInvincibleTime);
+            playerScript.DamagePlayer(defaultDamage, new Vector2(0, 1), knockbackStrength, defaultInvincibleTime, true);
         }
     }
 }

@@ -87,7 +87,6 @@ public class PlayerScript : MonoBehaviour
     public float lastAttractInputTime = -10f;
     public bool checkMovementInput = false;
     public bool checkJumpInput = false;
-
     private void Awake()
     {
         myRigidbody2D = GetComponent<Rigidbody2D>();
@@ -263,9 +262,9 @@ public class PlayerScript : MonoBehaviour
         }
     }
     
-    public void DamagePlayer(float Damage, Vector2 knockbackDirection, float knockback = 0, float invincibilityTime = invincibilityTimeDefault)
+    public void DamagePlayer(float Damage, Vector2 knockbackDirection, float knockback = 0, float invincibilityTime = invincibilityTimeDefault, bool DeathPit = false)
     {
-        healthScript.takeDamage(Damage, knockbackDirection, knockback,invincibilityTime);
+        healthScript.takeDamage(Damage, knockbackDirection, knockback,invincibilityTime, DeathPit);
     }
     private void OnCollisionStay2D(Collision2D collision)
     {
@@ -288,7 +287,7 @@ public class PlayerScript : MonoBehaviour
             if (collision.gameObject.layer == 12) // death pit
             {
                 //Vector2 relativePosition = transform.position - collision.transform.position;
-                DamagePlayer(16, new Vector2(0, 0));
+                DamagePlayer(16, new Vector2(0, 0),0,0,true);
             }
             if (collision.gameObject.layer == 19) // spike
             {
@@ -352,13 +351,18 @@ public class PlayerScript : MonoBehaviour
         playerAnimationManagerScript.setAllSpritesColor(Color.white);
     }
 
-    public void KillPlayer()
+    public void KillPlayer(bool DeathPit = false)
     {
         if (!playerAlive) return;
         playerAlive = false;
         //TODO dying stuff
         //animator.SetBool("hasDied", true);
         playerAnimationManagerScript.startDeath();
+        if (DeathPit)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
         DeathAnimation.SetActive(true);
         myRigidbody2D.linearVelocity = new Vector3(0, 0, 0);
         myRigidbody2D.gravityScale = 1.5f;

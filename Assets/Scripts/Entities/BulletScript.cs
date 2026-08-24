@@ -10,10 +10,13 @@ public class BulletScript : MonoBehaviour
     private float startCollidingTime;
     [Header("Components")]
     public GameObject parent;
-    public int index;
     public BulletSpawnerParent bulletSpawnerParent;
+    public Animator animator;
+    [Header("Variable")]
+    public int index;
     public float lifetime = 3;
     private LayerMask blockBulletLayers;
+    private bool isRed = false;
     //private GameObject explosionEffect;
     //private Vector3 explosionOffset = new Vector3(0, .05f, 0);
 
@@ -26,6 +29,7 @@ public class BulletScript : MonoBehaviour
     private void Awake()
     {
         blockBulletLayers = LayerMask.GetMask("Player", "Enemy", "Rock", "Non Damaging Enemy");
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -52,7 +56,6 @@ public class BulletScript : MonoBehaviour
         //collision.gameObject.layer != 8 && collision.gameObject.layer != 13 && collision.gameObject.layer != 14 && collision.gameObject.layer != 5 && collision.gameObject.layer != 6
         if (parent!= null && collision.gameObject.layer != parent.layer && (blockBulletLayers & (1 << collision.gameObject.layer)) != 0)
         {
-            Debug.Log("test");
             if (!isPlatformMissile)
             {
                 KillBullet();
@@ -79,5 +82,19 @@ public class BulletScript : MonoBehaviour
         }
 
         gameObject.SetActive(false);
+    }
+    private void OnEnable()
+    {
+        animator.SetBool("Red", isRed);
+    }
+    public void ChangeToBlue()
+    {
+        isRed = false;
+        animator.SetBool("Red", isRed);
+    }
+    public void ChangeToRed()
+    {
+        isRed = true;
+        animator.SetBool("Red", isRed);
     }
 }

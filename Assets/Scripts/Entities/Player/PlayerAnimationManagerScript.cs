@@ -52,7 +52,9 @@ public class PlayerAnimationManagerScript : MonoBehaviour
     }
     public void flipLegs(bool facingRight)
     {
+        legSprite.flipX = !facingRight;
         legGameObjectParent.transform.rotation = Quaternion.Euler(0, facingRight ? 0 : 180, 0);
+        //legGameObjectParent.transform.position = new Vector3(facingRight ? 0 : 180, 0, 0);
     }
     public bool setFiringAngle(float originalAngle)
     {
@@ -174,5 +176,23 @@ public class PlayerAnimationManagerScript : MonoBehaviour
     public void startDeath()
     {
         this.gameObject.SetActive(false);
+    }
+    public void turnFrontArmBlue()
+    {
+        Sprite[] ArmSprites = Resources.LoadAll<Sprite>("PlayerAssets/Player_Gun_Rotation_Front_Arm");
+        frontDownArm.GetComponent<SpriteRenderer>().sprite = ArmSprites[0];
+        frontDownForwardArm.GetComponent<SpriteRenderer>().sprite = ArmSprites[1];
+        frontForwardArm.GetComponent<SpriteRenderer>().sprite = ArmSprites[2];
+        frontUpForwardArm.GetComponent<SpriteRenderer>().sprite = ArmSprites[3];
+        frontUpArm.GetComponent<SpriteRenderer>().sprite = ArmSprites[4];
+    }
+    public void turnFrontArmRed()
+    {
+        Sprite[] ArmSprites = Resources.LoadAll<Sprite>("PlayerAssets/Player_Gun_Rotation_Front_Arm_Red");
+        frontDownArm.GetComponent<SpriteRenderer>().sprite = ArmSprites[0];
+        frontDownForwardArm.GetComponent<SpriteRenderer>().sprite = ArmSprites[1];
+        frontForwardArm.GetComponent<SpriteRenderer>().sprite = ArmSprites[2];
+        frontUpForwardArm.GetComponent<SpriteRenderer>().sprite = ArmSprites[3];
+        frontUpArm.GetComponent<SpriteRenderer>().sprite = ArmSprites[4];
     }
 }
