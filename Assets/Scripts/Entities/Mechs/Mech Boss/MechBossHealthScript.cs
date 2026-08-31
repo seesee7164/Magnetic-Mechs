@@ -9,18 +9,18 @@ public class MechBossHealthScript : MonoBehaviour
     //script for managing the players health
     [Header("Components")]
     public GameObject Mech;
-    private MechActionsScript mechActionsScript;
+    public MechActionsScript mechActionsScript;
     [Header("Health")]
     public float currentHealth;
     private float maxHealth = 30;
     [Header("Invincibility")]
-    const float invincibilityTimeDefault = .5f;
+    const float invincibilityTimeDefault = .2f;
     public bool invincible;
     private void Awake()
     {
         currentHealth = maxHealth;
         invincible = false;
-        if (Mech != null) mechActionsScript = Mech.GetComponent<MechActionsScript>();
+        if (Mech != null) mechActionsScript = Mech.GetComponent<MechBossActionsScript>();
     }
     public void takeDamage(float Damage, Vector2 knockbackDirection, float knockback = 0, float invincibilityTime = invincibilityTimeDefault, bool DeathPit = false)
     {

@@ -22,9 +22,6 @@ public class PlayerScript : MechActionsScript
     [Header("Logic")]
     public bool gamePadNotMouse = false;
 
-    [Header("Damage")]
-    const float invincibilityTimeDefault = .5f;
-
     [Header("Orientation")]
     public Camera virtualCamera;
     public Vector2 mousePosition;
@@ -155,7 +152,7 @@ public class PlayerScript : MechActionsScript
     {
         if (!isCharging)
         {
-            if (collision.gameObject.layer == 7) // enemy
+            if (collision.gameObject.layer == 7 || collision.gameObject.layer == 24) // enemy
             {
                 Vector2 relativePosition = transform.position - collision.transform.position;
                 float knockbackVal = 1;

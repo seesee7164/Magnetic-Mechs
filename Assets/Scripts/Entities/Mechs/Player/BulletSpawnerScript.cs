@@ -15,8 +15,8 @@ public class BulletSpawnerScript : BulletSpawnerParent
     public bool red;
     [Header("MechBoss")]
     public bool isMechBoss = false;
-    private float mechBossReloadTime = 1.15f;
-    private float mechBossBulletForce = 27f;
+    private float mechBossReloadTime = 1.25f;
+    private float mechBossBulletForce = 23f;
     [Header("Components")]
     //public GameObject bulletPrefab;
     //public GameObject MuzzlePrefab;

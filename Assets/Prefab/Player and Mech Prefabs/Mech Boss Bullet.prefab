@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5815564197955757944}
   - component: {fileID: 4532694132482238415}
   - component: {fileID: 3053057110036345114}
-  m_Layer: 24
+  m_Layer: 13
   m_Name: Mech Boss Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -212,7 +212,7 @@ GameObject:
   - component: {fileID: 8037222844173996654}
   - component: {fileID: 8504365110481933738}
   - component: {fileID: 572995904065785797}
-  m_Layer: 24
+  m_Layer: 13
   m_Name: Bullet Rear Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
