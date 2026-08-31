@@ -1,4 +1,4 @@
-using Cinemachine;
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class CheckpointScript : MonoBehaviour
@@ -6,7 +6,7 @@ public class CheckpointScript : MonoBehaviour
     [Header("Components")]
     private MultiSceneVariables multiSceneVariables;
     private GameObject player;
-    public CinemachineVirtualCamera virtualCamera;
+    public CinemachineCamera virtualCamera;
     private PlayerHealthScript playerHealthScript;
     private AudioSource myAudioSource;
     [Header("variable")]

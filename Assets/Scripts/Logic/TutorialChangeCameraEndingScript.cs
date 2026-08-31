@@ -1,17 +1,17 @@
-using Cinemachine;
+using Unity.Cinemachine;
 using System.Collections;
 using UnityEngine;
 public class TutorialChangeCameraEndingScript : MonoBehaviour
 {
     [Header("Components")]
-    public CinemachineVirtualCamera VirtualCamera;
+    public CinemachineCamera VirtualCamera;
     public CinemachineConfiner2D Confiner;
     public Transform originalCameraTarget;
     public Camera Camera;
     public Transform target;
     public Transform playerTransform;
     public Transform alienTransform;
-    private CinemachineTransposer virtualTransposer;
+    private CinemachineFollow virtualTransposer;
     public TutorialChangeCameraScript otherChangeCameraScript;
     [Header("Variables")]
     private bool active = false;
@@ -40,7 +40,7 @@ public class TutorialChangeCameraEndingScript : MonoBehaviour
             currentSpeed = baseSpeed;
             overridden = false;
             otherChangeCameraScript.overridden = true;
-            currSize = VirtualCamera.m_Lens.OrthographicSize;
+            currSize = VirtualCamera.Lens.OrthographicSize;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -54,7 +54,7 @@ public class TutorialChangeCameraEndingScript : MonoBehaviour
     private void Awake()
     {
         currSize = originalSize;
-        virtualTransposer = VirtualCamera.GetCinemachineComponent<CinemachineTransposer>();
+        virtualTransposer = VirtualCamera.GetComponent<CinemachineFollow>();
     }
     private void FixedUpdate()
     {
@@ -67,9 +67,9 @@ public class TutorialChangeCameraEndingScript : MonoBehaviour
                 if ((decrease && currSize >= smallSize) || (!decrease && currSize <= originalSize))
                 {
                     currSize += (decrease ? (-1.2f * step) : step);
-                    VirtualCamera.m_Lens.OrthographicSize = currSize;
+                    VirtualCamera.Lens.OrthographicSize = currSize;
                     Camera.orthographicSize = currSize;
-                    Confiner.InvalidateCache();
+                    Confiner.InvalidateBoundingShapeCache();
                 }
                 if (returnToPlayer) ReturnCameraToPlayer();
                 timer = 0f;
