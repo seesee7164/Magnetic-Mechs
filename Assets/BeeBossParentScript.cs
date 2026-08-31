@@ -1,4 +1,4 @@
-using Cinemachine;
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class BeeBossParentScript : MonoBehaviour
@@ -6,7 +6,7 @@ public class BeeBossParentScript : MonoBehaviour
     [Header("components")]
     public BeeBossScript beeBossScript;
     private Rigidbody2D myRigidbody2D;
-    public CinemachineVirtualCamera myVirtualCamera;
+    public CinemachineCamera myVirtualCamera;
     public CeilingLaserScript ceilingLaserScript;
     public RockSpawnerScript rockSpawnerScript;
     public DroneRespawnerScript droneRespawnerScript;

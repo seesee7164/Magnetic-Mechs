@@ -1,10 +1,10 @@
-using Cinemachine;
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class TutorialChangeCameraScript : MonoBehaviour
 {
     [Header("Components")]
-    public CinemachineVirtualCamera VirtualCamera;
+    public CinemachineCamera VirtualCamera;
     public CinemachineConfiner2D Confiner;
     public Camera Camera;
     public TutorialChangeCameraEndingScript otherChangeCameraScript;
@@ -24,7 +24,7 @@ public class TutorialChangeCameraScript : MonoBehaviour
         {
             active = true;
             increase = true;
-            currSize = VirtualCamera.m_Lens.OrthographicSize;
+            currSize = VirtualCamera.Lens.OrthographicSize;
             overridden = false;
             otherChangeCameraScript.Override();
         }
@@ -50,9 +50,9 @@ public class TutorialChangeCameraScript : MonoBehaviour
                 {
                     timer = 0f;
                     currSize += (increase ? step : (-1.5f * step));
-                    VirtualCamera.m_Lens.OrthographicSize = currSize;
+                    VirtualCamera.Lens.OrthographicSize = currSize;
                     Camera.orthographicSize = currSize;
-                    Confiner.InvalidateCache();
+                    Confiner.InvalidateBoundingShapeCache();
                 }
             }
             else

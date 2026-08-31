@@ -16,7 +16,6 @@ public class BulletScript : MonoBehaviour
     public int index;
     public float lifetime = 3;
     private LayerMask blockBulletLayers;
-    private bool isRed = false;
     //private GameObject explosionEffect;
     //private Vector3 explosionOffset = new Vector3(0, .05f, 0);
 
@@ -28,7 +27,7 @@ public class BulletScript : MonoBehaviour
     }
     private void Awake()
     {
-        blockBulletLayers = LayerMask.GetMask("Player", "Enemy", "Rock", "Non Damaging Enemy");
+        blockBulletLayers = LayerMask.GetMask("Player", "Enemy", "Rock", "Non Damaging Enemy", "Enemy Mech Boss");
         animator = GetComponent<Animator>();
     }
 
@@ -82,19 +81,5 @@ public class BulletScript : MonoBehaviour
         }
 
         gameObject.SetActive(false);
-    }
-    private void OnEnable()
-    {
-        animator.SetBool("Red", isRed);
-    }
-    public void ChangeToBlue()
-    {
-        isRed = false;
-        animator.SetBool("Red", isRed);
-    }
-    public void ChangeToRed()
-    {
-        isRed = true;
-        animator.SetBool("Red", isRed);
     }
 }
