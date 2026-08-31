@@ -42,7 +42,7 @@ public class MechActionsScript : MonoBehaviour
 
     [Header("Damage")]
     protected float knockbackTime = 0.25f;
-    const float invincibilityTimeDefault = .5f;
+    protected const float invincibilityTimeDefault = .5f;
 
     [Header("Physics")]
     public bool repelOn = false;
@@ -52,11 +52,6 @@ public class MechActionsScript : MonoBehaviour
     public bool attractButtonMostRecent = false;
     public bool repelButtonMostRecent = false;
     public bool holdToAttract = false;
-
-    //[Header("Orientation")]
-    //public Camera virtualCamera;
-    //public Vector2 mousePosition;
-    //public Vector2 mouseRelativePosition;
 
     [Header("Input")]
     public GameObject BulletSpawner;
