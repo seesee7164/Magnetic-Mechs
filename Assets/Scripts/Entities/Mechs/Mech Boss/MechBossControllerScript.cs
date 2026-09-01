@@ -27,6 +27,7 @@ public class MechBossControllerScript : MonoBehaviour
     {
         bossActive = true;
         startTrackingAndShootingPlayer();
+        availableActionsScript.bulletSpawnerScript.ResetTimer();
     }
     private void startTrackingAndShootingPlayer()
     {

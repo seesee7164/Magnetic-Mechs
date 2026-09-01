@@ -75,6 +75,7 @@ public class BulletSpawnerParent : MonoBehaviour
     }
     public void BulletKilled(int index)
     {
+        if (bulletsQueue.Contains(index)) return;
         bulletsQueue.Enqueue(index);
     }
 }

@@ -14,7 +14,7 @@ public class MechBossHealthScript : MonoBehaviour
     public float currentHealth;
     private float maxHealth = 30;
     [Header("Invincibility")]
-    const float invincibilityTimeDefault = .2f;
+    const float invincibilityTimeDefault = .01f;
     public bool invincible;
     private void Awake()
     {
