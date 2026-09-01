@@ -80,16 +80,19 @@ public class PlayerAnimationManagerScript : MonoBehaviour
         {
             forwardArmRotationPoint.transform.localScale = new Vector3(-1f, 1f, 1f);
             backArmRotationPoint.transform.localScale = new Vector3(-1f, 1f, 1f);
+            projectileFiringRotationPoint.transform.localScale = new Vector3(-1f, 1f, 1f);
             directionAngle = getDirection(Mathf.Deg2Rad * (angle + 180));
         }
         else
         {
             forwardArmRotationPoint.transform.localScale = new Vector3(1f, 1f, 1f);
             backArmRotationPoint.transform.localScale = new Vector3(1f, 1f, 1f);
+            projectileFiringRotationPoint.transform.localScale = new Vector3(1f, 1f, 1f);
             directionAngle = getDirection(Mathf.Deg2Rad * angle);
         }
         forwardArmRotationPoint.transform.right = directionAngle;
         backArmRotationPoint.transform.right = directionAngle;
+        projectileFiringRotationPoint.transform.right = correctFiringAngle(absAngle, angle) * directionAngle;
         return angle >= 0;
     }
     private Vector2 getDirection(float radAngle)
@@ -101,7 +104,6 @@ public class PlayerAnimationManagerScript : MonoBehaviour
     {
         if(absAngle <= 130 && absAngle >= 60)
         {
-            //projectileFiringRotationPoint.transform.localRotation = Quaternion.identity;
             frontForwardArm.SetActive(true);
             backForwardArm.SetActive(true);
             frontUpForwardArm.SetActive(false);
@@ -115,7 +117,6 @@ public class PlayerAnimationManagerScript : MonoBehaviour
         }
         if (absAngle <= 60 && absAngle >= 20)
         {
-            //projectileFiringRotationPoint.transform.localRotation = Quaternion.Euler(0,0, 10f);
             frontForwardArm.SetActive(false);
             backForwardArm.SetActive(false);
             frontUpForwardArm.SetActive(true);
@@ -129,7 +130,6 @@ public class PlayerAnimationManagerScript : MonoBehaviour
         }
         if (absAngle <= 20)
         {
-            //projectileFiringRotationPoint.transform.localRotation = Quaternion.Euler(0, 0, 15f);
             frontForwardArm.SetActive(false);
             backForwardArm.SetActive(false);
             frontUpForwardArm.SetActive(false);
@@ -143,7 +143,6 @@ public class PlayerAnimationManagerScript : MonoBehaviour
         }
         if (absAngle <= 160 && absAngle >= 130)
         {
-            //projectileFiringRotationPoint.transform.localRotation = Quaternion.Euler(0, 0, -10f);
             frontForwardArm.SetActive(false);
             backForwardArm.SetActive(false);
             frontUpForwardArm.SetActive(false);
@@ -157,7 +156,6 @@ public class PlayerAnimationManagerScript : MonoBehaviour
         }
         if (absAngle >= 160)
         {
-            //projectileFiringRotationPoint.transform.localRotation = Quaternion.Euler(0, 0, -15f);
             frontForwardArm.SetActive(false);
             backForwardArm.SetActive(false);
             frontUpForwardArm.SetActive(false);
@@ -199,5 +197,29 @@ public class PlayerAnimationManagerScript : MonoBehaviour
         frontForwardArm.GetComponent<SpriteRenderer>().sprite = ArmSprites[2];
         frontUpForwardArm.GetComponent<SpriteRenderer>().sprite = ArmSprites[3];
         frontUpArm.GetComponent<SpriteRenderer>().sprite = ArmSprites[4];
+    }
+    public Quaternion correctFiringAngle(float absAngle, float angle)
+    {
+        if (absAngle <= 130 && absAngle >= 60)
+        {
+            return Quaternion.Euler(0,0,0f);
+        }
+        if (absAngle <= 60 && absAngle >= 20)
+        {
+            return Quaternion.Euler(0, 0, (angle >=0 ? -8f : 8f));
+        }
+        if (absAngle <= 20)
+        {
+            return Quaternion.Euler(0, 0, (angle >= 0 ? -12f : 12f));
+        }
+        if (absAngle <= 160 && absAngle >= 130)
+        {
+            return Quaternion.Euler(0, 0, (angle >= 0 ? 8f : -8f));
+        }
+        if (absAngle >= 160)
+        {
+            return Quaternion.Euler(0, 0, (angle >= 0 ? 12f : -12f));
+        }
+        return Quaternion.Euler(0, 0, 0);
     }
 }
