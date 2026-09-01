@@ -12,6 +12,7 @@ public class PlayerAnimationManagerScript : MonoBehaviour
     public GameObject upperBodyGameObject;
     public SpriteRenderer torsoSprite;
     //public GameObject DeathAnimation;
+    public GameObject projectileFiringRotationPoint;
     [Header("Arms")]
     public GameObject frontForwardArm;
     public GameObject frontUpForwardArm;
@@ -100,6 +101,7 @@ public class PlayerAnimationManagerScript : MonoBehaviour
     {
         if(absAngle <= 130 && absAngle >= 60)
         {
+            //projectileFiringRotationPoint.transform.localRotation = Quaternion.identity;
             frontForwardArm.SetActive(true);
             backForwardArm.SetActive(true);
             frontUpForwardArm.SetActive(false);
@@ -113,6 +115,7 @@ public class PlayerAnimationManagerScript : MonoBehaviour
         }
         if (absAngle <= 60 && absAngle >= 20)
         {
+            //projectileFiringRotationPoint.transform.localRotation = Quaternion.Euler(0,0, 10f);
             frontForwardArm.SetActive(false);
             backForwardArm.SetActive(false);
             frontUpForwardArm.SetActive(true);
@@ -126,6 +129,7 @@ public class PlayerAnimationManagerScript : MonoBehaviour
         }
         if (absAngle <= 20)
         {
+            //projectileFiringRotationPoint.transform.localRotation = Quaternion.Euler(0, 0, 15f);
             frontForwardArm.SetActive(false);
             backForwardArm.SetActive(false);
             frontUpForwardArm.SetActive(false);
@@ -139,6 +143,7 @@ public class PlayerAnimationManagerScript : MonoBehaviour
         }
         if (absAngle <= 160 && absAngle >= 130)
         {
+            //projectileFiringRotationPoint.transform.localRotation = Quaternion.Euler(0, 0, -10f);
             frontForwardArm.SetActive(false);
             backForwardArm.SetActive(false);
             frontUpForwardArm.SetActive(false);
@@ -152,6 +157,7 @@ public class PlayerAnimationManagerScript : MonoBehaviour
         }
         if (absAngle >= 160)
         {
+            //projectileFiringRotationPoint.transform.localRotation = Quaternion.Euler(0, 0, -15f);
             frontForwardArm.SetActive(false);
             backForwardArm.SetActive(false);
             frontUpForwardArm.SetActive(false);

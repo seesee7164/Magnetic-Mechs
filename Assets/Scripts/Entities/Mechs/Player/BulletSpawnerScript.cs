@@ -50,7 +50,7 @@ public class BulletSpawnerScript : BulletSpawnerParent
             Debug.Log("The mech parent could not be found");
             return;
         }
-        if (timer < reloadTime || shootingDisabled || bulletsQueue.Count ==0) return;
+        if (timer < reloadTime || shootingDisabled || bulletsQueue.Count == 0) return;
         SpawnBullet();
         SpawnMuzzleEffect();
         audioBox.Play();
@@ -85,5 +85,9 @@ public class BulletSpawnerScript : BulletSpawnerParent
         {
             bulletsArray[i].GetComponent<MechBulletScript>().ChangeToBlue();
         }
+    }
+    public void ResetTimer()
+    {
+        timer = 0;
     }
 }

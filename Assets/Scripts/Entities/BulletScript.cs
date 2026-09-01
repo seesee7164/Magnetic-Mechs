@@ -15,11 +15,15 @@ public class BulletScript : MonoBehaviour
     [Header("Variable")]
     public int index;
     public float lifetime = 3;
-    private LayerMask blockBulletLayers;
+    protected LayerMask blockBulletLayers;
+    protected LayerMask otherBulletLayer;
+
     //private GameObject explosionEffect;
     //private Vector3 explosionOffset = new Vector3(0, .05f, 0);
 
     public bool isPlatformMissile;
+    [Header("Player")]
+    public bool isPlayerBullet = false;
 
     void Start()
     {
@@ -27,7 +31,18 @@ public class BulletScript : MonoBehaviour
     }
     private void Awake()
     {
-        blockBulletLayers = LayerMask.GetMask("Player", "Enemy", "Rock", "Non Damaging Enemy", "Enemy Mech Boss");
+        //blockBulletLayers = LayerMask.GetMask("Player", "Enemy", "Rock", "Non Damaging Enemy", "Enemy Mech Boss");
+        if (isPlayerBullet)
+        {
+            blockBulletLayers = LayerMask.GetMask("Enemy", "Rock", "Non Damaging Enemy", "Enemy Mech Boss");
+            otherBulletLayer = LayerMask.GetMask("Enemy Bullet");
+        }
+        else
+        {
+            blockBulletLayers = LayerMask.GetMask("Player");
+            otherBulletLayer = LayerMask.GetMask("Player Bullet");
+        }
+        
         animator = GetComponent<Animator>();
     }
 
@@ -53,12 +68,13 @@ public class BulletScript : MonoBehaviour
         //GameObject effect = Instantiate(explosionEffect, transform.position + explosionOffset, Quaternion.identity);
         //Destroy(effect, effect.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
         //collision.gameObject.layer != 8 && collision.gameObject.layer != 13 && collision.gameObject.layer != 14 && collision.gameObject.layer != 5 && collision.gameObject.layer != 6
-        if (parent!= null && collision.gameObject.layer != parent.layer && (blockBulletLayers & (1 << collision.gameObject.layer)) != 0)
+        if (parent!= null && collision.gameObject.layer != parent.layer && (blockBulletLayers & (1 << collision.gameObject.layer)) != 0 && !isPlatformMissile)
         {
-            if (!isPlatformMissile)
-            {
-                KillBullet();
-            }
+            KillBullet();
+        }
+        else if (parent != null && collision.gameObject.layer != parent.layer && (otherBulletLayer & (1 << collision.gameObject.layer)) != 0 && !isPlatformMissile)
+        {
+            StartCoroutine(KillBulletWithDelay());
         }
     }
     public void KillBullet()
@@ -81,5 +97,10 @@ public class BulletScript : MonoBehaviour
         }
 
         gameObject.SetActive(false);
+    }
+    public IEnumerator KillBulletWithDelay()
+    {
+        yield return new WaitForSeconds(.012f);
+        KillBullet();
     }
 }

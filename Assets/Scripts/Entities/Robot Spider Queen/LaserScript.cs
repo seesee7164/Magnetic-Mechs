@@ -138,7 +138,9 @@ public class LaserScript : MonoBehaviour
     {
         rotationSpeed = 0f;
         yield return new WaitForSeconds(.2f);
+        goneThroughDegrees += Mathf.Abs(newSpeed) * .2f;
         rotationSpeed = newSpeed;
+        Debug.Log(goneThroughDegrees);
     }
     //External Functions
     public void setInitialAngle()
