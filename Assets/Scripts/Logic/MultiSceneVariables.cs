@@ -16,7 +16,7 @@ public class MultiSceneVariables : MonoBehaviour
     public int difficulty = 0;
     [Header("Level Clear Times")]
     private bool showTimer = true;
-    public float[] clearTimes = new float[12];
+    public float[] clearTimes = new float[13];
     public bool startedFromLevelOne = false;
     public float currentLevelTime = 0;
     private float currentLevelTimePreCheckPoint = 0;
@@ -216,7 +216,8 @@ public class MultiSceneVariables : MonoBehaviour
         "LevelNineNormal",
         "LevelTenNormal",
         "LevelElevenNormal",
-        "LevelTwelveNormal"
+        "LevelTwelveNormal",
+        "LevelThirteenNormal"
     };
     public static readonly string[] HardLevelBestTimes =
     {
@@ -232,11 +233,12 @@ public class MultiSceneVariables : MonoBehaviour
         "LevelNineHard",
         "LevelTenHard",
         "LevelElevenHard",
-        "LevelTwelveHard"
+        "LevelTwelveHard",
+        "LevelThirteenHard"
     };
     public static readonly string[] ImpossibleLevelBestTimes =
     {
-        "FullGameImpoossible",
+        "FullGameImpossible",
         "LevelOneImpossible",
         "LevelTwoImpossible",
         "LevelThreeImpossible",
@@ -248,7 +250,8 @@ public class MultiSceneVariables : MonoBehaviour
         "LevelNineImpossible",
         "LevelTenImpossible",
         "LevelElevenImpossible",
-        "LevelTwelveImpossible"
+        "LevelTwelveImpossible",
+        "LevelThirteenImpossible"
     };
 
     public void SaveCurrentLevelTime(int level)

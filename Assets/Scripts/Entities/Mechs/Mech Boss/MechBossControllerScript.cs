@@ -24,8 +24,8 @@ public class MechBossControllerScript : MonoBehaviour
     [Header("Probabilities")]
     private float moveAcrossScreenWithAttractionProbability = .3f;
     private float flyToCeilingProbability = .3f;
-    private float launchAcrossScreenProbability = .2f;
-    private float moveAcrossScreenProbability = .2f;
+    private float launchAcrossScreenProbability = .3f;
+    //private float moveAcrossScreenProbability = .1f;
     public enum CurrentObjective
     {
         Stationary,

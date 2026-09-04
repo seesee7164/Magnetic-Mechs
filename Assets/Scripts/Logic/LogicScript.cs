@@ -169,7 +169,7 @@ public class LogicScript : MonoBehaviour
     public void StartPostMechBossDelay()
     {
         playerHealthScript.invincible = true;
-        //multiSceneVariables.FinishLevel(13);
+        multiSceneVariables.FinishLevel(13);
         StartScreenFade(1.5f, 2.5f);
         float timeUntilLevelEnd = 3.25f;
         if (multiSceneVariables.ShowTime()) timeUntilLevelEnd += delayForEndScreen;
