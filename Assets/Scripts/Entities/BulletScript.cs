@@ -74,7 +74,7 @@ public class BulletScript : MonoBehaviour
         }
         else if (parent != null && collision.gameObject.layer != parent.layer && (otherBulletLayer & (1 << collision.gameObject.layer)) != 0 && !isPlatformMissile)
         {
-            StartCoroutine(KillBulletWithDelay());
+            if(gameObject.activeInHierarchy) StartCoroutine(KillBulletWithDelay());
         }
     }
     public void KillBullet()

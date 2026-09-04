@@ -50,6 +50,7 @@ public class BossTriggerScript : MonoBehaviour
             {
                 StartCoroutine(SwapMusic(loadedClip));
             }
+            StartCoroutine(changeBack());
         }
     }
     public IEnumerator SwapMusic(AudioClip loadedClip)
@@ -66,5 +67,12 @@ public class BossTriggerScript : MonoBehaviour
     private void turnOffGameObject()
     {
         gameObject.SetActive(false);
+    }
+    public IEnumerator changeBack()
+    {
+        yield return new WaitForSeconds(1f);
+        virtualCameraPlayer.SetActive(true);
+        virtualCameraBoss.SetActive(false);
+        Debug.Log("test");
     }
 }

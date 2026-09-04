@@ -113,7 +113,7 @@ public class MechActionsScript : MonoBehaviour
             lastJumpInputTime = Time.time;
         }
     }
-    protected void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         handleGunOrientation();
         if (!playerAlive || movementDisabled)

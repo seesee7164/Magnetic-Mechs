@@ -12,6 +12,6 @@ public class CameraPositionScript : MonoBehaviour
     private void FixedUpdate()
     {
         if (playerTransform == null || bossTransform == null) return;
-        transform.position = (playerTransform.position*2 + bossTransform.position)/3;
+        transform.position = (playerTransform.position*1.8f + bossTransform.position*1.2f)/3;
     }
 }

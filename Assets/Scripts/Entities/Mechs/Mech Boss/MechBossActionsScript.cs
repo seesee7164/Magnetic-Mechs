@@ -11,6 +11,16 @@ public class MechBossActionsScript : MechActionsScript
     public MechBossHealthScript healthScript;
     public Transform playerTransform;
 
+    [Header("Aiming")]
+    private Vector2 aimTarget = Vector2.left;
+    private Vector2 currentAim = Vector2.up;
+    private float turningRate = 300f;
+    private float aimingTimer = 0f;
+    private float timeToUpdate = .01f;
+    [Header("Variables")]
+    public bool finishedAiming = false;
+    public int repeatingAimCounter = 0;
+
     //[Header("Orientation")]
     //public Camera virtualCamera;
     //public Vector2 mousePosition;
@@ -26,69 +36,11 @@ public class MechBossActionsScript : MechActionsScript
     {
         base.Update();
     }
-
-    //public void OnMove(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
-    //{
-    //    Vector2 v = ctx.ReadValue<Vector2>();
-
-    //    if (ctx.performed) checkMovementInput = true;
-    //    if (ctx.canceled) checkMovementInput = false;
-    //    //Debug.Log("OnMove Activate");
-
-    //}
-    //public void OnJump(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
-    //{
-    //    if (ctx.performed)
-    //    {
-    //        jumpPressed = true;
-    //        checkJumpInput = true;
-
-    //    }
-    //    if (ctx.canceled)
-    //    {
-    //        jumpPressed = false;
-    //        checkJumpInput = false;
-    //    }
-    //}
-
-    //public void OnRepel(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
-    //{
-    //    if (ctx.ReadValueAsButton())
-    //    {
-
-    //        lastRepelInputTime = Time.time;
-    //    }
-    //    repelButtonHeld = ctx.ReadValueAsButton();
-    //    if (ctx.started)
-    //    {
-    //        repelButtonMostRecent = true;
-    //        attractButtonMostRecent = false;
-    //    }
-    //    if (ctx.canceled)
-    //    {
-    //        repelButtonMostRecent = false;
-    //    }
-    //}
-    //public void OnAttract(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
-    //{
-    //    if (ctx.ReadValueAsButton())
-    //    {
-
-    //        lastAttractInputTime = Time.time;
-    //    }
-    //    attractButtonHeld = ctx.ReadValueAsButton();
-    //    if (ctx.started)
-    //    {
-    //        attractButtonMostRecent = true;
-    //        repelButtonMostRecent = false;
-    //    }
-    //    if (ctx.canceled)
-    //    {
-    //        attractButtonMostRecent = false;
-    //    }
-    //}
-
-
+    protected override void FixedUpdate()
+    {
+        UpdateAimTarget();
+        base.FixedUpdate();
+    }
 
     public override void DamagePlayer(float Damage, Vector2 knockbackDirection, float knockback = 0, float invincibilityTime = invincibilityTimeDefault, bool DeathPit = false)
     {
@@ -138,18 +90,42 @@ public class MechBossActionsScript : MechActionsScript
     }
     public void trackPlayerWithGun()
     {
-        Vector2 mouseRelativePosition = (Vector2)playerTransform.position - myRigidbody2D.position;
-        BulletSpawner.transform.right = mouseRelativePosition;
-        myMagnetManagerScript.setMagnetSpawnerAngle(mouseRelativePosition);
-        torsoFacingRight = playerAnimationManagerScript.setFiringAngle(Mathf.Atan2(mouseRelativePosition.y, mouseRelativePosition.x) * Mathf.Rad2Deg);
+        aimTarget = (Vector2)playerTransform.position - myRigidbody2D.position;
+    }
+    public void SetAimTarget(Vector2 newTarget)
+    {
+        aimTarget = newTarget;
+    }
+    private void UpdateAimTarget()
+    {
+        float degreesToTurn = Time.fixedDeltaTime * Mathf.Deg2Rad * turningRate;
+        if (aimingTimer >= timeToUpdate)
+        {
+            Vector3 newTarget = Vector3.RotateTowards(currentAim, aimTarget, degreesToTurn, 0f);
+            if (currentAim == (Vector2)newTarget) repeatingAimCounter++;
+            else repeatingAimCounter = 0;
+            currentAim = new Vector2(newTarget.x, newTarget.y);
+            if(Vector2.Angle(currentAim,aimTarget) <= .03f || repeatingAimCounter >= 10)
+            {
+                finishedAiming = true;
+            }
+            aimingTimer = 0;
+        }
+        else
+        {
+            aimingTimer += Time.fixedDeltaTime;
+        }
     }
     protected override void handleGunOrientation()
     {
-
+        BulletSpawner.transform.right = currentAim;
+        myMagnetManagerScript.setMagnetSpawnerAngle(currentAim);
+        torsoFacingRight = playerAnimationManagerScript.setFiringAngle(Mathf.Atan2(currentAim.y, currentAim.x) * Mathf.Rad2Deg);
     }
 
     public void StartShooting()
     {
+        bulletSpawnerScript.ResetTimer();
         shootingInput = true;
     }
     public void StopShooting()
@@ -157,16 +133,80 @@ public class MechBossActionsScript : MechActionsScript
         shootingInput = false;
     }
 
-    //public void Move(InputAction.CallbackContext context)
+    public void Move(float xInput, float yInput)
+    {
+        direction = xInput;
+        verticalDirection = yInput;
+    }
+    public void StartFlying()
+    {
+        jumpPressed = true;
+        lastJumpInputTime = Time.time;
+    }
+    public void StopFlying()
+    {
+        jumpPressed = false;
+    }
+
+    public void LaunchMagnet()
+    {
+        launchMagnet = true;
+    }
+    public void StartRepel()
+    {
+        //lastRepelInputTime = Time.time;
+        repelButtonHeld = true;
+        //if (ctx.started)
+        //{
+        //    repelButtonMostRecent = true;
+        //    attractButtonMostRecent = false;
+        //}
+        //if (ctx.canceled)
+        //{
+        //    repelButtonMostRecent = false;
+        //}
+    }
+    public void StopRepel()
+    {
+        repelButtonHeld= false;
+    }
+    public void StartAttract()
+    {
+        attractButtonHeld = true;
+    }
+    public void StopAttract()
+    {
+        attractButtonHeld = false;
+    }
+    public void RecoverMagnet()
+    {
+        recoverMagnet = true;
+    }
+    public void MagnetRetrieved()
+    {
+        recoverMagnet = false;
+    }
+    //public void OnAttract(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
     //{
-    //    Vector2 input = context.ReadValue<Vector2>();
-    //    direction = input.x;
-    //    verticalDirection = input.y;
-    //    if (context.performed && Mathf.Abs(input.x) > 0.1f)
+    //    if (ctx.ReadValueAsButton())
     //    {
-    //        lastMoveInputTime = Time.time;
+
+    //        lastAttractInputTime = Time.time;
+    //    }
+    //    attractButtonHeld = ctx.ReadValueAsButton();
+    //    if (ctx.started)
+    //    {
+    //        attractButtonMostRecent = true;
+    //        repelButtonMostRecent = false;
+    //    }
+    //    if (ctx.canceled)
+    //    {
+    //        attractButtonMostRecent = false;
     //    }
     //}
+
+
+
 
     //public void Aim(InputAction.CallbackContext context)
     //{
@@ -189,73 +229,6 @@ public class MechBossActionsScript : MechActionsScript
     //    if (context.canceled)
     //    {
     //        jumpPressed = false;
-    //    }
-    //}
-
-    //public void RecoverMagnetInput(InputAction.CallbackContext context)
-    //{
-    //    if (context.performed)
-    //    {
-    //        recoverMagnet = true;
-    //    }
-    //    if (context.canceled)
-    //    {
-    //        recoverMagnet = false;
-    //    }
-    //}
-
-    //public void LaunchMagnet(InputAction.CallbackContext context)
-    //{
-    //    if (context.performed)
-    //    {
-    //        launchMagnetHeld = true;
-    //        launchMagnet = true;
-    //    }
-    //    if (context.canceled)
-    //    {
-    //        launchMagnetHeld = false;
-    //        launchMagnet = false;
-    //    }
-    //}
-    //public void MagnetRepel(InputAction.CallbackContext context)
-    //{
-    //    repelButtonHeld = context.ReadValueAsButton();
-    //    if (context.started)
-    //    {
-    //        repelButtonMostRecent = true;
-    //        attractButtonMostRecent = false;
-    //    }
-    //    if (context.canceled)
-    //    {
-    //        repelButtonMostRecent = false;
-    //    }
-    //    if (context.performed && myMagnetManagerScript.returnMyMagnet() != null)
-    //    {
-    //        lastRepelInputTime = Time.time;
-    //    }
-    //}
-    //public void MagnetAttract(InputAction.CallbackContext context)
-    //{
-    //    attractButtonHeld = context.ReadValueAsButton();
-    //    if (context.started)
-    //    {
-    //        attractButtonMostRecent = true;
-    //        repelButtonMostRecent = false;
-    //    }
-    //    if (context.canceled)
-    //    {
-    //        attractButtonMostRecent = false;
-    //    }
-    //    if (context.performed && myMagnetManagerScript.returnMyMagnet() != null)
-    //    {
-    //        lastAttractInputTime = Time.time;
-    //    }
-    //}
-    //public void Pause(InputAction.CallbackContext context)
-    //{
-    //    if (context.performed)
-    //    {
-    //        logic.SetPausePressed();
     //    }
     //}
 }
