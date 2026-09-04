@@ -250,7 +250,7 @@ public class TutorialAllEvents : MonoBehaviour
     public IEnumerator startNextScene()
     {
         yield return new WaitForSeconds(2);
-        logic.StartLevel("Level 2");
+        logic.StartLevel("Level 13");
     }
     public void FinishLevel1()
     {

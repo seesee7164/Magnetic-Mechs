@@ -8,7 +8,7 @@ public class MechBossTriggerScript : MonoBehaviour
     //public GoomechSpawnerScript goomechSpawnerScriptTop;
     //public GoomechSpawnerScript goomechSpawnerScriptBottom;
     public GameObject bossCanvas;
-    //public GameObject entrances;
+    public GameObject entrances;
     public GameObject virtualCameraPlayer;
     public GameObject virtualCameraBoss;
     //public AudioSource audioSource;
@@ -33,7 +33,7 @@ public class MechBossTriggerScript : MonoBehaviour
             //goomechSpawnerScriptTop.bossActive = true;
             //goomechSpawnerScriptBottom.bossActive = true;
             bossCanvas.SetActive(true);
-            //entrances.SetActive(true);
+            entrances.SetActive(true);
             //virtualCamera.Follow = cameraPosition.transform;
             //virtualCamera.m_Lens.OrthographicSize = 10;
             virtualCameraPlayer.SetActive(false);
