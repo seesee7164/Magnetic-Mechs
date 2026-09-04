@@ -65500,7 +65500,7 @@ MonoBehaviour:
   myMagnetProjectileScript: {fileID: 0}
   magnetActive: 0
   magnetAttached: 0
-  magnetPrefab: {fileID: 4053676811272379075, guid: d16f63f48043eff49980c3ce61792598, type: 3}
+  magnetPrefab: {fileID: 4053676811272379075, guid: 603c177d1c6cf5942a5b7c208d386284, type: 3}
   magnetSpawnpoint: {fileID: 1427271100455396196}
   magnetManagerScript: {fileID: 5109857244820329386}
   parentMech: {fileID: 1046087801492054596}
@@ -65627,13 +65627,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5068739953556186182}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.67559016, w: 0.7372774}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0.306, y: 0.265, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8740790769196966098}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 85}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!4 &1310780349485554931
 Transform:
   m_ObjectHideFlags: 0
@@ -77942,13 +77942,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4802813531137879587}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.3420201, w: 0.9396927}
+  m_LocalRotation: {x: 0, y: 0, z: -0.38268343, w: 0.92387956}
   m_LocalPosition: {x: 0.418, y: -0.19, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8740790769196966098}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -40}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -45}
 --- !u!198 &4026317854400993299
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -98211,13 +98211,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1828569768453214611}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.67559016, w: 0.7372774}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0.32, y: -0.245, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8740790769196966098}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -85}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!1 &4762209177312252255
 GameObject:
   m_ObjectHideFlags: 0
@@ -108328,13 +108328,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3407583393488226906}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.3420201, w: 0.9396927}
+  m_LocalRotation: {x: 0, y: 0, z: 0.38268343, w: 0.92387956}
   m_LocalPosition: {x: 0.36, y: 0.272, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8740790769196966098}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 40}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
 --- !u!1 &5452021818785729924
 GameObject:
   m_ObjectHideFlags: 0
