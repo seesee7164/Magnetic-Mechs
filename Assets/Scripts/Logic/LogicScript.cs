@@ -18,6 +18,7 @@ public class LogicScript : MonoBehaviour
     [Header("Components")]
     public GameObject gameOverScreen;
     public GameObject pauseScreen;
+    public AudioManager audioManager;
     private MultiSceneVariables multiSceneVariables;
     private PlayerHealthScript playerHealthScript;
     [SerializeField] private CanvasGroup settingsCanvasGroup;
@@ -92,9 +93,11 @@ public class LogicScript : MonoBehaviour
         controlScreenFade.setAlphaValue(0.0f);
         switch (menuState) {
             case GameMenuState.PLAYING:
+                audioManager.Pause();
                 ShowPauseMenu();
                 break;
             case GameMenuState.PAUSE_MENU:
+                audioManager.Unpause();
                 HideMenus();
                 break;
             case GameMenuState.SETTINGS_MENU:

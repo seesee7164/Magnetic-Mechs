@@ -1300,6 +1300,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 384848076}
     - target: {fileID: 3552848714865772457, guid: 49fe211c275e1244da604cad44ac6f40, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 1135335258}
+    - target: {fileID: 3552848714865772457, guid: 49fe211c275e1244da604cad44ac6f40, type: 3}
       propertyPath: gameOverScreen
       value: 
       objectReference: {fileID: 2036523948}
@@ -9354,6 +9358,10 @@ PrefabInstance:
     - target: {fileID: 7728662832603126758, guid: 181f5281eaa7ebb4b8cf229c1c6d3707, type: 3}
       propertyPath: m_Name
       value: Moving Platform (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7728662832603126758, guid: 181f5281eaa7ebb4b8cf229c1c6d3707, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 8507209999226804764, guid: 181f5281eaa7ebb4b8cf229c1c6d3707, type: 3}
       propertyPath: m_Enabled
@@ -81206,6 +81214,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Moving Platform
       objectReference: {fileID: 0}
+    - target: {fileID: 7728662832603126758, guid: 181f5281eaa7ebb4b8cf229c1c6d3707, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 8507209999226804764, guid: 181f5281eaa7ebb4b8cf229c1c6d3707, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -148103,6 +148115,10 @@ PrefabInstance:
     - target: {fileID: 7728662832603126758, guid: 181f5281eaa7ebb4b8cf229c1c6d3707, type: 3}
       propertyPath: m_Name
       value: Moving Platform (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7728662832603126758, guid: 181f5281eaa7ebb4b8cf229c1c6d3707, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 8507209999226804764, guid: 181f5281eaa7ebb4b8cf229c1c6d3707, type: 3}
       propertyPath: m_Enabled

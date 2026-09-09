@@ -26,7 +26,7 @@ public class HomingNonPlatformTurret : Turret
     private float calculateShootingAngle()
     {
         Vector2 playerRelativePosition = (Vector2)(player.transform.position - transform.position);
-        float offsetAngle = Mathf.Clamp(Vector2.SignedAngle(new Vector2(Mathf.Cos(Mathf.Deg2Rad * baseAngle), Mathf.Sin(Mathf.Deg2Rad * baseAngle)), playerRelativePosition), -90f, 90f);
+        float offsetAngle = Mathf.Clamp(Vector2.SignedAngle(new Vector2(Mathf.Cos(Mathf.Deg2Rad * baseAngle), Mathf.Sin(Mathf.Deg2Rad * baseAngle)), playerRelativePosition), -100f, 100f);
         return baseAngle + offsetAngle;
     }
     protected override void Fire()

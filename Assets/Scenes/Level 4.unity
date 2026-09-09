@@ -3875,6 +3875,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 384848076}
     - target: {fileID: 3552848714865772457, guid: 49fe211c275e1244da604cad44ac6f40, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 372660905}
+    - target: {fileID: 3552848714865772457, guid: 49fe211c275e1244da604cad44ac6f40, type: 3}
       propertyPath: gameOverScreen
       value: 
       objectReference: {fileID: 2036523948}
@@ -39094,7 +39098,7 @@ Transform:
   m_GameObject: {fileID: 1265375395}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -64.42741, y: -1.0988598, z: -10}
+  m_LocalPosition: {x: -64.42742, y: -1.0988617, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
