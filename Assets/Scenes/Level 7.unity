@@ -49923,6 +49923,7 @@ MonoBehaviour:
   MuzzlePrefab: {fileID: 625931192793893498, guid: fa3192597ace39c45a07148447780202, type: 3}
   bulletSpawnpoint: {fileID: 673396806}
   muzzleSpawnpoint: {fileID: 1572775574}
+  muzzleParent: {fileID: 1572775575}
   RobotSpiderQueen: {fileID: 0}
   player: {fileID: 0}
   playerRelativePosition: {x: 0, y: 0}
@@ -51707,6 +51708,7 @@ MonoBehaviour:
   MuzzlePrefab: {fileID: 0}
   bulletSpawnpoint: {fileID: 673396806}
   muzzleSpawnpoint: {fileID: 0}
+  muzzleParent: {fileID: 0}
   myLineRenderer: {fileID: 0}
   blockLaserLayers:
     serializedVersion: 2

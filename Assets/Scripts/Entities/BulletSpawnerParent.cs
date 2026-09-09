@@ -16,6 +16,7 @@ public class BulletSpawnerParent : MonoBehaviour
     public GameObject MuzzlePrefab;
     public GameObject bulletSpawnpoint;
     public GameObject muzzleSpawnpoint;
+    public Transform muzzleParent;
     protected GameObject parentObject;
     protected AudioSource audioBox;
     [Header("Variables")]
@@ -26,6 +27,8 @@ public class BulletSpawnerParent : MonoBehaviour
         if (MuzzlePrefab != null)
         {
             muzzleEffect = Instantiate(MuzzlePrefab, muzzleSpawnpoint.transform.position, transform.rotation);
+            if (muzzleParent != null) muzzleEffect.transform.SetParent(muzzleParent.transform);
+            //muzzleEffect.transform.SetParent(gameObject.transform);
             muzzleEffect.SetActive(false);
         }
         if (bulletPrefab != null)
@@ -63,9 +66,12 @@ public class BulletSpawnerParent : MonoBehaviour
     public void SpawnMuzzleEffect()
     {
         muzzleEffect.SetActive(true);
-        muzzleEffect.transform.position = muzzleSpawnpoint.transform.position;
-        muzzleEffect.transform.rotation = transform.rotation;
-        muzzleEffect.GetComponent<Rigidbody2D>().linearVelocity = parentObject.GetComponent<Rigidbody2D>().linearVelocity;
+        if (muzzleParent == null)
+        {
+            muzzleEffect.transform.position = muzzleSpawnpoint.transform.position;
+            muzzleEffect.transform.rotation = transform.rotation;
+            muzzleEffect.GetComponent<Rigidbody2D>().linearVelocity = parentObject.GetComponent<Rigidbody2D>().linearVelocity;
+        }
         StartCoroutine(DestroyEffect());
     }
     public IEnumerator DestroyEffect()

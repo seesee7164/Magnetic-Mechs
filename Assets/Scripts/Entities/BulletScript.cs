@@ -35,12 +35,12 @@ public class BulletScript : MonoBehaviour
         if (isPlayerBullet)
         {
             blockBulletLayers = LayerMask.GetMask("Enemy", "Rock", "Non Damaging Enemy", "Enemy Mech Boss");
-            otherBulletLayer = LayerMask.GetMask("Enemy Bullet");
+            //otherBulletLayer = LayerMask.GetMask("Enemy Bullet");
         }
         else
         {
             blockBulletLayers = LayerMask.GetMask("Player");
-            otherBulletLayer = LayerMask.GetMask("Player Bullet");
+            //otherBulletLayer = LayerMask.GetMask("Player Bullet");
         }
         
         animator = GetComponent<Animator>();
@@ -72,10 +72,10 @@ public class BulletScript : MonoBehaviour
         {
             KillBullet();
         }
-        else if (parent != null && collision.gameObject.layer != parent.layer && (otherBulletLayer & (1 << collision.gameObject.layer)) != 0 && !isPlatformMissile)
-        {
-            if(gameObject.activeInHierarchy) StartCoroutine(KillBulletWithDelay());
-        }
+        //else if (parent != null && collision.gameObject.layer != parent.layer && (otherBulletLayer & (1 << collision.gameObject.layer)) != 0 && !isPlatformMissile)
+        //{
+        //    if(gameObject.activeInHierarchy) StartCoroutine(KillBulletWithDelay(.012f));
+        //}
     }
     public void KillBullet()
     {
@@ -98,9 +98,13 @@ public class BulletScript : MonoBehaviour
 
         gameObject.SetActive(false);
     }
-    public IEnumerator KillBulletWithDelay()
+    public void PublicKillBulletWithDelay(float delay = .012f)
     {
-        yield return new WaitForSeconds(.012f);
+        StartCoroutine(KillBulletWithDelay(delay));
+    }
+    public IEnumerator KillBulletWithDelay(float delay = .012f)
+    {
+        yield return new WaitForSeconds(delay);
         KillBullet();
     }
 }

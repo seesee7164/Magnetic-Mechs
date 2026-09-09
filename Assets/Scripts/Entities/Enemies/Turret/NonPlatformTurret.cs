@@ -9,4 +9,9 @@ public class NonPlatformTurret : Turret
         shootingAngle = firingAngle;
         SetUpTurret();
     }
+    public override void SetUpTurret()
+    {
+        base.SetUpTurret();
+        muzzleEffect.GetComponent<MuzzleScript>().ChangeToRed();
+    }
 }

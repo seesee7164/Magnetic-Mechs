@@ -30743,6 +30743,7 @@ MonoBehaviour:
   MuzzlePrefab: {fileID: 625931192793893498, guid: fa3192597ace39c45a07148447780202, type: 3}
   bulletSpawnpoint: {fileID: 5046869066843096095}
   muzzleSpawnpoint: {fileID: 5366049564402514043}
+  muzzleParent: {fileID: 522570535467377944}
   red: 0
   isMechBoss: 0
   mech: {fileID: 8720177765171618239}

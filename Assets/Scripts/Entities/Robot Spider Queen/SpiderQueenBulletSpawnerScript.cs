@@ -35,6 +35,7 @@ public class SpiderQueenBulletSpawnerScript : BulletSpawnerParent
         shootingDisabled = true;
         audioBox = GetComponent<AudioSource>();
         SetUpGameObjects();
+        muzzleEffect.GetComponent<MuzzleScript>().ChangeToRed();
         TriggerStage1();
     }
     // Start is called before the first frame update
