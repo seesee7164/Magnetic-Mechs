@@ -14,6 +14,8 @@ public class AudioManager : MonoBehaviour
     private AudioSource[] allSources;
     private bool volumeLoaded;
 
+    private bool paused = false;
+
     //[Header("Fade")]
     //private float fadeRatio = 1.0f;
 
@@ -46,7 +48,7 @@ public class AudioManager : MonoBehaviour
 
         float sfxVolume = sfxSlider.value;
         float musicVolume = musicSlider.value;
-        mixer.SetFloat("SFXVolume", Mathf.Log10(sfxVolume) * 20);
+        if(!paused) mixer.SetFloat("SFXVolume", Mathf.Log10(sfxVolume) * 20);
         mixer.SetFloat("MusicVolume", Mathf.Log10(musicVolume) * 20);
         PlayerPrefs.SetFloat("sfxVolume", sfxVolume);
         PlayerPrefs.SetFloat("musicVolume", musicVolume);
@@ -56,12 +58,12 @@ public class AudioManager : MonoBehaviour
     {
         if (!PlayerPrefs.HasKey("sfxVolume"))
         {
-            PlayerPrefs.SetFloat("sfxVolume", 1.0f);
+            PlayerPrefs.SetFloat("sfxVolume", 0.5f);
         }
 
         if (!PlayerPrefs.HasKey("musicVolume"))
         {
-            PlayerPrefs.SetFloat("musicVolume", 1.0f);
+            PlayerPrefs.SetFloat("musicVolume", 0.5f);
         }
 
         sfxSlider.value = PlayerPrefs.GetFloat("sfxVolume");
@@ -70,6 +72,19 @@ public class AudioManager : MonoBehaviour
         volumeLoaded = true;
         SetAudioVolume();
     }
+
+    public void Pause()
+    {
+        paused = true;
+        mixer.SetFloat("SFXVolume", Mathf.Log10(.01f) * 20);
+    }
+
+    public void Unpause()
+    {
+        paused = false;
+        SetAudioVolume();
+    }
+
     //public void fade(float duration)
     //{
     //    StartCoroutine(Fading(duration));
