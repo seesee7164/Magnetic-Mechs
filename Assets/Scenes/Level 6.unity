@@ -2369,6 +2369,7 @@ MonoBehaviour:
   MuzzlePrefab: {fileID: 625931192793893498, guid: fa3192597ace39c45a07148447780202, type: 3}
   bulletSpawnpoint: {fileID: 1389678874}
   muzzleSpawnpoint: {fileID: 1867811144}
+  muzzleParent: {fileID: 0}
   timeBetweenShots: 1.5
   missileForce: 10
   firingAngle: -90
@@ -2609,6 +2610,7 @@ MonoBehaviour:
   MuzzlePrefab: {fileID: 625931192793893498, guid: fa3192597ace39c45a07148447780202, type: 3}
   bulletSpawnpoint: {fileID: 1220721954}
   muzzleSpawnpoint: {fileID: 1652287696}
+  muzzleParent: {fileID: 0}
   timeBetweenShots: 1.5
   missileForce: 10
   firingAngle: -60
@@ -3064,11 +3066,11 @@ PrefabInstance:
       objectReference: {fileID: 6200000, guid: e8dde3c8cfa42fb4d8297714ed03aa18, type: 2}
     - target: {fileID: 8625475655797674624, guid: 3cdd95d7e7ef1014384613e394591fd9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -257.51
+      value: -253.66
       objectReference: {fileID: 0}
     - target: {fileID: 8625475655797674624, guid: 3cdd95d7e7ef1014384613e394591fd9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 57.9
+      value: 58.12
       objectReference: {fileID: 0}
     - target: {fileID: 8625475655797674624, guid: 3cdd95d7e7ef1014384613e394591fd9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3320,8 +3322,8 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -42.46646, y: 58.285156}
-      - {x: -261.54633, y: 58.020523}
+    - - {x: -42.44265, y: 57.981544}
+      - {x: -261.54633, y: 57.971428}
       - {x: -261.68387, y: 16.9745}
       - {x: -173.9144, y: 16.975605}
       - {x: -173.48831, y: -39.632076}
@@ -3498,7 +3500,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3085586658028603688, guid: 10b04f568aba76645a715ca03f9bf683, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -69.38915
+      value: -69.85
       objectReference: {fileID: 0}
     - target: {fileID: 3085586658028603688, guid: 10b04f568aba76645a715ca03f9bf683, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3997,6 +3999,7 @@ MonoBehaviour:
   MuzzlePrefab: {fileID: 625931192793893498, guid: fa3192597ace39c45a07148447780202, type: 3}
   bulletSpawnpoint: {fileID: 58434923}
   muzzleSpawnpoint: {fileID: 687895159}
+  muzzleParent: {fileID: 0}
   timeBetweenShots: 1.5
   missileForce: 10
   firingAngle: -30
@@ -4333,7 +4336,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3085586658028603688, guid: 10b04f568aba76645a715ca03f9bf683, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -90.80117
+      value: -91.35
       objectReference: {fileID: 0}
     - target: {fileID: 3085586658028603688, guid: 10b04f568aba76645a715ca03f9bf683, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4395,7 +4398,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3085586658028603688, guid: 10b04f568aba76645a715ca03f9bf683, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -67.77449
+      value: -67.85
       objectReference: {fileID: 0}
     - target: {fileID: 3085586658028603688, guid: 10b04f568aba76645a715ca03f9bf683, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4846,7 +4849,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3085586658028603688, guid: 10b04f568aba76645a715ca03f9bf683, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -60.63
+      value: -60.85
       objectReference: {fileID: 0}
     - target: {fileID: 3085586658028603688, guid: 10b04f568aba76645a715ca03f9bf683, type: 3}
       propertyPath: m_LocalPosition.z
@@ -155339,7 +155342,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3085586658028603688, guid: 10b04f568aba76645a715ca03f9bf683, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -90.80117
+      value: -91.35
       objectReference: {fileID: 0}
     - target: {fileID: 3085586658028603688, guid: 10b04f568aba76645a715ca03f9bf683, type: 3}
       propertyPath: m_LocalPosition.z
@@ -155698,6 +155701,7 @@ MonoBehaviour:
   MuzzlePrefab: {fileID: 625931192793893498, guid: fa3192597ace39c45a07148447780202, type: 3}
   bulletSpawnpoint: {fileID: 1266184974}
   muzzleSpawnpoint: {fileID: 1079686775}
+  muzzleParent: {fileID: 0}
   timeBetweenShots: 1.5
   missileForce: 10
   firingAngle: 90
@@ -155959,7 +155963,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6693132685739250196, guid: d066476f451ff91419e8852aef1214e6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 41.45
+      value: 41.43
       objectReference: {fileID: 0}
     - target: {fileID: 6693132685739250196, guid: d066476f451ff91419e8852aef1214e6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -156921,6 +156925,7 @@ MonoBehaviour:
   MuzzlePrefab: {fileID: 625931192793893498, guid: fa3192597ace39c45a07148447780202, type: 3}
   bulletSpawnpoint: {fileID: 257948516}
   muzzleSpawnpoint: {fileID: 1534711345}
+  muzzleParent: {fileID: 0}
   timeBetweenShots: 1.5
   missileForce: 10
   firingAngle: -150
@@ -157841,6 +157846,7 @@ MonoBehaviour:
   MuzzlePrefab: {fileID: 625931192793893498, guid: fa3192597ace39c45a07148447780202, type: 3}
   bulletSpawnpoint: {fileID: 838892629}
   muzzleSpawnpoint: {fileID: 2044044526}
+  muzzleParent: {fileID: 0}
   timeBetweenShots: 1.5
   missileForce: 10
   firingAngle: -120
@@ -158109,7 +158115,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3085586658028603688, guid: 10b04f568aba76645a715ca03f9bf683, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -49.72
+      value: -49.85
       objectReference: {fileID: 0}
     - target: {fileID: 3085586658028603688, guid: 10b04f568aba76645a715ca03f9bf683, type: 3}
       propertyPath: m_LocalPosition.z
@@ -158567,6 +158573,7 @@ MonoBehaviour:
   MuzzlePrefab: {fileID: 625931192793893498, guid: fa3192597ace39c45a07148447780202, type: 3}
   bulletSpawnpoint: {fileID: 883582488}
   muzzleSpawnpoint: {fileID: 2097420281}
+  muzzleParent: {fileID: 0}
   timeBetweenShots: 1.5
   missileForce: 10
   firingAngle: -60
@@ -160272,6 +160279,7 @@ MonoBehaviour:
   MuzzlePrefab: {fileID: 625931192793893498, guid: fa3192597ace39c45a07148447780202, type: 3}
   bulletSpawnpoint: {fileID: 835370000}
   muzzleSpawnpoint: {fileID: 1823262115}
+  muzzleParent: {fileID: 0}
   timeBetweenShots: 1.5
   missileForce: 10
   firingAngle: -30
@@ -160741,6 +160749,7 @@ MonoBehaviour:
   MuzzlePrefab: {fileID: 625931192793893498, guid: fa3192597ace39c45a07148447780202, type: 3}
   bulletSpawnpoint: {fileID: 1014102147}
   muzzleSpawnpoint: {fileID: 914006578}
+  muzzleParent: {fileID: 0}
   timeBetweenShots: 1.5
   missileForce: 10
   firingAngle: 0
@@ -161740,6 +161749,7 @@ MonoBehaviour:
   MuzzlePrefab: {fileID: 625931192793893498, guid: fa3192597ace39c45a07148447780202, type: 3}
   bulletSpawnpoint: {fileID: 17065182}
   muzzleSpawnpoint: {fileID: 1233943487}
+  muzzleParent: {fileID: 0}
   timeBetweenShots: 1.5
   missileForce: 10
   firingAngle: 0
@@ -161983,7 +161993,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3085586658028603688, guid: 10b04f568aba76645a715ca03f9bf683, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.36
       objectReference: {fileID: 0}
     - target: {fileID: 3085586658028603688, guid: 10b04f568aba76645a715ca03f9bf683, type: 3}
       propertyPath: m_LocalPosition.z
@@ -162360,6 +162370,7 @@ MonoBehaviour:
   MuzzlePrefab: {fileID: 625931192793893498, guid: fa3192597ace39c45a07148447780202, type: 3}
   bulletSpawnpoint: {fileID: 1365147861}
   muzzleSpawnpoint: {fileID: 852942735}
+  muzzleParent: {fileID: 0}
   timeBetweenShots: 1.5
   missileForce: 10
   firingAngle: 30
@@ -162674,6 +162685,7 @@ MonoBehaviour:
   MuzzlePrefab: {fileID: 625931192793893498, guid: fa3192597ace39c45a07148447780202, type: 3}
   bulletSpawnpoint: {fileID: 1101480351}
   muzzleSpawnpoint: {fileID: 1158272022}
+  muzzleParent: {fileID: 0}
   timeBetweenShots: 1.5
   missileForce: 10
   firingAngle: 60
@@ -256935,7 +256947,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3085586658028603688, guid: 10b04f568aba76645a715ca03f9bf683, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -75.11958
+      value: -75.36
       objectReference: {fileID: 0}
     - target: {fileID: 3085586658028603688, guid: 10b04f568aba76645a715ca03f9bf683, type: 3}
       propertyPath: m_LocalPosition.z
@@ -257220,6 +257232,7 @@ MonoBehaviour:
   MuzzlePrefab: {fileID: 625931192793893498, guid: fa3192597ace39c45a07148447780202, type: 3}
   bulletSpawnpoint: {fileID: 2061814776}
   muzzleSpawnpoint: {fileID: 1878320774}
+  muzzleParent: {fileID: 0}
   timeBetweenShots: 1.5
   missileForce: 10
   firingAngle: -90

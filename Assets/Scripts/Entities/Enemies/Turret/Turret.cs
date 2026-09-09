@@ -19,7 +19,7 @@ public class Turret : BulletSpawnerParent
         SetUpTurret();
     }
 
-    public void SetUpTurret()
+    public virtual void SetUpTurret()
     {
         // Set the base and shooting angles based on specified values
         transform.eulerAngles = new Vector3(0f, 0f, shootingAngle);
