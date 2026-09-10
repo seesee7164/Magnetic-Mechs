@@ -9361,7 +9361,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7728662832603126758, guid: 181f5281eaa7ebb4b8cf229c1c6d3707, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: MovingPlatformVertical
       objectReference: {fileID: 0}
     - target: {fileID: 8507209999226804764, guid: 181f5281eaa7ebb4b8cf229c1c6d3707, type: 3}
       propertyPath: m_Enabled
@@ -81216,7 +81216,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7728662832603126758, guid: 181f5281eaa7ebb4b8cf229c1c6d3707, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: MovingPlatformVertical
       objectReference: {fileID: 0}
     - target: {fileID: 8507209999226804764, guid: 181f5281eaa7ebb4b8cf229c1c6d3707, type: 3}
       propertyPath: m_Enabled
@@ -148118,7 +148118,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7728662832603126758, guid: 181f5281eaa7ebb4b8cf229c1c6d3707, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: MovingPlatformVertical
       objectReference: {fileID: 0}
     - target: {fileID: 8507209999226804764, guid: 181f5281eaa7ebb4b8cf229c1c6d3707, type: 3}
       propertyPath: m_Enabled

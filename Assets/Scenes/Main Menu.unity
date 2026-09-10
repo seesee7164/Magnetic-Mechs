@@ -10006,6 +10006,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e6b262e01656ee48b49c0f834dbd1d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startScreenStartBackground: {fileID: 2107688839}
   startScreenStart: {fileID: 1723728804}
   startScreenLevelSelect: {fileID: 882391924}
   startScreenSettings: {fileID: 2053327500}

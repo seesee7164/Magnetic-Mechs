@@ -62,9 +62,6 @@ public class PlayerScript : MechActionsScript
         InputRebinding.Instance.OnHoldToAttractChanged -= InputRebinding_OnHoldToAttractChanged;
     }
 
-    private void InputRebinding_OnHoldToAttractChanged(object sender, EventArgs e) {
-        holdToAttract = InputRebinding.Instance.GetHoldToAttract();
-    }
 
     // Update is called once per frame
     protected override void Update()
@@ -72,81 +69,8 @@ public class PlayerScript : MechActionsScript
         mousePosition = virtualCamera.ScreenToWorldPoint(Input.mousePosition);//orientation
         base.Update();
     }
-
-    public void OnMove(UnityEngine.InputSystem.InputAction.CallbackContext ctx) { 
-        Vector2 v = ctx.ReadValue<Vector2>();
-
-        if (ctx.performed) checkMovementInput = true;
-        if (ctx.canceled) checkMovementInput = false;
-        //Debug.Log("OnMove Activate");
-
-    }
-    public void OnJump(UnityEngine.InputSystem.InputAction.CallbackContext ctx) { 
-        if (ctx.performed) {
-            jumpPressed = true;
-            checkJumpInput = true;
-
-        }
-        if (ctx.canceled)
-        {
-            jumpPressed = false;
-            checkJumpInput = false;
-        }
-    }
-
-    public void OnRepel(UnityEngine.InputSystem.InputAction.CallbackContext ctx) { 
-        if (ctx.ReadValueAsButton()) {
-           
-            lastRepelInputTime = Time.time;
-        }
-        repelButtonHeld = ctx.ReadValueAsButton();
-        if (ctx.started)
-        {
-            repelButtonMostRecent = true;
-            attractButtonMostRecent = false;
-        }
-        if (ctx.canceled)
-        {
-            repelButtonMostRecent = false;
-        }
-    }
-    public void OnAttract(UnityEngine.InputSystem.InputAction.CallbackContext ctx) { 
-        if (ctx.ReadValueAsButton()) {
-           
-            lastAttractInputTime = Time.time;
-        }
-        attractButtonHeld = ctx.ReadValueAsButton();
-        if (ctx.started)
-        {
-            attractButtonMostRecent = true;
-            repelButtonMostRecent = false;
-        }
-        if (ctx.canceled)
-        {
-            attractButtonMostRecent = false;
-        }
-    }
-
-    protected override void handleGunOrientation()
-    {
-        if (gamePadNotMouse)
-        {
-            BulletSpawner.transform.right = rightJoystick;
-            myMagnetManagerScript.setMagnetSpawnerAngle(rightJoystick);
-            //playerAnimationManagerScript.setFiringAngle(Vector2.Angle(myRigidbody2D.position, mousePosition));
-        }
-        else
-        {
-            mouseRelativePosition = mousePosition - myRigidbody2D.position;
-            BulletSpawner.transform.right = mouseRelativePosition;
-            myMagnetManagerScript.setMagnetSpawnerAngle(mouseRelativePosition);
-            torsoFacingRight = playerAnimationManagerScript.setFiringAngle(Mathf.Atan2(mouseRelativePosition.y, mouseRelativePosition.x) * Mathf.Rad2Deg);
-        }
-    }
-    
-    public override void DamagePlayer(float Damage, Vector2 knockbackDirection, float knockback = 0, float invincibilityTime = invincibilityTimeDefault, bool DeathPit = false)
-    {
-        healthScript.takeDamage(Damage, knockbackDirection, knockback,invincibilityTime, DeathPit);
+    private void InputRebinding_OnHoldToAttractChanged(object sender, EventArgs e) {
+        holdToAttract = InputRebinding.Instance.GetHoldToAttract();
     }
     private void OnCollisionStay2D(Collision2D collision)
     {
@@ -222,43 +146,36 @@ public class PlayerScript : MechActionsScript
             }
         }
     }
-    //public IEnumerator handleKnockback(float knockback, Vector2 knockbackDirection)
-    //{
-    //    if (!playerAlive) yield break;
-    //    //movementEnabled = false;
-    //    myRigidbody2D.AddForce(knockbackDirection * knockback * 10, ForceMode2D.Impulse);
-    //    playerAnimationManagerScript.setAllSpritesColor(Color.red);
-    //    yield return new WaitForSeconds(knockbackTime);
-    //    //movementEnabled = true;
-    //    playerAnimationManagerScript.setAllSpritesColor(Color.white);
-    //}
+    protected override void handleGunOrientation()
+    {
+        if (gamePadNotMouse)
+        {
+            BulletSpawner.transform.right = rightJoystick;
+            myMagnetManagerScript.setMagnetSpawnerAngle(rightJoystick);
+            //playerAnimationManagerScript.setFiringAngle(Vector2.Angle(myRigidbody2D.position, mousePosition));
+        }
+        else
+        {
+            mouseRelativePosition = mousePosition - myRigidbody2D.position;
+            BulletSpawner.transform.right = mouseRelativePosition;
+            myMagnetManagerScript.setMagnetSpawnerAngle(mouseRelativePosition);
+            torsoFacingRight = playerAnimationManagerScript.setFiringAngle(Mathf.Atan2(mouseRelativePosition.y, mouseRelativePosition.x) * Mathf.Rad2Deg);
+        }
+    }
+    
+    public override void DamagePlayer(float Damage, Vector2 knockbackDirection, float knockback = 0, float invincibilityTime = invincibilityTimeDefault, bool DeathPit = false)
+    {
+        healthScript.takeDamage(Damage, knockbackDirection, knockback,invincibilityTime, DeathPit);
+    }
 
-    //public void KillPlayer(bool DeathPit = false)
-    //{
-    //    if (!playerAlive) return;
-    //    playerAlive = false;
-    //    //TODO dying stuff
-    //    //animator.SetBool("hasDied", true);
-    //    playerAnimationManagerScript.startDeath();
-    //    if (DeathPit)
-    //    {
-    //        gameObject.SetActive(false);
-    //        return;
-    //    }
-    //    DeathAnimation.SetActive(true);
-    //    myRigidbody2D.linearVelocity = new Vector3(0, 0, 0);
-    //    myRigidbody2D.gravityScale = 1.5f;
-    //    myChargeScript.chargeIndicator.sprite = null;
-    //    myMagnetManagerScript.playerKilled();
-    //    myVerticalMovementScript.PlayerKilled();
-    //    StartCoroutine(HandleDeath());
-    //}
-    //IEnumerator HandleDeath()
-    //{
-    //    yield return new WaitUntil(() => DeathAnimation.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Dead"));
-    //    gameObject.SetActive(false);
-    //}
+    public void OnMove(UnityEngine.InputSystem.InputAction.CallbackContext ctx) { 
+        Vector2 v = ctx.ReadValue<Vector2>();
 
+        if (ctx.performed) checkMovementInput = true;
+        if (ctx.canceled) checkMovementInput = false;
+        //Debug.Log("OnMove Activate");
+
+    }
     public void Move(InputAction.CallbackContext context)
     {
         Vector2 input = context.ReadValue<Vector2>();
@@ -268,20 +185,35 @@ public class PlayerScript : MechActionsScript
             lastMoveInputTime = Time.time;
         }
     }
-    //public float startMagnetMaxYSpeed(float maxYSpeed, float maxYSpeedPressingDown)
-    //{
-    //    bool pressingDown = verticalDirection <= -.25;
-    //    return myMagnetManagerScript.getMagnetMaxYSpeed(maxYSpeed, maxYSpeedPressingDown, pressingDown, repelOn, attractOn);
-    //}
-    //public float startMagnetMaxXSpeed(float maxXSpeed)
-    //{
-    //    return myMagnetManagerScript.getMagnetMaxXSpeed(maxXSpeed, repelOn, attractOn);
-    //}
+
     public void Aim(InputAction.CallbackContext context)
     {
         if(Mathf.Abs(context.ReadValue<Vector2>().x) > .1 || Mathf.Abs(context.ReadValue<Vector2>().y) > .1)
         {
             rightJoystick = context.ReadValue<Vector2>();
+        }
+    }
+    public void ShootingInput(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            shootingInput = true;
+        }
+        if (context.canceled)
+        {
+            shootingInput = false;
+        }
+    }
+    public void OnJump(UnityEngine.InputSystem.InputAction.CallbackContext ctx) { 
+        if (ctx.performed) {
+            jumpPressed = true;
+            checkJumpInput = true;
+
+        }
+        if (ctx.canceled)
+        {
+            jumpPressed = false;
+            checkJumpInput = false;
         }
     }
     public void JumpInput(InputAction.CallbackContext context)
@@ -301,40 +233,20 @@ public class PlayerScript : MechActionsScript
         }
     }
 
-    public void RecoverMagnetInput(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            recoverMagnet = true;
+    public void OnRepel(UnityEngine.InputSystem.InputAction.CallbackContext ctx) { 
+        if (ctx.ReadValueAsButton()) {
+           
+            lastRepelInputTime = Time.time;
         }
-        if (context.canceled)
+        repelButtonHeld = ctx.ReadValueAsButton();
+        if (ctx.started)
         {
-            recoverMagnet = false;
+            repelButtonMostRecent = true;
+            attractButtonMostRecent = false;
         }
-    }
-
-    public void ShootingInput(InputAction.CallbackContext context)
-    {
-        if (context.performed)
+        if (ctx.canceled)
         {
-            shootingInput = true;
-        }
-        if (context.canceled)
-        {
-            shootingInput = false;
-        }
-    }
-    public void LaunchMagnet(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            launchMagnetHeld = true;
-            launchMagnet = true;
-        }
-        if (context.canceled)
-        {
-            launchMagnetHeld = false;
-            launchMagnet = false;
+            repelButtonMostRecent = false;
         }
     }
     public void MagnetRepel(InputAction.CallbackContext context)
@@ -351,6 +263,35 @@ public class PlayerScript : MechActionsScript
         }
         if (context.performed && myMagnetManagerScript.returnMyMagnet() != null){
             lastRepelInputTime= Time.time;
+        }
+    }
+    public void LaunchMagnet(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            launchMagnetHeld = true;
+            launchMagnet = true;
+        }
+        if (context.canceled)
+        {
+            launchMagnetHeld = false;
+            launchMagnet = false;
+        }
+    }
+    public void OnAttract(UnityEngine.InputSystem.InputAction.CallbackContext ctx) { 
+        if (ctx.ReadValueAsButton()) {
+           
+            lastAttractInputTime = Time.time;
+        }
+        attractButtonHeld = ctx.ReadValueAsButton();
+        if (ctx.started)
+        {
+            attractButtonMostRecent = true;
+            repelButtonMostRecent = false;
+        }
+        if (ctx.canceled)
+        {
+            attractButtonMostRecent = false;
         }
     }
     public void MagnetAttract(InputAction.CallbackContext context)
@@ -376,4 +317,16 @@ public class PlayerScript : MechActionsScript
             logic.SetPausePressed();
         }
     }
+    public void RecoverMagnetInput(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            recoverMagnet = true;
+        }
+        if (context.canceled)
+        {
+            recoverMagnet = false;
+        }
+    }
+
 }

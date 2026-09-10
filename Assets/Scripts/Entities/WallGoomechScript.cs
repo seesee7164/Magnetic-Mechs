@@ -166,7 +166,10 @@ public class WallGoomechScript : GoomechScript
         }
 
     }
-
+    protected override IEnumerator FreezeY()
+    {
+        yield return new WaitForSeconds(1f);
+    }
     private void Walk()
     {
         // freeze x or y

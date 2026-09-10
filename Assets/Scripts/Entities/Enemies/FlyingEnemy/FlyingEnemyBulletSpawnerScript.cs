@@ -18,6 +18,7 @@ public class FlyingEnemyBulletSpawnerScript : BulletSpawnerParent
         bulletForce = 20f;
         shootingCounter = shootingTime;
         SetUpGameObjects();
+        muzzleEffect.GetComponent<MuzzleScript>().ChangeToRed();
     }
 
     // Update is called once per frame

@@ -26,6 +26,7 @@ public class TutorialAllPrompts : MonoBehaviour
     private Prompt magnetOnePrompt;
     private Prompt magnetTwoPrompt;
     private Prompt recoverMagnetPrompt;
+    private Prompt shootWallPrompt;
     private Prompt magnetRepelPrompt;
     private Prompt magnetAttractPrompt;
     private Prompt dropPrompt;
@@ -39,6 +40,7 @@ public class TutorialAllPrompts : MonoBehaviour
     private string magnetOneString = "MagnetOne";
     private string magnetTwoString = "MagnetTwo";
     private string recoverMagnetString = "RecoverMagnet";
+    private string shootWallString = "ShootWall";
     private string magnetAttractString = "Attract";
     private string magnetRepelString = "Repel";
     private string dropString = "Drop";
@@ -51,9 +53,10 @@ public class TutorialAllPrompts : MonoBehaviour
     private string afterJumpKG = "Your Jetpack will Refill immediately on the Ground, but slowly while mid-air";
     private string magnetingOneK = "Right Mouse to Shoot Magnet. Hold \"Left Shift\" to Repel";
     private string recoverMagnetK = "Press \"Q\" to recover the Magnet. You can still fire the magnet without recovering it";
+    private string shootWallk = "Some walls can be destroyed. Hold left click to fire continuously";
     private string magnetingTwoK = "Hold \"W\" to Attract to the magnet. Release to stop. Hold space mid-air to hover";
     private string magnetingAttractK = "Hold \"W\" to Attract";
-    private string magnetingRepelK = "Hold \"Left Shift\" to Repel";
+    private string magnetingRepelK = "Hold\" Left Shift\" to Repel";
     private string dropK = "Hold \"S\" To Drop Through Wooden Floors or to Fall Faster";
     private string redBlock = "Red X Blocks will destroy the magnet if they touch it";
     private string killingPilotK= "Hold \"G\" + \"L\"";
@@ -86,6 +89,7 @@ public class TutorialAllPrompts : MonoBehaviour
             { magnetOneString, 6 },
             { magnetTwoString, 6 },
             { recoverMagnetString, 7 },
+            { shootWallString, 8 },
             { magnetRepelString, 8 },
             { magnetAttractString, 9 },
             { dropString, 4 },
@@ -188,5 +192,13 @@ public class TutorialAllPrompts : MonoBehaviour
         priorityOrder[killPilotString]
         );
         prompts.Add(killPilotPrompt);
+
+        //shoot wall prompt 12
+        shootWallPrompt = gameObject.AddComponent<Prompt>();
+        shootWallPrompt.postHocConstructor(
+        (gamePadNotMouse ? magnetingG : shootWallk),
+        priorityOrder[shootWallString]
+        );
+        prompts.Add(shootWallPrompt);
     }
 }
