@@ -15,6 +15,7 @@ public class StartScreenLogic : MonoBehaviour
     }
 
     //holds the logic for functions which are called into during the starting screen
+    public GameObject startScreenStartBackground;
     public GameObject startScreenStart;
     public GameObject startScreenLevelSelect;
     public GameObject startScreenSettings;
@@ -40,6 +41,7 @@ public class StartScreenLogic : MonoBehaviour
         currScreen = MenuState.StartScreen;
         startMenuButtonSelectionManager.startEnabling();
         startScreenStart.SetActive(true);
+        startScreenStartBackground.SetActive(true);
         startScreenLevelSelect.SetActive(false);
         startScreenSettings.SetActive(false);
         //backgroundCanvas.SetActive(true);
@@ -50,6 +52,7 @@ public class StartScreenLogic : MonoBehaviour
         currScreen = MenuState.LevelSelect;
         startMenuButtonSelectionManager.stopEnabling();
         startScreenStart.SetActive(false);
+        startScreenStartBackground.SetActive(false);
         startScreenLevelSelect.SetActive(true);
         //backgroundCanvas.SetActive(false);
     }
@@ -59,6 +62,7 @@ public class StartScreenLogic : MonoBehaviour
         currScreen = MenuState.Settings;
         startMenuButtonSelectionManager.stopEnabling();
         startScreenStart.SetActive(false);
+        startScreenStartBackground.SetActive(true);
         startScreenSettings.SetActive(true);
         //backgroundCanvas.SetActive(false);
     }

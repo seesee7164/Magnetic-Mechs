@@ -73,6 +73,7 @@ public class GoomechScript : MonoBehaviour
         groundLayer = LayerMask.GetMask("Ground", "Plank Ground", "Wall");
         spikeLayer = LayerMask.GetMask("Spike");
         enemyLayer = LayerMask.GetMask("Enemy");
+        //StartCoroutine(FreezeY());
     }
 
     // Update is called once per frame
@@ -100,6 +101,11 @@ public class GoomechScript : MonoBehaviour
     private void FixedUpdate()
     {
         //animator.SetBool("hasDied", false);
+    }
+    protected virtual IEnumerator FreezeY()
+    {
+        yield return new WaitForSeconds(1f);
+        myRigidBody2D.constraints = RigidbodyConstraints2D.FreezePositionY;
     }
     public void SpawnBehavior()
     {

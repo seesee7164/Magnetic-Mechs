@@ -36,6 +36,7 @@ TagManager:
   - NonStickPlatform
   - BeeBoss
   - BeeBossParent
+  - MovingPlatformVertical
   layers:
   - Default
   - TransparentFX
