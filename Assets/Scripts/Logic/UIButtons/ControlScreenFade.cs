@@ -10,14 +10,17 @@ public class ControlScreenFade : MonoBehaviour
     private CanvasGroup blackScreen;
     public GameObject clearTimeText;
     private MultiSceneVariables multiSceneVariables;
+    private LogicScript logicScript;
     [Header("Variables")]
     private float currTarget;
     private float currAlpha = 1;
     private float changePerStep = .05f;
     private bool currentlyChanging = false;
+    public bool fastChange = false;
     private void Awake()
     {
         multiSceneVariables = GameObject.FindGameObjectWithTag("MultiSceneVariables").GetComponent<MultiSceneVariables>();
+        logicScript = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
         blackScreen = GetComponent<CanvasGroup>();
         currTarget = 1f;
         setAlphaValue(1f);
@@ -47,6 +50,7 @@ public class ControlScreenFade : MonoBehaviour
         yield return new WaitForSeconds(delay);
         currTarget = target;
         float timeBetweenSteps = changePerStep * fadeDuration;
+        if (fastChange) timeBetweenSteps /= 2;
         while (currAlpha < currTarget)
         {
             currAlpha += changePerStep;
@@ -81,6 +85,7 @@ public class ControlScreenFade : MonoBehaviour
     private void HandleClearTimeText()
     {
         clearTimeText.SetActive(true);
+        logicScript.pauseDisabled = true;
         int prevTime = multiSceneVariables.returnPreviousTime();
         if (prevTime == 0)
         {

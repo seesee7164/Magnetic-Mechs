@@ -93,11 +93,9 @@ public class LogicScript : MonoBehaviour
         controlScreenFade.setAlphaValue(0.0f);
         switch (menuState) {
             case GameMenuState.PLAYING:
-                audioManager.Pause();
                 ShowPauseMenu();
                 break;
             case GameMenuState.PAUSE_MENU:
-                audioManager.Unpause();
                 HideMenus();
                 break;
             case GameMenuState.SETTINGS_MENU:
@@ -134,6 +132,7 @@ public class LogicScript : MonoBehaviour
         // Pause game
         Time.timeScale = 0.0f;
         playerInput.SwitchCurrentActionMap("UI");
+        audioManager.Pause();
 
         // Show pause menu
         pauseScreen.SetActive(true);
@@ -148,6 +147,7 @@ public class LogicScript : MonoBehaviour
         // Unpause game
         Time.timeScale = 1.0f;
         playerInput.SwitchCurrentActionMap("Player");
+        audioManager.Unpause();
 
         // Hide menus
         pauseScreen.SetActive(false);

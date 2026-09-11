@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8081634433132614986}
   - component: {fileID: 3340277256586740129}
   - component: {fileID: 8042448708105951681}
+  - component: {fileID: 7904840273875303336}
   m_Layer: 27
   m_Name: Bullets Collision Collider
   m_TagString: Untagged
@@ -84,6 +85,33 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.48, y: 0.25}
   m_Direction: 1
+--- !u!50 &7904840273875303336
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2791104627332738105}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &3633755881902001984
 GameObject:
   m_ObjectHideFlags: 0
@@ -95,6 +123,7 @@ GameObject:
   - component: {fileID: 3623157478050260441}
   - component: {fileID: 7787649252669942045}
   - component: {fileID: 7697670559317762730}
+  - component: {fileID: 671713407892769703}
   m_Layer: 0
   m_Name: Bullet Rear Collider
   m_TagString: Untagged
@@ -168,6 +197,33 @@ CapsuleCollider2D:
   m_Offset: {x: -0.2, y: 0}
   m_Size: {x: 0.02, y: 0.14}
   m_Direction: 0
+--- !u!50 &671713407892769703
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3633755881902001984}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &4392567191592610252
 GameObject:
   m_ObjectHideFlags: 0
