@@ -214,6 +214,7 @@ GameObject:
   - component: {fileID: 5182027504060491038}
   - component: {fileID: 7704160114624566961}
   - component: {fileID: 6450803492694632738}
+  - component: {fileID: 8134774408149703425}
   m_Layer: 27
   m_Name: Bullets Collision Collider
   m_TagString: Untagged
@@ -287,6 +288,33 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.48, y: 0.25}
   m_Direction: 1
+--- !u!50 &8134774408149703425
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4621599777892285735}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &7458761647890448546
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,6 +326,7 @@ GameObject:
   - component: {fileID: 3588879194108954774}
   - component: {fileID: 2576437240967937156}
   - component: {fileID: 914327714420718966}
+  - component: {fileID: 6436445834919542302}
   m_Layer: 0
   m_Name: Bullet Rear Collider
   m_TagString: Untagged
@@ -371,3 +400,30 @@ CapsuleCollider2D:
   m_Offset: {x: -0.2, y: 0}
   m_Size: {x: 0.04, y: 0.14}
   m_Direction: 0
+--- !u!50 &6436445834919542302
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7458761647890448546}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

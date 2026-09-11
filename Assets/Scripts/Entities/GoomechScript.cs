@@ -73,7 +73,7 @@ public class GoomechScript : MonoBehaviour
         groundLayer = LayerMask.GetMask("Ground", "Plank Ground", "Wall");
         spikeLayer = LayerMask.GetMask("Spike");
         enemyLayer = LayerMask.GetMask("Enemy");
-        //StartCoroutine(FreezeY());
+        StartCoroutine(FreezeY());
     }
 
     // Update is called once per frame

@@ -75,12 +75,14 @@ public class AudioManager : MonoBehaviour
 
     public void Pause()
     {
+        Debug.Log("Pause");
         paused = true;
         mixer.SetFloat("SFXVolume", Mathf.Log10(.01f) * 20);
     }
 
     public void Unpause()
     {
+        Debug.Log("unpause");
         paused = false;
         SetAudioVolume();
     }

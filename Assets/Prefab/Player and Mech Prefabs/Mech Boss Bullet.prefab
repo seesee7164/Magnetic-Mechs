@@ -214,6 +214,7 @@ GameObject:
   - component: {fileID: 448467487929057623}
   - component: {fileID: 1922216353285985134}
   - component: {fileID: 850593655342025275}
+  - component: {fileID: 5518826029915399477}
   m_Layer: 27
   m_Name: Bullets Collision Collider
   m_TagString: Untagged
@@ -287,6 +288,33 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.48, y: 0.25}
   m_Direction: 1
+--- !u!50 &5518826029915399477
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7283452952384506646}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &8236270651384628773
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,6 +326,7 @@ GameObject:
   - component: {fileID: 8037222844173996654}
   - component: {fileID: 8504365110481933738}
   - component: {fileID: 572995904065785797}
+  - component: {fileID: 3907842588750225665}
   m_Layer: 0
   m_Name: Bullet Rear Collider
   m_TagString: Untagged
@@ -371,3 +400,30 @@ CapsuleCollider2D:
   m_Offset: {x: -0.2, y: 0}
   m_Size: {x: 0.03, y: 0.14}
   m_Direction: 0
+--- !u!50 &3907842588750225665
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8236270651384628773}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

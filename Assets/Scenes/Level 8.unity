@@ -77850,6 +77850,10 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SetAudioVolume
       objectReference: {fileID: 0}
+    - target: {fileID: 9025116517882059354, guid: 80ada91b67b5d1c43b715a77187a2406, type: 3}
+      propertyPath: fastChange
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
