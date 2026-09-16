@@ -9,6 +9,7 @@ public class CheckpointScript : MonoBehaviour
     public CinemachineCamera virtualCamera;
     private PlayerHealthScript playerHealthScript;
     private AudioSource myAudioSource;
+    public Animator animator;
     [Header("variable")]
     public int checkpoint;
     private bool hasTriggered;
@@ -30,6 +31,7 @@ public class CheckpointScript : MonoBehaviour
                 float myY = transform.position.y;
                 player.transform.position = new Vector3(myX,myY, player.transform.position.z);
                 if (virtualCamera != null) virtualCamera.transform.position = player.transform.position;
+                animator.SetBool("StartOpen", true);
             }
         }
     }
@@ -47,6 +49,7 @@ public class CheckpointScript : MonoBehaviour
             {
                 hasTriggered = true;
                 multiSceneVariables.setCheckpoint(checkpoint);
+                animator.SetBool("OpenDoor", true);
                 myAudioSource.Play();
                 playerHealthScript.healToFull();
             }
