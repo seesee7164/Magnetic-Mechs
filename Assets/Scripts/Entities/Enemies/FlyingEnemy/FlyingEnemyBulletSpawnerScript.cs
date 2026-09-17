@@ -4,7 +4,7 @@ public class FlyingEnemyBulletSpawnerScript : BulletSpawnerParent
 {
     //handles spawning bullets for the robot spider queen
     [Header("variables")]
-    public float shootingTime = 1;
+    private float shootingTime = 3.0f;
     public float shootingCounter;
     [Header("Player")]
     public GameObject player;
@@ -15,7 +15,7 @@ public class FlyingEnemyBulletSpawnerScript : BulletSpawnerParent
         player = GameObject.FindGameObjectWithTag("Player");
         parentObject = gameObject;
         audioBox = GetComponent<AudioSource>();
-        bulletForce = 20f;
+        bulletForce = 32f;
         shootingCounter = shootingTime;
         SetUpGameObjects();
         muzzleEffect.GetComponent<MuzzleScript>().ChangeToRed();
