@@ -22,7 +22,7 @@ public class BulletsCollisionScript : MonoBehaviour
         //Destroy(effect, effect.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
         if ((blockBulletLayers & (1 << collision.gameObject.layer)) != 0)
         {
-            bulletScript.PublicKillBulletWithDelay(.02f);
+            bulletScript.PublicKillBulletWithDelay(0.02f);
         }
     }
 }

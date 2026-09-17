@@ -16,7 +16,7 @@ public class BulletSpawnerScript : BulletSpawnerParent
     [Header("MechBoss")]
     public bool isMechBoss = false;
     private float mechBossReloadTime = 1.25f;
-    private float mechBossBulletForce = 23f;
+    private float mechBossBulletForce = 28f;
     [Header("Components")]
     //public GameObject bulletPrefab;
     //public GameObject MuzzlePrefab;
@@ -32,7 +32,7 @@ public class BulletSpawnerScript : BulletSpawnerParent
             reloadTime = mechBossReloadTime;
             bulletForce = mechBossBulletForce;
         }
-        else bulletForce = 28f;
+        else bulletForce = 33f;
         timer = reloadTime;
         audioBox = gameObject.GetComponent<AudioSource>();
         parentObject = mech;

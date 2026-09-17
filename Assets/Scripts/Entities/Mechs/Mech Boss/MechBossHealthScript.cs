@@ -13,7 +13,7 @@ public class MechBossHealthScript : MonoBehaviour
     public LogicScript logic;
     [Header("Health")]
     public float currentHealth;
-    private float maxHealth = 30;
+    private float maxHealth = 25;
     [Header("Invincibility")]
     const float invincibilityTimeDefault = .01f;
     public bool invincible;
@@ -37,7 +37,7 @@ public class MechBossHealthScript : MonoBehaviour
     {
         invincible = true;
         loseHealth(Damage, DeathPit);
-        yield return new WaitForSeconds(invincibilityTime);
+        yield return new WaitForSeconds(invincibilityTimeDefault);
         invincible = false;
     }
     private void loseHealth(float Damage, bool DeathPit)
