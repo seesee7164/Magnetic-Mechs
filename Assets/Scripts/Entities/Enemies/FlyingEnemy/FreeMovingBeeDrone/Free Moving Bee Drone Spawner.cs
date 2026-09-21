@@ -32,7 +32,7 @@ public class FreeMovingBeeDroneSpawnerScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        timeToSpawn = 2;
+        timeToSpawn = 10;
         myTransform = transform;
         SetUpArrays();
     }
@@ -107,6 +107,7 @@ public class FreeMovingBeeDroneSpawnerScript : MonoBehaviour
     }
     public void Activate()
     {
+        if(beeDronesAvailableQueue.Count != 0) timer = timeToSpawn - 1;
         active = true;
         for(int i = 0; i < maxBeeDrones; i++)
         {

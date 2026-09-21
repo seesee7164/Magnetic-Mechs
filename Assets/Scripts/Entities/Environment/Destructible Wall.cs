@@ -14,21 +14,32 @@ public class DestructibleWall : MonoBehaviour
     [Header("Components")]
     public Tilemap tilemap;
     public GameObject otherObjectToKill;
+    [Header("Invincible")]
+    const float invincibilityTimeDefault = .1f;
+    public bool invincible;
     private void Awake()
     {
+        invincible = false;
         currentHealth = maxHealth;
         tilemap = GetComponent<Tilemap>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == 8)
+        if (collision.gameObject.layer == 8 || collision.gameObject.layer == 13)
         {
             takeDamage(1);
         }
     }
     public void takeDamage(float Damage)
     {
+        if(!invincible) StartCoroutine(handleDamage(Damage));
+    }
+    IEnumerator handleDamage(float Damage)
+    {
+        invincible = true;
         loseHealth(Damage);
+        yield return new WaitForSeconds(invincibilityTimeDefault);
+        invincible = false;
     }
     private void loseHealth(float Damage)
     {
