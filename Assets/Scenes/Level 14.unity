@@ -26353,6 +26353,7 @@ MonoBehaviour:
   currentHealth: 0
   tilemap: {fileID: 758091898}
   otherObjectToKill: {fileID: 0}
+  invincible: 0
 --- !u!66 &758091894
 CompositeCollider2D:
   m_ObjectHideFlags: 0
@@ -29424,8 +29425,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a22179c47caaec84887348f0715fcdd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelToLoad: Level 12
-  currentLevel: 11
+  levelToLoad: Level 15
+  currentLevel: 14
 --- !u!1 &1286053913
 GameObject:
   m_ObjectHideFlags: 0
