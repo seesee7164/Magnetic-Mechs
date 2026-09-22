@@ -172,7 +172,7 @@ public class LogicScript : MonoBehaviour
     public void StartPostMechBossDelay()
     {
         playerHealthScript.invincible = true;
-        multiSceneVariables.FinishLevel(13);
+        multiSceneVariables.FinishLevel(3);
         StartScreenFade(1.5f, 2.5f);
         float timeUntilLevelEnd = 3.25f;
         if (multiSceneVariables.ShowTime()) timeUntilLevelEnd += delayForEndScreen;
@@ -181,12 +181,12 @@ public class LogicScript : MonoBehaviour
     public IEnumerator StartPostMechBoss(float delay)
     {
         yield return new WaitForSeconds(delay);
-        StartLevel("Level 2");
+        StartLevel("Level 4");
     }
     public void StartPostSpiderBossDelay()
     {
         playerHealthScript.invincible = true;
-        multiSceneVariables.FinishLevel(7);
+        multiSceneVariables.FinishLevel(9);
         StartScreenFade(1.5f, 1.5f);
         float timeUntilLevelEnd = 3.25f;
         if (multiSceneVariables.ShowTime()) timeUntilLevelEnd += delayForEndScreen;
@@ -195,12 +195,12 @@ public class LogicScript : MonoBehaviour
     public IEnumerator StartPostSpiderBoss(float delay)
     {
         yield return new WaitForSeconds(delay);
-        StartLevel("Level 8");
+        StartLevel("Level 10");
     }
     public void StartPostBeeBossDelay()
     {
         playerHealthScript.invincible = true;
-        multiSceneVariables.FinishLevel(12);
+        multiSceneVariables.FinishLevel(15);
         StartScreenFade(1.5f, 1.5f);
         float timeUntilLevelEnd = 3.25f;
         if (multiSceneVariables.ShowTime()) timeUntilLevelEnd += delayForEndScreen;
