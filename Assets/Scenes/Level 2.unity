@@ -231852,11 +231852,11 @@ PrefabInstance:
       objectReference: {fileID: 6200000, guid: e8dde3c8cfa42fb4d8297714ed03aa18, type: 2}
     - target: {fileID: 8625475655797674624, guid: 3cdd95d7e7ef1014384613e394591fd9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.8
+      value: 0.37
       objectReference: {fileID: 0}
     - target: {fileID: 8625475655797674624, guid: 3cdd95d7e7ef1014384613e394591fd9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 73.5
+      value: 9.81
       objectReference: {fileID: 0}
     - target: {fileID: 8625475655797674624, guid: 3cdd95d7e7ef1014384613e394591fd9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -232483,6 +232483,7 @@ MonoBehaviour:
   currentHealth: 0
   tilemap: {fileID: 1008882303}
   otherObjectToKill: {fileID: 0}
+  invincible: 0
 --- !u!66 &1008882299
 CompositeCollider2D:
   m_ObjectHideFlags: 0

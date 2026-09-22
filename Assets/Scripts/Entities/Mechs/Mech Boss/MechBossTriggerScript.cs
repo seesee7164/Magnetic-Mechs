@@ -11,6 +11,7 @@ public class MechBossTriggerScript : MonoBehaviour
     public GameObject entrances;
     public GameObject virtualCameraPlayer;
     public GameObject virtualCameraBoss;
+    public GameObject wallBlockingOffBoss;
     //public AudioSource audioSource;
     //public AudioManager audioManager;
     // Start is called before the first frame update
@@ -38,6 +39,7 @@ public class MechBossTriggerScript : MonoBehaviour
             //virtualCamera.m_Lens.OrthographicSize = 10;
             virtualCameraPlayer.SetActive(false);
             virtualCameraBoss.SetActive(true);
+            wallBlockingOffBoss.SetActive(false);
             //AudioClip loadedClip = Resources.Load<AudioClip>("BackgroundMusic/the_robot_spider_queen_invasion_Part2");
             //if (loadedClip != null)
             //{
