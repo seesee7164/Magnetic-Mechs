@@ -272,6 +272,9 @@ public class MainMenuButtonSelectionManager : MonoBehaviour
         PlayerPrefs.SetInt("Level 11", 1);
         PlayerPrefs.SetInt("Level 12", 1);
         PlayerPrefs.SetInt("Level 13", 1);
+        PlayerPrefs.SetInt("Level 14", 1);
+        PlayerPrefs.SetInt("Level 15", 1);
+        PlayerPrefs.SetInt("Level 16", 1);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
