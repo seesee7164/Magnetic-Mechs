@@ -10,8 +10,8 @@ public class Turret : BulletSpawnerParent
 
     protected float shootingAngle = 0f;
 
-    [SerializeField] private float timeBetweenShots;
-    private float timer;
+    [SerializeField] protected float timeBetweenShots;
+    protected float timer;
     [SerializeField] private float missileForce;
 
     private void Start()

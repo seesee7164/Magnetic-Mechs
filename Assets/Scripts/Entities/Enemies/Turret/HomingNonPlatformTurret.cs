@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class HomingNonPlatformTurret : Turret
@@ -6,6 +7,8 @@ public class HomingNonPlatformTurret : Turret
     private Transform player;
     private float baseAngle;
     public float maxFiringDistance = 1000f;
+    public bool active = true;
+    [SerializeField] private float delay = 0f;
 
     void Start()
     {
@@ -31,7 +34,7 @@ public class HomingNonPlatformTurret : Turret
     }
     protected override void Fire()
     {
-        if ((player.transform.position - transform.position).magnitude <= maxFiringDistance)
+        if (active && (player.transform.position - transform.position).magnitude <= maxFiringDistance)
         {
             base.Fire();
         }
@@ -40,5 +43,15 @@ public class HomingNonPlatformTurret : Turret
     {
         base.SetUpTurret();
         muzzleEffect.GetComponent<MuzzleScript>().ChangeToRed();
+    }
+    public void Activate()
+    {
+        StartCoroutine(activateAfterDelay());
+    }
+    IEnumerator activateAfterDelay()
+    {
+        timer = timeBetweenShots + delay;
+        yield return new WaitForSeconds(.01f);
+        active = true;
     }
 }

@@ -13,7 +13,7 @@ public class MechBossHealthScript : MonoBehaviour
     public LogicScript logic;
     [Header("Health")]
     public float currentHealth;
-    private float maxHealth = 25;
+    private float maxHealth = 20;
     [Header("Invincibility")]
     const float invincibilityTimeDefault = .01f;
     public bool invincible;
@@ -23,6 +23,11 @@ public class MechBossHealthScript : MonoBehaviour
         invincible = false;
         if (Mech != null) mechActionsScript = Mech.GetComponent<MechBossActionsScript>();
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
+    }
+    public void AdvancedMechBossHealth()
+    {
+        maxHealth = 25f;
+        currentHealth = maxHealth;
     }
     public void takeDamage(float Damage, Vector2 knockbackDirection, float knockback = 0, float invincibilityTime = invincibilityTimeDefault, bool DeathPit = false)
     {

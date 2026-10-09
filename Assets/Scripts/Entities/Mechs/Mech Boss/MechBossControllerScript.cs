@@ -7,27 +7,36 @@ public class MechBossControllerScript : MonoBehaviour
     [Header("Components")]
     public MechBossActionsScript availableActionsScript;
     public Transform centerCeilingTransform;
+    public Transform centerFloorTransform;
     [Header("variables")]
-    private bool bossActive = false;
-    private bool trackPlayer = true;
+    protected bool bossActive = false;
+    protected bool trackPlayer = true;
 
     [Header("Behaviors")]
     public CurrentObjective currentObjective;
 
     [Header("BehaviorVariables")]
-    private bool startedLeft = false;
-    private bool performMidBehaviorAction = false;
-    private float targetX;
+    protected bool startedLeft = false;
+    protected bool performMidBehaviorAction = false;
+    protected float targetX;
     [Header("Timers")]
-    private float startBehaviorTimer = 0f;
-    private float currentCooldown = 2f;
+    protected float startBehaviorTimer = 0f;
+    protected float currentCooldown = 2f;
     [Header("Probabilities")]
-    private float moveAcrossScreenWithAttractionProbability = .3f;
-    private float flyToCeilingProbability = .3f;
-    private float launchAcrossScreenProbability = .3f;
-    //private float moveAcrossScreenProbability = .1f;
+    protected float moveAcrossScreenWithAttractionProbability = .3f;
+    protected float flyToCeilingProbability = .3f;
+    protected float launchAcrossScreenProbability = .3f;
+    protected float attractThenRepelAcrossScreenProbability = .0f;
+    //protected float moveAcrossScreenProbability = .1f;
+    [Header("Cooldowns")]
+    protected float moveAcrossScreenCooldown = 2f;
+    protected float moveAcrossScreenWithAttractionCooldown = 2.5f;
+    //protected float flyToCeilingCooldown = 2f;
+    protected float LaunchingAcrossScreenCooldown = 3.5f;
+
     public enum CurrentObjective
     {
+        None,
         Stationary,
         MoveAcrossScreen,
         AimAtGround,
@@ -35,13 +44,19 @@ public class MechBossControllerScript : MonoBehaviour
         AimAcrossArena,
         MoveAcrossScreenWithAttraction,
         AimBehindMech,
-        launchAcrossScreen
+        launchAcrossScreen,
+        AimAtMiddleGround,
+        AttractToMiddleGround,
+        CheckToRepelFromMiddleGround,
+        RepelFromMiddleGround
     }
 
-    private void Awake()
+    protected virtual void Awake()
     {
         flyToCeilingProbability = flyToCeilingProbability + moveAcrossScreenWithAttractionProbability;
         launchAcrossScreenProbability = launchAcrossScreenProbability + flyToCeilingProbability;
+        attractThenRepelAcrossScreenProbability = attractThenRepelAcrossScreenProbability + launchAcrossScreenProbability;
+        currentObjective = CurrentObjective.Stationary;
     }
 
     // Update is called once per frame
@@ -49,7 +64,7 @@ public class MechBossControllerScript : MonoBehaviour
     {
 
     }
-    private void FixedUpdate()
+    protected void FixedUpdate()
     {
         if (!bossActive) return;
         PerformObjectiveBehavior();
@@ -58,7 +73,7 @@ public class MechBossControllerScript : MonoBehaviour
 
     }
     //Fixed Update Functions
-    private void HandleBehaviorTimer()
+    protected virtual void HandleBehaviorTimer()
     {
         if (currentObjective == CurrentObjective.Stationary)
         {
@@ -66,8 +81,8 @@ public class MechBossControllerScript : MonoBehaviour
             {
                 float newBehavior = Random.value;
                 Debug.Log(newBehavior);
-                if(newBehavior <= moveAcrossScreenWithAttractionProbability) StartAimAcrossArena();
-                else if(newBehavior <= flyToCeilingProbability) StartAimAtGround();
+                if (newBehavior <= moveAcrossScreenWithAttractionProbability) StartAimAcrossArena();
+                else if (newBehavior <= flyToCeilingProbability) StartAimAtGround();
                 else if (newBehavior <= launchAcrossScreenProbability) StartAimBehindMech();
                 else StartMoveAcrossScreen();
                 startBehaviorTimer = 0f;
@@ -78,7 +93,7 @@ public class MechBossControllerScript : MonoBehaviour
             }
         }
     }
-    private void PerformObjectiveBehavior()
+    protected virtual void PerformObjectiveBehavior()
     {
         if (currentObjective == CurrentObjective.MoveAcrossScreen) MoveAcrossScreen();
         else if (currentObjective == CurrentObjective.AimAtGround) AimAtGround();
@@ -95,12 +110,12 @@ public class MechBossControllerScript : MonoBehaviour
         bossActive = true;
         StartTrackingAndShootingPlayer();
     }
-    private void StartTrackingAndShootingPlayer()
+    protected void StartTrackingAndShootingPlayer()
     {
         trackPlayer = true;
         availableActionsScript.StartShooting();
     }
-    private void SetTargetAcrossArena()
+    protected void SetTargetAcrossArena()
     {
         startedLeft = gameObject.transform.position.x <= centerCeilingTransform.position.x;
         if (startedLeft)
@@ -112,18 +127,19 @@ public class MechBossControllerScript : MonoBehaviour
             targetX = UnityEngine.Random.Range(8f, 18f);
         }
     }
-    private void FinishBehavior(float cooldown)
+    protected void FinishBehavior(float cooldown)
     {
+        availableActionsScript.jumpPressed = false;
         currentObjective = CurrentObjective.Stationary;
         currentCooldown = cooldown;
     }
     //moving across Screen
-    private void StartMoveAcrossScreen()
+    protected void StartMoveAcrossScreen()
     {
         currentObjective = CurrentObjective.MoveAcrossScreen;
         SetTargetAcrossArena();
     }
-    private void MoveAcrossScreen()
+    protected virtual void MoveAcrossScreen()
     {
         if (startedLeft)
         {
@@ -131,7 +147,7 @@ public class MechBossControllerScript : MonoBehaviour
             if(gameObject.transform.position.x >= targetX)
             {
                 availableActionsScript.Move(0f, 0f);
-                FinishBehavior(2);
+                FinishBehavior(moveAcrossScreenCooldown);
             }
         }
         else
@@ -140,12 +156,12 @@ public class MechBossControllerScript : MonoBehaviour
             if (gameObject.transform.position.x <= targetX)
             {
                 availableActionsScript.Move(0f, 0f);
-                FinishBehavior(2);
+                FinishBehavior(moveAcrossScreenCooldown);
             }
         }
     }
     //flying to ceiling
-    private void StartAimAtGround()
+    protected void StartAimAtGround()
     {
         trackPlayer = false;
         availableActionsScript.Move(0, 0);
@@ -162,11 +178,11 @@ public class MechBossControllerScript : MonoBehaviour
         yield return new WaitForSeconds(.1f);
         currentObjective = CurrentObjective.AimAtGround;
     }
-    private void AimAtGround()
+    protected void AimAtGround()
     {
         if(availableActionsScript.finishedAiming) startFlyingToCeiling();
     }
-    private void startFlyingToCeiling()
+    protected void startFlyingToCeiling()
     {
         currentObjective = CurrentObjective.FlyToCeiling;
         performMidBehaviorAction = false;
@@ -176,7 +192,7 @@ public class MechBossControllerScript : MonoBehaviour
         //availableActionsScript.StartShooting();
         StartCoroutine(LaunchMagnetToAttract());
     }
-    private void FlyToCeiling()
+    protected void FlyToCeiling()
     {
         if (gameObject.transform.position.x <= (centerCeilingTransform.position.x-.2f)) availableActionsScript.Move(1f, 0f);
         else if (gameObject.transform.position.x >= (centerCeilingTransform.position.x + .2f)) availableActionsScript.Move(-1f, 0f);
@@ -194,7 +210,7 @@ public class MechBossControllerScript : MonoBehaviour
         while (!availableActionsScript.finishedAiming) yield return new WaitForSeconds(.01f);
         StartAttracting();
     }
-    private void StartAttracting()
+    protected void StartAttracting()
     {
         performMidBehaviorAction = false;
         availableActionsScript.LaunchMagnet();
@@ -215,7 +231,7 @@ public class MechBossControllerScript : MonoBehaviour
     }
 
     //Move Across Screen With Attraction Scripts
-    private void StartAimAcrossArena()
+    protected void StartAimAcrossArena()
     {
         trackPlayer = false;
         availableActionsScript.Move(0, 0);
@@ -225,19 +241,19 @@ public class MechBossControllerScript : MonoBehaviour
         availableActionsScript.StopShooting();
         currentObjective = CurrentObjective.AimAcrossArena;
     }
-    private void AimAcrossArena()
+    protected void AimAcrossArena()
     {
         if (availableActionsScript.finishedAiming) StartMoveAcrossScreenWithAttraction();
     }
 
-    private void StartMoveAcrossScreenWithAttraction()
+    protected void StartMoveAcrossScreenWithAttraction()
     {
         currentObjective = CurrentObjective.MoveAcrossScreenWithAttraction;
         availableActionsScript.LaunchMagnet();
         availableActionsScript.StartAttract();
         StartTrackingAndShootingPlayer();
     }
-    private void MoveAcrossScreenWithAttraction()
+    protected virtual void MoveAcrossScreenWithAttraction()
     {
         if (startedLeft)
         {
@@ -265,10 +281,10 @@ public class MechBossControllerScript : MonoBehaviour
         availableActionsScript.RecoverMagnet();
         yield return new WaitForSeconds(.1f);
         availableActionsScript.MagnetRetrieved();
-        FinishBehavior(3);
+        FinishBehavior(moveAcrossScreenWithAttractionCooldown);
     }
     //Launch Across Screen functions
-    private void StartAimBehindMech()
+    protected void StartAimBehindMech()
     {
         trackPlayer = false;
         availableActionsScript.Move(0, 0);
@@ -278,12 +294,12 @@ public class MechBossControllerScript : MonoBehaviour
         availableActionsScript.StopShooting();
         currentObjective = CurrentObjective.AimBehindMech;
     }
-    private void AimBehindMech()
+    protected void AimBehindMech()
     {
         if (availableActionsScript.finishedAiming) StartLaunchAcrossScreen();
     }
 
-    private void StartLaunchAcrossScreen()
+    protected void StartLaunchAcrossScreen()
     {
         Debug.Log("test 1");
         currentObjective = CurrentObjective.launchAcrossScreen;
@@ -301,7 +317,7 @@ public class MechBossControllerScript : MonoBehaviour
         yield return new WaitForSeconds(.5f);
         availableActionsScript.StopRepel();
     }
-    private void LaunchAcrossScreen()
+    protected void LaunchAcrossScreen()
     {
         if (startedLeft)
         {
@@ -323,7 +339,7 @@ public class MechBossControllerScript : MonoBehaviour
     IEnumerator EndLaunchingAcrossScreen()
     {
         availableActionsScript.Move(startedLeft ? -1f : 1f, 0f);
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(1.1f);
         availableActionsScript.Move(0f, 0f);
         availableActionsScript.RecoverMagnet();
         yield return new WaitForSeconds(.05f);
