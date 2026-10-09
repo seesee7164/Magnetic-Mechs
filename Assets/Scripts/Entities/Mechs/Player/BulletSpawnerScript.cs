@@ -13,10 +13,11 @@ public class BulletSpawnerScript : BulletSpawnerParent
     private float timer;
     private bool shootingDisabled = false;
     public bool red;
+    public bool green;
     [Header("MechBoss")]
     public bool isMechBoss = false;
     private float mechBossReloadTime = 1.25f;
-    private float mechBossBulletForce = 28f;
+    private float mechBossBulletForce = 27f;
     [Header("Components")]
     //public GameObject bulletPrefab;
     //public GameObject MuzzlePrefab;
@@ -38,6 +39,7 @@ public class BulletSpawnerScript : BulletSpawnerParent
         parentObject = mech;
         SetUpGameObjects();
         if(red) ChangeToRed();
+        if(green) ChangeToGreen();
     }
     private void FixedUpdate()
     {
@@ -68,7 +70,9 @@ public class BulletSpawnerScript : BulletSpawnerParent
     }
     public void ChangeToRed()
     {
+        if (green) return;
         red = true;
+        green = false;
         if (muzzleEffect == null || bulletsArray[0] == null) return;
         muzzleEffect.GetComponent<MuzzleScript>().ChangeToRed();
         for (int i = 0; i < maxBullets; i++)
@@ -79,12 +83,24 @@ public class BulletSpawnerScript : BulletSpawnerParent
     public void ChangeToBlue()
     {
         red = false;
+        green = false;
         if (muzzleEffect == null || bulletsArray[0] == null) return;
         muzzleEffect.GetComponent<MuzzleScript>().ChangeToBlue();
         for (int i = 0; i < maxBullets; i++)
         {
             bulletsArray[i].GetComponent<MechBulletScript>().ChangeToBlue();
         }
+    }
+    public void ChangeToGreen()
+    {
+        red = false;
+        green = true;
+        if (muzzleEffect == null || bulletsArray[0] == null) return;
+        muzzleEffect.GetComponent<MuzzleScript>().ChangeToGreen();
+        //for (int i = 0; i < maxBullets; i++)
+        //{
+        //    bulletsArray[i].GetComponent<MechBulletScript>().ChangeToRed();
+        //}
     }
     public void ResetTimer()
     {
