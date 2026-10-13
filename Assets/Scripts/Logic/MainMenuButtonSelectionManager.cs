@@ -14,16 +14,19 @@ public class MainMenuButtonSelectionManager : MonoBehaviour
     public Transform buttonParent;
     public Transform page1Parent;
     public Transform page2Parent;
+    public Transform page3Parent;
     public GameObject currentLevelCapacitor;
     public GameObject previousButton;
     public GameObject nextButton;
     public GameObject beatenConnectors;
     private GameObject beatenConnectorsPageOne;
     private GameObject beatenConnectorsPageTwo;
+    private GameObject beatenConnectorsPageThree;
     [Header("Variables")]
     public List<GameObject> buttons;
     public List<GameObject> page1Buttons;
     public List<GameObject> page2Buttons;
+    public List<GameObject> page3Buttons;
     public RuntimeAnimatorController lockedLevelAnim;
     public RuntimeAnimatorController currentLevelAnim;
     public RuntimeAnimatorController beatenLevelAnim;
@@ -45,6 +48,7 @@ public class MainMenuButtonSelectionManager : MonoBehaviour
         bool currentPicked = false;
         beatenConnectorsPageOne = beatenConnectors.transform.GetChild(0).gameObject;
         beatenConnectorsPageTwo = beatenConnectors.transform.GetChild(1).gameObject;
+        beatenConnectorsPageThree = beatenConnectors.transform.GetChild(2).gameObject;
         foreach (Transform child in page1Parent)
         {
             if (child.gameObject.GetComponent<Button>() == null) continue;
@@ -102,6 +106,35 @@ public class MainMenuButtonSelectionManager : MonoBehaviour
             }
             i++;
         }
+
+        foreach (Transform child in page3Parent)
+        {
+            if (child.gameObject.GetComponent<Button>() == null) continue;
+            GameObject button = child.gameObject;
+            page3Buttons.Add(button);
+            if (PlayerPrefs.HasKey($"Level {i}") && PlayerPrefs.GetInt($"Level {i}") == 1)
+            {
+                button.GetComponent<Button>().interactable = true;
+                button.GetComponent<Animator>().runtimeAnimatorController = beatenLevelAnim;
+                beatenConnectorsPageThree.transform.GetChild((i - 1) % 8).gameObject.SetActive(true);
+            }
+            else
+            {
+                button.GetComponent<Button>().interactable = false;
+                button.transform.GetChild(0).gameObject.SetActive(true);
+                button.GetComponent<Animator>().runtimeAnimatorController = lockedLevelAnim;
+            }
+            if (!currentPicked && (!PlayerPrefs.HasKey($"Level {i + 1}") || PlayerPrefs.GetInt($"Level {i + 1}") != 1))
+            {
+                currentPicked = true;
+                button.GetComponent<Animator>().runtimeAnimatorController = currentLevelAnim;
+                beatenConnectorsPageThree.transform.GetChild((i - 1) % 8).gameObject.SetActive(false);
+                currentLevelCapacitor.transform.position = button.transform.position;
+                currentLevel = i - 1;
+                currentLevelPage = 2;
+            }
+            i++;
+        }
         buttons = page1Buttons;
         currentLevelCapacitor.SetActive(currentLevelPage == 0);
         GameObject savedVariablesObject = GameObject.FindGameObjectWithTag("MultiSceneVariables");
@@ -125,32 +158,32 @@ public class MainMenuButtonSelectionManager : MonoBehaviour
                 currentSelection += 1;
                 if(currentSelection >= buttons.Count)
                 {
-                    if (currentPage == 0)
+                    if (currentPage != 2)
                     {
-                        currentPage = 1;
-                        buttons = page2Buttons;
+                        currentPage += 1;
+                        //buttons = page2Buttons;
                         //page1Parent.gameObject.SetActive(false);
                         //page2Parent.gameObject.SetActive(true);
-                        setPageTwoActive();
-                        UpdateNavButtons();
+                        setCorrectPageActive();
+                        //UpdateNavButtons();
                     }
                     currentSelection = 0;
                 }
             }
             else if (change < -.25)
             {
-                if (currentSelection < 1 && (currentPage == 1 || (buttons.Count - 1) < currentLevel))
+                if (currentSelection < 1 && (currentPage != 0 || (buttons.Count - 1) < currentLevel))
                 {
-                    if (currentPage == 1)
+                    if (currentPage != 0)
                     {
-                        currentPage = 0;
-                        buttons = page1Buttons;
+                        currentPage -= 1;
+                        //buttons = page1Buttons;
                         //page1Parent.gameObject.SetActive(true);
                         //page2Parent.gameObject.SetActive(false);
-                        setPageOneActive();
-                        UpdateNavButtons();
+                        setCorrectPageActive();
+                        //UpdateNavButtons();
+                        currentSelection = buttons.Count - 1;
                     }
-                    currentSelection = buttons.Count - 1;
                 }
                 else if (currentSelection > 0)
                 {
@@ -192,14 +225,13 @@ public class MainMenuButtonSelectionManager : MonoBehaviour
 
     public void NextPage()
     {
-        if (currentPage == 1 || !PlayerPrefs.HasKey($"Level {buttons.Count + 1}") || PlayerPrefs.GetInt($"Level {buttons.Count + 1}") != 1)
+        if (currentPage == 2 || !PlayerPrefs.HasKey($"Level {buttons.Count + 1}") || PlayerPrefs.GetInt($"Level {buttons.Count + 1}") != 1)
         {
             return;
         }
 
-        currentPage = 1;
-        buttons = page2Buttons;
-        setPageTwoActive();
+        currentPage += 1;
+        setCorrectPageActive();
         currentSelection = 0;
         currentLevelCapacitor.SetActive(currentLevelPage == currentPage);
         readyToChange = Time.realtimeSinceStartup + delay;
@@ -213,38 +245,73 @@ public class MainMenuButtonSelectionManager : MonoBehaviour
             return;
         }
 
-        currentPage = 0;
-        buttons = page1Buttons;
-        setPageOneActive();
+        currentPage -= 1;
+        setCorrectPageActive();
         currentSelection = 0;
         currentLevelCapacitor.SetActive(currentLevelPage == currentPage);
         readyToChange = Time.realtimeSinceStartup + delay;
         SetButtonSize(currentSelection);
     }
+    public void setCorrectPageActive()
+    {
+        if (currentPage == 0) setPageOneActive();
+        else if(currentPage == 1) setPageTwoActive();
+        else if(currentPage == 2) setPageThreeActive();
+    }
     public void setPageOneActive()
     {
-        nextButton.SetActive(true);
-        previousButton.SetActive(false);
+        buttons = page1Buttons;
+        //nextButton.SetActive(true);
+        //previousButton.SetActive(false);
+        UpdateNavButtons();
         page1Parent.gameObject.SetActive(true);
         page2Parent.gameObject.SetActive(false);
+        page3Parent.gameObject.SetActive(false);
         beatenConnectorsPageOne.SetActive(true);
         beatenConnectorsPageTwo.SetActive(false);
+        beatenConnectorsPageThree.SetActive(false);
     }
     public void setPageTwoActive()
     {
-        nextButton.SetActive(false);
-        previousButton.SetActive(true);
+        buttons = page2Buttons;
+        //nextButton.SetActive(true);
+        //previousButton.SetActive(true);
+        UpdateNavButtons();
         page1Parent.gameObject.SetActive(false);
         page2Parent.gameObject.SetActive(true);
+        page3Parent.gameObject.SetActive(false);
         beatenConnectorsPageOne.SetActive(false);
         beatenConnectorsPageTwo.SetActive(true);
+        beatenConnectorsPageThree.SetActive(false);
+    }
+    public void setPageThreeActive()
+    {
+        buttons = page3Buttons;
+        //nextButton.SetActive(false);
+        //previousButton.SetActive(true);
+        UpdateNavButtons();
+        page1Parent.gameObject.SetActive(false);
+        page2Parent.gameObject.SetActive(false);
+        page3Parent.gameObject.SetActive(true);
+        beatenConnectorsPageOne.SetActive(false);
+        beatenConnectorsPageTwo.SetActive(false);
+        beatenConnectorsPageThree.SetActive(true);
     }
 
     public void UpdateNavButtons()
     {
-        if (currentPage == 1)
+        if (currentPage == 2)
         {
             nextButton.SetActive(false);
+            previousButton.SetActive(true);
+        }
+        else if (currentPage == 1)
+        {
+            if (PlayerPrefs.HasKey($"Level {buttons.Count * 2 + 1}") && PlayerPrefs.GetInt($"Level {buttons.Count * 2 + 1}") == 1)
+            {
+                nextButton.SetActive(true);
+            }
+            else nextButton.SetActive(false);
             previousButton.SetActive(true);
         }
         else
@@ -253,6 +320,7 @@ public class MainMenuButtonSelectionManager : MonoBehaviour
             {
                 nextButton.SetActive(true);
             }
+            else nextButton.SetActive(false);
             previousButton.SetActive(false);
         }
     }
@@ -275,6 +343,14 @@ public class MainMenuButtonSelectionManager : MonoBehaviour
         PlayerPrefs.SetInt("Level 14", 1);
         PlayerPrefs.SetInt("Level 15", 1);
         PlayerPrefs.SetInt("Level 16", 1);
+        PlayerPrefs.SetInt("Level 17", 1);
+        //PlayerPrefs.SetInt("Level 18", 1);
+        //PlayerPrefs.SetInt("Level 19", 1);
+        //PlayerPrefs.SetInt("Level 20", 1);
+        //PlayerPrefs.SetInt("Level 21", 1);
+        //PlayerPrefs.SetInt("Level 22", 1);
+        //PlayerPrefs.SetInt("Level 23", 1);
+        //PlayerPrefs.SetInt("Level 24", 1);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

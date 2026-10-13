@@ -8,7 +8,7 @@ public class DestructibleWall : MonoBehaviour
     [Header("Health")]
     public float currentHealth;
     private float maxHealth = 5;
-    private float maxPossibleHealth = 16;
+    //private float maxPossibleHealth = 16;
 
     private float flashTime = .2f;
     [Header("Components")]
