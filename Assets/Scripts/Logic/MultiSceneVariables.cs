@@ -220,7 +220,15 @@ public class MultiSceneVariables : MonoBehaviour
         "LevelThirteenNormal",
         "LevelFourteenNormal",
         "LevelFifteenNormal",
-        "LevelSixteenNormal"
+        "LevelSixteenNormal",
+        "LevelSeventeenNormal",
+        "LevelEighteenNormal",
+        "LevelNineteenNormal",
+        "LevelTwentyNormal",
+        "LevelTwentyOneNormal",
+        "LevelTwentyTwoNormal",
+        "LevelTwentyThreeNormal",
+        "LevelTwentyFourNormal"
     };
     public static readonly string[] HardLevelBestTimes =
     {
@@ -240,7 +248,15 @@ public class MultiSceneVariables : MonoBehaviour
         "LevelThirteenHard",
         "LevelFourteenHard",
         "LevelFifteenHard",
-        "LevelSixteenHard"
+        "LevelSixteenHard",
+        "LevelSeventeenHard",
+        "LevelEighteenHard",
+        "LevelNineteenHard",
+        "LevelTwentyHard",
+        "LevelTwentyOneHard",
+        "LevelTwentyTwoHard",
+        "LevelTwentyThreeHard",
+        "LevelTwentyFourHard"
     };
     public static readonly string[] ImpossibleLevelBestTimes =
     {
@@ -260,7 +276,15 @@ public class MultiSceneVariables : MonoBehaviour
         "LevelThirteenImpossible",
         "LevelFourteenImpossible",
         "LevelFifteenImpossible",
-        "LevelSixteenImpossible"
+        "LevelSixteenImpossible",
+        "LevelSeventeenImpossible",
+        "LevelEighteenImpossible",
+        "LevelNineteenImpossible",
+        "LevelTwentyImpossible",
+        "LevelTwentyOneImpossible",
+        "LevelTwentyTwoImpossible",
+        "LevelTwentyThreeImpossible",
+        "LevelTwentyFourImpossible"
     };
 
     public void SaveCurrentLevelTime(int level)
