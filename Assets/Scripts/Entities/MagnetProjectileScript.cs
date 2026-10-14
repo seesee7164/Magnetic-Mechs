@@ -29,7 +29,7 @@ public class MagnetProjectileScript : MonoBehaviour
     {
         if (collision.gameObject.layer == 6 || collision.gameObject.layer == 17)
         {
-            if (collision.gameObject.CompareTag("MovingPlatform") || collision.gameObject.CompareTag("MovingPlatformVertical"))
+            if (collision.gameObject.CompareTag("MovingPlatform") || collision.gameObject.CompareTag("MovingPlatformVertical")|| collision.gameObject.CompareTag("DestructibleWall"))
             {
                 Attach();
                 myRigidBody.bodyType = RigidbodyType2D.Kinematic;
