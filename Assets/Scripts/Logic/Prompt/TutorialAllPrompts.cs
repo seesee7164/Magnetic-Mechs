@@ -56,7 +56,7 @@ public class TutorialAllPrompts : MonoBehaviour
     private string shootWallk = "Some walls can be destroyed. Hold left click to fire continuously";
     private string magnetingTwoK = "Hold \"W\" to Attract to the magnet. Release to stop. Hold space mid-air to hover";
     private string magnetingAttractK = "Hold \"W\" to Attract";
-    private string magnetingRepelK = "Hold\" Left Shift\" to Repel";
+    private string magnetingRepelK = "Hold \"Left Shift\" to Repel";
     private string dropK = "Hold \"S\" To Drop Through Wooden Floors or to Fall Faster";
     private string redBlock = "Red X Blocks will destroy the magnet if they touch it";
     private string killingPilotK= "Hold \"G\" + \"L\"";
