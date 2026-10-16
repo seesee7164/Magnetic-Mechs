@@ -19,6 +19,7 @@ public class StartScreenLogic : MonoBehaviour
     public GameObject startScreenStart;
     public GameObject startScreenLevelSelect;
     public GameObject startScreenSettings;
+    public IntroSceneScreenFade introSceneScreenFade;
     //public GameObject backgroundCanvas;
     public MultiSceneVariables variableStorage;
     public PlayerInput myInput;
@@ -30,6 +31,7 @@ public class StartScreenLogic : MonoBehaviour
 
     private void Awake()
     {
+        introSceneScreenFade.startFadeOut(1, 0);
         myInput = GetComponent<PlayerInput>();
         myInput.SwitchCurrentActionMap("UI");
         variableStorage = GameObject.FindGameObjectWithTag("MultiSceneVariables").GetComponent<MultiSceneVariables>();

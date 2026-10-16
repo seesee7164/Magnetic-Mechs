@@ -203,7 +203,9 @@ public class TutorialAllEvents : MonoBehaviour
     {
         controlScreenFade.startFadeIn(1, 0);
         disablePlayerActions();
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(.01f);
+        logic.pauseDisabled = true;
+        yield return new WaitForSeconds(.99f);
         deathCutsceneScript.startPlaying();
     }
     public void afterCutscene()
@@ -244,6 +246,7 @@ public class TutorialAllEvents : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         disablePlayerMovement();
+        logic.pauseDisabled = true;
         title.SetActive(true);
         StartCoroutine(startNextScene());
     }

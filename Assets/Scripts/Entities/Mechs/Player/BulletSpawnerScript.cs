@@ -33,7 +33,7 @@ public class BulletSpawnerScript : BulletSpawnerParent
             reloadTime = mechBossReloadTime;
             bulletForce = mechBossBulletForce;
         }
-        else bulletForce = 33f;
+        else bulletForce = 50f;
         timer = reloadTime;
         audioBox = gameObject.GetComponent<AudioSource>();
         parentObject = mech;

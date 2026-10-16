@@ -17,6 +17,8 @@ public class MechBossHealthScript : MonoBehaviour
     [Header("Invincibility")]
     const float invincibilityTimeDefault = .01f;
     public bool invincible;
+
+    private bool advanced = false;
     private void Awake()
     {
         currentHealth = maxHealth;
@@ -28,6 +30,7 @@ public class MechBossHealthScript : MonoBehaviour
     {
         maxHealth = 25f;
         currentHealth = maxHealth;
+        advanced = true;
     }
     public void takeDamage(float Damage, Vector2 knockbackDirection, float knockback = 0, float invincibilityTime = invincibilityTimeDefault, bool DeathPit = false)
     {
@@ -62,7 +65,8 @@ public class MechBossHealthScript : MonoBehaviour
     {
         currentHealth = 0;
         mechActionsScript.KillPlayer(DeathPit);
-        logic.StartPostMechBossDelay();
+        if (advanced) logic.StartPostAdvancedMechBossDelay();
+        else logic.StartPostMechBossDelay();
     }
     public float getMaxHealth()
     {
