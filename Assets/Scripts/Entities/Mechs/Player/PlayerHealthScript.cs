@@ -54,7 +54,7 @@ public class PlayerHealthScript : MonoBehaviour
         if (!invincible)
         {
             StartCoroutine(handleDamage(Damage, invincibilityTime, DeathPit));
-            if (DeathPit && Damage >= currentHealth) return;
+            if (DeathPit && currentHealth <= 0) return;
             StartCoroutine(playerScript.handleKnockback(knockback, knockbackDirection));
         }
     }

@@ -16,6 +16,7 @@ public class TurnClearTimesOnOrOffScript : MonoBehaviour
     void Start()
     {
         multiSceneVariables = GameObject.FindGameObjectWithTag("MultiSceneVariables").GetComponent<MultiSceneVariables>();
+        if (multiSceneVariables.ShowTime()) myText.text = "Enable Clear Times";
     }
 
     // Update is called once per frame
@@ -27,13 +28,11 @@ public class TurnClearTimesOnOrOffScript : MonoBehaviour
     {
         if (multiSceneVariables.ShowTime())
         {
-            Debug.Log("test1");
             myText.text = "Enable Clear Times";
             multiSceneVariables.StopShowing();
         }
         else
         {
-            Debug.Log("test2");
             myText.text = "Disable Clear Times";
             multiSceneVariables.StartShowing();
         }

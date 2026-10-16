@@ -170,7 +170,6 @@ public class PlayerScript : MechActionsScript
 
     public void OnMove(UnityEngine.InputSystem.InputAction.CallbackContext ctx) { 
         Vector2 v = ctx.ReadValue<Vector2>();
-
         if (ctx.performed) checkMovementInput = true;
         if (ctx.canceled) checkMovementInput = false;
         //Debug.Log("OnMove Activate");

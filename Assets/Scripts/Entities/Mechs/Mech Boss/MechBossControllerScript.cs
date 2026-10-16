@@ -133,6 +133,19 @@ public class MechBossControllerScript : MonoBehaviour
         currentObjective = CurrentObjective.Stationary;
         currentCooldown = cooldown;
     }
+    protected void checkOnWrongSideOfMagnet()
+    {
+        float magnetXPosition = availableActionsScript.myMagnetManagerScript.returnMyMagnet().transform.position.x;
+        if (startedLeft && gameObject.transform.position.x <= magnetXPosition - .05f)SwapToMoveAcrossScreen();
+        else if(!startedLeft && gameObject.transform.position.x >= magnetXPosition + .05f) SwapToMoveAcrossScreen();
+    }
+    protected void SwapToMoveAcrossScreen()
+    {
+        availableActionsScript.StopRepel();
+        availableActionsScript.StopAttract();
+        availableActionsScript.RecoverMagnet();
+        currentObjective = CurrentObjective.MoveAcrossScreen;
+    }
     //moving across Screen
     protected void StartMoveAcrossScreen()
     {
@@ -301,7 +314,6 @@ public class MechBossControllerScript : MonoBehaviour
 
     protected void StartLaunchAcrossScreen()
     {
-        Debug.Log("test 1");
         currentObjective = CurrentObjective.launchAcrossScreen;
         availableActionsScript.LaunchMagnet();
         StartCoroutine(midLaunchAcrossScreenActions());
@@ -319,6 +331,7 @@ public class MechBossControllerScript : MonoBehaviour
     }
     protected void LaunchAcrossScreen()
     {
+        checkOnWrongSideOfMagnet();
         if (startedLeft)
         {
             availableActionsScript.Move(1f, 0f);

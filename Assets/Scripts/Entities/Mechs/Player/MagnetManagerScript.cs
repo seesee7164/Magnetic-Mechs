@@ -91,7 +91,10 @@ public class MagnetManagerScript : MonoBehaviour
             float size = 1 - 1.5f * (magnetDistance - 1.1f) / maximumMagnetDistance;
             size = Mathf.Max(size, 0f);
             magnetVisualEffectScript.StartMagnetEffect(repelOn, size);
-            applyMagnetism(magnetRelativePosition.normalized, magnetDistance, attractOn);
+            float angle = Mathf.Atan2(magnetRelativePosition.y, magnetRelativePosition.x) * Mathf.Rad2Deg;
+            bool goStraightUp = (angle <= 130 && angle >= 50) && magnetDistance <= 1.6;
+            if (goStraightUp) applyMagnetism(Vector2.up, magnetDistance, attractOn);
+            else applyMagnetism(magnetRelativePosition.normalized, magnetDistance, attractOn);
         }
     }
     void applyMagnetism(Vector2 forceDirection, float magnetDistance, bool attractOn)

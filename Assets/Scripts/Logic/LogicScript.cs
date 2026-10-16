@@ -183,6 +183,20 @@ public class LogicScript : MonoBehaviour
         yield return new WaitForSeconds(delay);
         StartLevel("Level 4");
     }
+    public void StartPostAdvancedMechBossDelay()
+    {
+        playerHealthScript.invincible = true;
+        multiSceneVariables.FinishLevel(11);
+        StartScreenFade(1.5f, 2.5f);
+        float timeUntilLevelEnd = 3.25f;
+        if (multiSceneVariables.ShowTime()) timeUntilLevelEnd += delayForEndScreen;
+        StartCoroutine(StartPostAdvancedMechBoss(timeUntilLevelEnd));
+    }
+    public IEnumerator StartPostAdvancedMechBoss(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        StartLevel("Level 12");
+    }
     public void StartPostSpiderBossDelay()
     {
         playerHealthScript.invincible = true;

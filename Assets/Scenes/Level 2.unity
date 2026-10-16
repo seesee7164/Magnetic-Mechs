@@ -145,7 +145,7 @@ Transform:
   m_GameObject: {fileID: 3252561}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.959999, y: 5.4500003, z: 0}
+  m_LocalPosition: {x: 9.959999, y: 5.04, z: 0}
   m_LocalScale: {x: 15, y: 15, z: 15}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -17210,7 +17210,7 @@ Transform:
   m_GameObject: {fileID: 553939376}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 199.1, y: 2.6100001, z: 0}
+  m_LocalPosition: {x: 199.1, y: 2.32, z: 0}
   m_LocalScale: {x: 15, y: 15, z: 15}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -24651,7 +24651,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26c43df5796952f45a29053f1149843f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  followTransform: {fileID: 0}
+  followTransform: {fileID: 1265375398}
   parallaxRate: 8
 --- !u!4 &988374799
 Transform:
@@ -25855,6 +25855,8 @@ GameObject:
   - component: {fileID: 1284904799}
   - component: {fileID: 1284904798}
   - component: {fileID: 1284904797}
+  - component: {fileID: 1284904801}
+  - component: {fileID: 1284904800}
   m_Layer: 6
   m_Name: Non-stick surfaces
   m_TagString: NonStickPlatform
@@ -25909,7 +25911,7 @@ TilemapCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_CompositeOperation: 0
+  m_CompositeOperation: 1
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
@@ -33870,6 +33872,158 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!66 &1284904800
+CompositeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284904795}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_GeometryType: 1
+  m_GenerationType: 0
+  m_EdgeRadius: 0
+  m_ColliderPaths:
+  - m_Collider: {fileID: 1284904797}
+    m_ColliderPaths:
+    - - X: 2050000000
+        Y: 420000000
+      - X: 2040000000
+        Y: 420000000
+      - X: 2040000000
+        Y: 80000000
+      - X: 2020000000
+        Y: 80000000
+      - X: 2020000000
+        Y: 100000000
+      - X: 1850000000
+        Y: 100000000
+      - X: 1850000000
+        Y: 70000000
+      - X: 1660000000
+        Y: 70000000
+      - X: 1660000000
+        Y: 60000000
+      - X: 2050000000
+        Y: 60000000
+    - - X: 2280000000
+        Y: 240000000
+      - X: 2270000128
+        Y: 240000000
+      - X: 2270000128
+        Y: -20000000
+      - X: 2090000000
+        Y: -20000000
+      - X: 2090000000
+        Y: -30000000
+      - X: 2270000128
+        Y: -30000000
+      - X: 2270000128
+        Y: -130000000
+      - X: 2280000000
+        Y: -130000000
+    - - X: 1500000000
+        Y: -40000000
+      - X: 1490000000
+        Y: -40000000
+      - X: 1490000000
+        Y: -70000000
+      - X: 1100000000
+        Y: -70000000
+      - X: 1100000000
+        Y: -40000000
+      - X: 1090000000
+        Y: -40000000
+      - X: 1090000000
+        Y: -80000000
+      - X: 1500000000
+        Y: -80000000
+  m_CompositePaths:
+    m_Paths:
+    - - {x: 204.99997, y: 6}
+      - {x: 204.99997, y: 42}
+      - {x: 204, y: 41.999973}
+      - {x: 203.99997, y: 8}
+      - {x: 202, y: 8.00003}
+      - {x: 201.99997, y: 10}
+      - {x: 185, y: 9.99997}
+      - {x: 184.99997, y: 7}
+      - {x: 166, y: 6.9999704}
+      - {x: 166.00003, y: 6}
+    - - {x: 227.99997, y: -13}
+      - {x: 227.99997, y: 24}
+      - {x: 227.00002, y: 23.999971}
+      - {x: 226.99998, y: -2}
+      - {x: 209, y: -2.0000293}
+      - {x: 209.00003, y: -3}
+      - {x: 227.00002, y: -3.0000293}
+      - {x: 227.00005, y: -13}
+    - - {x: 149.99997, y: -8}
+      - {x: 149.99997, y: -4}
+      - {x: 149, y: -4.000029}
+      - {x: 148.99997, y: -7}
+      - {x: 110, y: -6.9999704}
+      - {x: 109.99998, y: -4}
+      - {x: 109, y: -4.000029}
+      - {x: 109.00003, y: -8}
+  m_VertexDistance: 0.0005
+  m_OffsetDistance: 0.00005
+  m_UseDelaunayMesh: 0
+  m_CompositeGameObject: {fileID: 1284904795}
+--- !u!50 &1284904801
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284904795}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1336163861
 GameObject:
   m_ObjectHideFlags: 0
@@ -34671,7 +34825,7 @@ Transform:
   m_GameObject: {fileID: 1570504521}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 115.3, y: 0.3, z: 0}
+  m_LocalPosition: {x: 115.3, y: -0.66, z: 0}
   m_LocalScale: {x: 15, y: 15, z: 15}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -34979,7 +35133,7 @@ Transform:
   m_GameObject: {fileID: 1600042932}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 226.79999, y: 4.59, z: 0}
+  m_LocalPosition: {x: 226.79999, y: 4.44, z: 0}
   m_LocalScale: {x: 15, y: 15, z: 15}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -35852,7 +36006,7 @@ Transform:
   m_GameObject: {fileID: 1968797426}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 43.4, y: 5.11, z: 0}
+  m_LocalPosition: {x: 43.4, y: 4.67, z: 0}
   m_LocalScale: {x: 15, y: 15, z: 15}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -35944,7 +36098,7 @@ Transform:
   m_GameObject: {fileID: 2001862745}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 73.5, y: 4.1400003, z: 0}
+  m_LocalPosition: {x: 73.5, y: 3.11, z: 0}
   m_LocalScale: {x: 15, y: 15, z: 15}
   m_ConstrainProportionsScale: 1
   m_Children: []
